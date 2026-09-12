@@ -11,6 +11,7 @@ import {
   Settings2,
   Factory,
   MapPin,
+  ShieldCheck,
 } from "lucide-react";
 import { sectors, event } from "@/lib/site";
 import { Button, Eyebrow, TextLink } from "@/components/shared/ui";
@@ -34,6 +35,81 @@ const staggerContainer: Variants = {
 };
 
 const icons = [Layers3, Printer, Box, Settings2, Factory];
+
+
+/* =========================================================================
+   0. SUPPORTED BY STRIP (Refined Minimal B2B)
+   ========================================================================= */
+export function SupportedByStrip() {
+  const supporters = [
+    {
+      name: "MSME Department, Government of Odisha",
+      logo: "/logo/support-1.png",
+    },
+    {
+      name: "Ministry of MSME, Government of India",
+      logo: "/logo/support-2.png",
+    },
+  ];
+
+  return (
+    <section className="relative border-b border-[var(--border)] bg-gradient-to-b from-[#f8faf9] to-white py-10 sm:py-14">
+      <div className="container mx-auto px-4 sm:px-6">
+        
+        {/* Minimal Centered Anchor with Horizontal Accents */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          className="flex items-center justify-center gap-4 text-center"
+        >
+          <span className="h-px w-12 bg-slate-200 sm:w-20" aria-hidden="true" />
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 sm:text-xs">
+            Supported by
+          </p>
+          <span className="h-px w-12 bg-slate-200 sm:w-20" aria-hidden="true" />
+        </motion.div>
+
+        {/* Clean Balanced Logo Display */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-8 sm:gap-16 lg:gap-24"
+        >
+          {supporters.map((item) => (
+            <motion.div
+              key={item.name}
+              variants={fadeUp}
+              className="group flex flex-col items-center"
+            >
+              {/* Logo Container with Subtle Hover Lift */}
+              <div className="relative flex h-24 w-[240px] items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.03] sm:h-28 sm:w-[300px]">
+                <Image
+                  src={item.logo}
+                  alt={item.name}
+                  width={320}
+                  height={110}
+                  className="max-h-20 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.03)] sm:max-h-24"
+                  priority
+                />
+              </div>
+
+              {/* Clean Caption */}
+              <span className="mt-3 text-center text-xs font-semibold tracking-tight text-slate-700 transition-colors group-hover:text-slate-950 sm:text-[13px]">
+                {item.name}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+      </div>
+    </section>
+  );
+}
+
 
 /* =========================================================================
    1. EVENT SNAPSHOT (Stats & Summary)

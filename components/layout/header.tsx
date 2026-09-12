@@ -173,12 +173,12 @@ export function Brand({ onNavigate }: { onNavigate?: () => void }) {
       onClick={onNavigate}
     >
       <Image
-        src="/logo/logo-bg.png"
+        src="/logo/logo-up.png"
         alt="Propack Odisha International Expo"
-        width={180}
-        height={60}
+        width={200}
+        height={80}
         priority
-        className="h-auto w-[150px] sm:w-[180px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+        className="h-auto w-[170px] sm:w-[200px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
       />
     </Link>
   );
