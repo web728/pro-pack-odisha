@@ -109,7 +109,7 @@ export function SubmissionForm({ type }: { type: string }) {
       return;
     }
 
-    if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !captchaToken) {
+    if (process.env.RECAPTCHA_SITE_KEY && !captchaToken) {
       setResult({
         ok: false,
         message: "Please complete the security check before submitting.",
@@ -164,7 +164,8 @@ export function SubmissionForm({ type }: { type: string }) {
           Your details
         </h2>
         <p className="mt-1.5 text-xs text-slate-500 sm:text-sm">
-          Please fill out the form accurately. Fields marked with an asterisk (<span className="text-red-600">*</span>) are mandatory.
+          Please fill out the form accurately. Fields marked with an asterisk (
+          <span className="text-red-600">*</span>) are mandatory.
         </p>
       </div>
 
@@ -182,7 +183,10 @@ export function SubmissionForm({ type }: { type: string }) {
         >
           <div className="flex items-start gap-3">
             {result.ok ? (
-              <CheckCircle2 size={20} className="mt-0.5 shrink-0 text-emerald-600" />
+              <CheckCircle2
+                size={20}
+                className="mt-0.5 shrink-0 text-emerald-600"
+              />
             ) : (
               <AlertCircle size={20} className="mt-0.5 shrink-0 text-red-600" />
             )}
@@ -277,7 +281,9 @@ export function SubmissionForm({ type }: { type: string }) {
                 );
               })
               .map((field) => {
-                const isFullWidth = ["textarea", "file"].includes(field.type || "");
+                const isFullWidth = ["textarea", "file"].includes(
+                  field.type || "",
+                );
                 const hasError = !!errors[field.name];
 
                 return (
@@ -357,8 +363,18 @@ export function SubmissionForm({ type }: { type: string }) {
                           ))}
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
-                          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                          <svg
+                            className="h-4 w-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M19 9l-7 7-7-7"
+                            />
                           </svg>
                         </div>
                       </div>
@@ -415,9 +431,7 @@ export function SubmissionForm({ type }: { type: string }) {
                         max={field.type === "number" ? field.max : undefined}
                         step={field.type === "number" ? "any" : undefined}
                         maxLength={
-                          field.type === "number"
-                            ? undefined
-                            : field.max || 250
+                          field.type === "number" ? undefined : field.max || 250
                         }
                         aria-invalid={hasError}
                         aria-describedby={`${field.name}-help`}
@@ -432,10 +446,14 @@ export function SubmissionForm({ type }: { type: string }) {
                     {/* Hint & Inline Validation Message */}
                     <div id={`${field.name}-help`} className="space-y-1 pt-0.5">
                       {field.hint && (
-                        <p className="text-[11px] text-slate-500">{field.hint}</p>
+                        <p className="text-[11px] text-slate-500">
+                          {field.hint}
+                        </p>
                       )}
                       {field.words && (
-                        <p className="text-[11px] text-slate-400">Maximum {field.words} words.</p>
+                        <p className="text-[11px] text-slate-400">
+                          Maximum {field.words} words.
+                        </p>
                       )}
                       {hasError && (
                         <p className="flex items-center gap-1 text-xs font-medium text-red-600">
@@ -463,7 +481,8 @@ export function SubmissionForm({ type }: { type: string }) {
                 className="mt-1 h-4 w-4 rounded border-slate-300 text-red-600 focus:ring-red-500"
               />
               <span className="text-xs leading-relaxed text-slate-600 sm:text-sm">
-                I agree to the processing and use of my contact details to fulfill this submission, as described in the{" "}
+                I agree to the processing and use of my contact details to
+                fulfill this submission, as described in the{" "}
                 <Link
                   href="/privacy"
                   className="font-semibold text-slate-900 underline decoration-slate-400 underline-offset-4 hover:decoration-slate-900"
@@ -475,7 +494,11 @@ export function SubmissionForm({ type }: { type: string }) {
             </label>
 
             {errors.consent && (
-              <p id="consent-error" role="alert" className="mt-2.5 flex items-center gap-1 text-xs font-medium text-red-600">
+              <p
+                id="consent-error"
+                role="alert"
+                className="mt-2.5 flex items-center gap-1 text-xs font-medium text-red-600"
+              >
                 <AlertCircle size={13} className="shrink-0" />
                 <span>{errors.consent}</span>
               </p>

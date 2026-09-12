@@ -16,20 +16,20 @@ Full name: Propack Odisha International Expo. Short name: Propack Odisha. Sole d
 
 ## Configure the integrations
 
-| Variable | Purpose |
-|---|---|
-| SITE_URL | Exact browser origin for API origin checks and private links. Use localhost only in development. |
-| NEXT_PUBLIC_SITE_URL | Confirmed public HTTPS origin for SEO, set before build. Match SITE_URL in production. |
-| MONGODB_URI | Atlas connection URI, database-scoped user and permitted network. |
-| MONGODB_DB_NAME | Database name; legacy MONGODB_DATABASE remains supported. Preserve the existing database when upgrading. |
-| GOOGLE_CLIENT_EMAIL / GOOGLE_PRIVATE_KEY / GOOGLE_SHEET_ID | Service account, private key and spreadsheet shared as editor. Enable Sheets API. Escaped newline keys are supported. |
-| GOOGLE_SHEET_NAME | Optional prefix for the nine form tabs, e.g. Propack-contact-us. Blank preserves existing tab names. Do not change it after submissions start without migrating rows/counters. |
-| GMAIL_USER / GMAIL_APP_PASSWORD | Gmail account and App Password. Default smtp.gmail.com:465. Do not use the normal account password. |
-| CONTACT_EMAIL_1 / CONTACT_EMAIL_2 | Both organizer notification recipients. Confirm the actual addresses. |
-| NEXT_PUBLIC_RECAPTCHA_SITE_KEY | Google reCAPTCHA v2 checkbox site key, registered for your hostname; available to browser by design. Set before build. |
-| RECAPTCHA_SECRET_KEY | Private matching server secret. Never expose it in browser code. |
-| TOKEN_SECRET / CRON_SECRET | Separate random strings of at least 32 characters for private tokens and retries. |
-| TRUSTED_PROXY_IP_HEADER | Only use a header your hosting edge overwrites and protects; otherwise leave blank. |
+| Variable                                                   | Purpose                                                                                                                                                                        |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| SITE_URL                                                   | Exact browser origin for API origin checks and private links. Use localhost only in development.                                                                               |
+| NEXT_PUBLIC_SITE_URL                                       | Confirmed public HTTPS origin for SEO, set before build. Match SITE_URL in production.                                                                                         |
+| MONGODB_URI                                                | Atlas connection URI, database-scoped user and permitted network.                                                                                                              |
+| MONGODB_DB_NAME                                            | Database name; legacy MONGODB_DATABASE remains supported. Preserve the existing database when upgrading.                                                                       |
+| GOOGLE_CLIENT_EMAIL / GOOGLE_PRIVATE_KEY / GOOGLE_SHEET_ID | Service account, private key and spreadsheet shared as editor. Enable Sheets API. Escaped newline keys are supported.                                                          |
+| GOOGLE_SHEET_NAME                                          | Optional prefix for the nine form tabs, e.g. Propack-contact-us. Blank preserves existing tab names. Do not change it after submissions start without migrating rows/counters. |
+| GMAIL_USER / GMAIL_APP_PASSWORD                            | Gmail account and App Password. Default smtp.gmail.com:465. Do not use the normal account password.                                                                            |
+| CONTACT_EMAIL_1 / CONTACT_EMAIL_2                          | Both organizer notification recipients. Confirm the actual addresses.                                                                                                          |
+| RECAPTCHA_SITE_KEY                                         | Google reCAPTCHA v2 checkbox site key, registered for your hostname; available to browser by design. Set before build.                                                         |
+| RECAPTCHA_SECRET_KEY                                       | Private matching server secret. Never expose it in browser code.                                                                                                               |
+| TOKEN_SECRET / CRON_SECRET                                 | Separate random strings of at least 32 characters for private tokens and retries.                                                                                              |
+| TRUSTED_PROXY_IP_HEADER                                    | Only use a header your hosting edge overwrites and protects; otherwise leave blank.                                                                                            |
 
 Legacy SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASSWORD/SMTP_FROM and EMAIL_TO_1/EMAIL_TO_2 remain compatible. Gmail account/password and CONTACT_EMAIL values take precedence. Leave legacy SMTP_HOST/PORT blank when using Gmail defaults. Gmail account policy must permit App Passwords; enable 2-Step Verification and generate an application password through the account security settings. If unavailable, use an approved SMTP provider through the legacy configuration.
 

@@ -40,7 +40,7 @@ export function Recaptcha({
   const host = useRef<HTMLDivElement>(null);
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  const siteKey = process.env.RECAPTCHA_SITE_KEY;
   useEffect(() => {
     if (!siteKey) return;
     let active = true;

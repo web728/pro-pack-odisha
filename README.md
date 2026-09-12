@@ -26,7 +26,7 @@ The deployment preflight needs completed production configuration; it is expecte
 - Atlas: create a scoped database user, allow the host network and set MONGODB_URI/MONGODB_DB_NAME. Connection utility caches the client.
 - Sheets: enable Sheets API, share the spreadsheet with the service account, set GOOGLE_CLIENT_EMAIL/GOOGLE_PRIVATE_KEY/GOOGLE_SHEET_ID, then run `node --env-file=.env.local scripts/setup-sheets.mjs`. Optional GOOGLE_SHEET_NAME prefixes the nine form tabs; preserve it once live data exists.
 - Gmail: enable account 2-Step Verification, create an App Password if permitted, set GMAIL_USER/GMAIL_APP_PASSWORD and CONTACT_EMAIL_1/CONTACT_EMAIL_2. Both recipients receive original submission time, source and fields. Legacy SMTP settings remain supported.
-- reCAPTCHA: register v2 checkbox keys for the intended domains; set NEXT_PUBLIC_RECAPTCHA_SITE_KEY before building and keep RECAPTCHA_SECRET_KEY server-only. Tokens are checked for Google-verified validity and exact hostname. Configure real keys before enabling public submissions.
+- reCAPTCHA: register v2 checkbox keys for the intended domains; set RECAPTCHA_SITE_KEY before building and keep RECAPTCHA_SECRET_KEY server-only. Tokens are checked for Google-verified validity and exact hostname. Configure real keys before enabling public submissions.
 - Generate separate TOKEN_SECRET and CRON_SECRET values, each at least 32 random characters. Schedule authenticated POST /api/jobs/retry every five minutes.
 - Set SITE_URL and NEXT_PUBLIC_SITE_URL to the same confirmed public HTTPS origin before production build. Localhost is for development only.
 

@@ -32,7 +32,7 @@ export function integrationsConfigured() {
       process.env.GOOGLE_PRIVATE_KEY,
       process.env.GOOGLE_SHEET_ID,
       process.env.RECAPTCHA_SECRET_KEY,
-      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+      process.env.RECAPTCHA_SITE_KEY,
       mail.host,
       mail.user,
       mail.password,
