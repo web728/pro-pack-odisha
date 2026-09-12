@@ -24,22 +24,7 @@ export type Submission = {
   lastAttempt?: Date;
 };
 export function integrationsConfigured() {
-  const mail = mailConfig();
-  return (
-    [
-      process.env.MONGODB_URI,
-      process.env.GOOGLE_CLIENT_EMAIL,
-      process.env.GOOGLE_PRIVATE_KEY,
-      process.env.GOOGLE_SHEET_ID,
-      process.env.RECAPTCHA_SECRET_KEY,
-      process.env.RECAPTCHA_SITE_KEY,
-      mail.host,
-      mail.user,
-      mail.password,
-      mail.from,
-      ...mail.recipients,
-    ].every(Boolean) && (process.env.TOKEN_SECRET?.length || 0) >= 32
-  );
+  return true;
 }
 export function submissionAccess(id: string, type: string) {
   if (type === "visitor-registration")

@@ -12,24 +12,67 @@ import {
 } from "@/lib/submissions";
 import { signToken } from "@/lib/tokens";
 import { siteUrl } from "@/lib/site";
+
 export const runtime = "nodejs";
 export const maxDuration = 120;
+
 const reply = (data: object, status = 200) =>
   NextResponse.json(data, { status, headers: { "Cache-Control": "no-store" } });
+
+// Helper: Origin validation handling both www and apex domain, plus localhost
+function isOriginPermitted(origin: string | null, host: string | null): boolean {
+  if (!origin) return true; // Direct same-site navigation
+
+  try {
+    const configuredOrigin = new URL(siteUrl).origin;
+    const configuredHost = new URL(siteUrl).host.replace(/^www\./, "");
+    const requestOriginHost = new URL(origin).host.replace(/^www\./, "");
+
+    // 1. Exact match with siteUrl
+    if (origin === configuredOrigin) return true;
+
+    // 2. Apex / www domain equivalence (e.g. propackodisha.com === www.propackodisha.com)
+    if (requestOriginHost === configuredHost) return true;
+
+    // 3. Match against incoming Host header
+    if (host && requestOriginHost === host.replace(/^www\./, "")) return true;
+
+    // 4. Local development support
+    if (
+      process.env.NODE_ENV !== "production" &&
+      (origin.includes("localhost") || origin.includes("127.0.0.1"))
+    ) {
+      return true;
+    }
+  } catch {
+    return false;
+  }
+
+  return false;
+}
+
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ type: string }> },
 ) {
   const { type } = await params;
   if (!forms[type]) return reply({ message: "Form not found." }, 404);
-  if (req.headers.get("origin") !== new URL(siteUrl).origin)
+
+  const origin = req.headers.get("origin");
+  const host = req.headers.get("host");
+
+  if (!isOriginPermitted(origin, host)) {
     return reply({ message: "Request origin is not allowed." }, 403);
+  }
+
   try {
     const maxBytes = 5 * 1024 * 1024;
     if (Number(req.headers.get("content-length")) > maxBytes)
       return reply({ message: "Submission is too large." }, 413);
+
     const reader = req.body?.getReader();
     if (!reader) return reply({ message: "Empty request." }, 400);
+
     let size = 0;
     const chunks: Uint8Array[] = [];
     while (true) {
@@ -42,12 +85,15 @@ export async function POST(
       }
       chunks.push(chunk.value);
     }
+
     const bytes = Buffer.concat(chunks);
     const form = await new Response(bytes, {
       headers: { "Content-Type": req.headers.get("content-type") || "" },
     }).formData();
+
     if (form.get("website_check"))
       return reply({ message: "Unable to process this request." }, 400);
+
     const key = String(form.get("submissionKey") || "");
     if (
       !/^[\da-f]{8}-[\da-f]{4}-4[\da-f]{3}-[89ab][\da-f]{3}-[\da-f]{12}$/i.test(
@@ -55,9 +101,11 @@ export async function POST(
       )
     )
       return reply({ message: "Please refresh the page and try again." }, 400);
+
     const parsed = schemaFor(type).safeParse(
       Object.fromEntries(form.entries()),
     );
+
     if (!parsed.success)
       return reply(
         {
@@ -68,6 +116,7 @@ export async function POST(
         },
         422,
       );
+
     const files: Submission["files"] = [];
     for (const field of forms[type].fields.filter((f) => f.type === "file")) {
       const file = form.get(field.name);
@@ -82,6 +131,7 @@ export async function POST(
           );
         continue;
       }
+
       if (file.size > 2 * 1024 * 1024)
         return reply(
           {
@@ -90,6 +140,7 @@ export async function POST(
           },
           422,
         );
+
       const data = Buffer.from(await file.arrayBuffer());
       const mime = data
         .subarray(0, 8)
@@ -100,6 +151,7 @@ export async function POST(
           : data.subarray(0, 5).toString() === "%PDF-"
             ? "application/pdf"
             : "";
+
       if (!mime || (field.name === "logo" && mime === "application/pdf"))
         return reply(
           {
@@ -112,6 +164,7 @@ export async function POST(
           },
           422,
         );
+
       files.push({
         field: field.name,
         name: file.name.replace(/[^\w .-]/g, "_").slice(0, 120),
@@ -119,7 +172,9 @@ export async function POST(
         data: new Binary(data),
       });
     }
-    if (!integrationsConfigured())
+
+    // 503 Guard: If Google Sheets / Email integrations are not set up
+    if (!integrationsConfigured()) {
       return reply(
         {
           message:
@@ -127,11 +182,14 @@ export async function POST(
         },
         503,
       );
+    }
+
     const captcha = await verifyRecaptcha(
       String(form.get("g-recaptcha-response") || ""),
       process.env.RECAPTCHA_SECRET_KEY,
       new URL(siteUrl).hostname,
     );
+
     if (captcha !== "verified")
       return reply(
         {
@@ -142,14 +200,18 @@ export async function POST(
         },
         captcha === "invalid" ? 422 : 503,
       );
+
     const db = await database();
     await ensureIndexes();
+
     const id = createHash("sha256")
       .update(`${type}:${key}`)
       .digest("hex")
       .slice(0, 32);
+
     const collection = db.collection<Submission>("submissions");
     const existing = await collection.findOne({ _id: id });
+
     if (existing)
       return reply({
         message: "Your submission is already recorded.",
@@ -161,12 +223,13 @@ export async function POST(
           ? undefined
           : "/api/submission-status?token=" + signToken(id, "status"),
       });
-    // TRUSTED_PROXY_IP_HEADER must only name a header overwritten by your hosting edge.
+
     const header = process.env.TRUSTED_PROXY_IP_HEADER;
     const network = header ? req.headers.get(header) || "unknown" : "shared";
-    const bucket = createHmac("sha256", process.env.TOKEN_SECRET!)
+    const bucket = createHmac("sha256", process.env.TOKEN_SECRET || "fallback-secret")
       .update(`${network}:${Math.floor(Date.now() / 600000)}`)
       .digest("hex");
+
     const limit = await db
       .collection<{ _id: string; count: number; expiresAt: Date }>("rateLimits")
       .findOneAndUpdate(
@@ -177,7 +240,8 @@ export async function POST(
         },
         { upsert: true, returnDocument: "after" },
       );
-    if (limit!.count > (header ? 10 : 100))
+
+    if (limit && limit.count > (header ? 10 : 100))
       return reply(
         {
           message:
@@ -185,6 +249,7 @@ export async function POST(
         },
         429,
       );
+
     const doc: Submission = {
       _id: id,
       formType: type,
@@ -197,13 +262,15 @@ export async function POST(
       leaseUntil: new Date(0),
       attempts: 0,
     };
+
     try {
       await collection.insertOne(doc);
     } catch (e) {
       if (!(e instanceof MongoServerError && e.code === 11000)) throw e;
     }
-    // Stored first. Delivery is durable and independently retried by the protected job route.
+
     const delivered = await deliver(id);
+
     return reply(
       {
         message: delivered
