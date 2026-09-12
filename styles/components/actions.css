@@ -1,0 +1,277 @@
+/* Shared buttons, text links, labels and CTA presentation. */
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 23px;
+  line-height: 1.5;
+}
+.eyebrow > span:empty {
+  width: 7px;
+  height: 7px;
+  background: var(--primary);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 16px 22px;
+  background: var(--primary);
+  color: #fff;
+  border: 1px solid var(--primary);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.4;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.button:hover,
+.header-cta:hover {
+  background: #b81121;
+  transform: translateY(-2px);
+}
+.button.secondary {
+  background: transparent;
+  border-color: #9ca4a6;
+  color: var(--text);
+}
+.button.secondary:hover {
+  background: #e8edef;
+}
+.text-link {
+  font-size: 13px;
+  font-weight: 650;
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  border-bottom: 1px solid #a8adaf;
+  padding-bottom: 8px;
+}
+.text-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.blue-tint .eyebrow > span:empty,
+.blue-tint .button {
+  background: var(--secondary);
+}
+.blue-tint .button {
+  border-color: var(--secondary);
+  color: #fff;
+}
+.blue-tint .button:hover {
+  background: #0076a1;
+}
+.organizer-strip .eyebrow {
+  font-size: 8px;
+  margin: 0;
+  max-width: 110px;
+}
+.organizer-strip .text-link {
+  font-size: 11px;
+}
+.cta {
+  background: #202b31;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.cta-inner {
+  padding-block: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+.cta .eyebrow {
+  color: #c2c8cb;
+}
+.cta h2 {
+  margin-bottom: 17px;
+}
+.cta p:not(.eyebrow) {
+  font-size: 12px;
+  color: #c2c8cb;
+  margin-bottom: 0;
+}
+.cta .secondary {
+  color: #fff;
+  border-color: #7a858b;
+}
+.cta .secondary:hover {
+  background: #39464d;
+}
+.service-card .text-link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+@media (max-width: 1100px) {
+  .hero-copy .button {
+    padding: 14px;
+    font-size: 11px;
+    gap: 15px;
+  }
+  .cta .actions {
+    flex-direction: column;
+  }
+}
+@media (max-width: 800px) {
+  .hero-copy .button {
+    font-size: 13px;
+    padding: 16px 20px;
+  }
+  .organizer-strip .eyebrow {
+    width: 100%;
+    max-width: none;
+  }
+  .cta-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .cta .actions {
+    flex-direction: row;
+  }
+}
+@media (max-width: 480px) {
+  .hero-copy .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+  .hero-copy .button {
+    font-size: 11px;
+    padding: 14px 15px;
+    gap: 13px;
+  }
+  .cta .button {
+    padding: 14px 16px;
+    font-size: 11px;
+    gap: 15px;
+  }
+}
+.blue-tint .button {
+  background: #007ca9;
+  border-color: #007ca9;
+}
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 1.25px;
+}
+.hero-copy .eyebrow {
+  font-size: 12px;
+}
+.button,
+.hero-copy .button {
+  font-size: 14px;
+  min-height: 48px;
+  padding: 16px 20px;
+}
+.text-link {
+  font-size: 14px;
+  min-height: 40px;
+  align-items: center;
+}
+.organizer-strip .eyebrow,
+.organizer-strip small {
+  font-size: 12px;
+}
+.organizer-strip .text-link {
+  font-size: 14px;
+}
+.cta p:not(.eyebrow) {
+  font-size: 14px;
+}
+@media (max-width: 800px) {
+  .hero-copy .button {
+    font-size: 14px;
+    padding: 15px 18px;
+  }
+  .hero-copy .eyebrow {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  .organizer-strip .eyebrow {
+    font-size: 12px;
+  }
+  .cta .button {
+    font-size: 14px;
+    gap: 18px;
+  }
+}
+@media (max-width: 380px) {
+  .actions {
+    flex-direction: column;
+  }
+  .actions .button {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+.cta {
+  padding: 38px 0;
+}
+.cta h2 {
+  font-size: clamp(26px, 2.6vw, 36px);
+}
+.cta h2 br {
+  display: none;
+}
+.cta p {
+  margin-bottom: 0;
+}
+.compact-home .hero-copy .actions {
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.compact-home .hero-copy .button {
+  padding: 12px 16px;
+  font-size: 14px;
+}
+.compact-home .hero-copy > .text-link {
+  font-size: 13px;
+}
+.compact-image-caption .eyebrow {
+  color: white;
+  margin-bottom: 7px;
+  font-size: 10px;
+}
+@media (max-width: 800px) {
+  .compact-home .hero-copy .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.7px;
+  }
+  .cta {
+    padding: 30px 0;
+  }
+  .cta-inner {
+    gap: 20px;
+  }
+  .cta .actions {
+    margin-top: 0;
+  }
+}
+@media (max-width: 380px) {
+  .compact-home .hero-copy .actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .compact-home .hero-copy .button {
+    width: auto;
+  }
+}
+.cta-inner {
+  padding-block: 0;
+}

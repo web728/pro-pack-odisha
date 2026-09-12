@@ -1,0 +1,267 @@
+/* Shared form, validation, pass and submission-state styles. */
+.form-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 65px;
+  align-items: start;
+}
+.form-aside {
+  padding: 28px;
+  background: var(--surface);
+  border-top: 3px solid var(--primary);
+}
+.form-aside h2 {
+  font-size: 24px;
+}
+.form-aside p,
+.form-aside a {
+  font-size: 13px;
+}
+.form-aside a {
+  display: block;
+  color: var(--primary);
+  margin-top: 10px;
+}
+.form-card {
+  border: 1px solid var(--border);
+  padding: 40px;
+}
+.form-card h2 {
+  font-size: 26px;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.field {
+  min-width: 0;
+}
+.field.full {
+  grid-column: 1/-1;
+}
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.field input,
+.field textarea,
+.field select {
+  display: block;
+  width: 100%;
+  border: 1px solid #aeb8bb;
+  background: white;
+  border-radius: 0;
+  padding: 12px;
+  font-size: 14px;
+  color: var(--text);
+  min-height: 47px;
+}
+.field textarea {
+  resize: vertical;
+  min-height: 115px;
+}
+.field small {
+  font-size: 11px;
+  color: var(--muted);
+}
+.field .field-error {
+  color: var(--error);
+  display: block;
+  margin-top: 5px;
+}
+.field [aria-invalid="true"] {
+  border-color: var(--error);
+}
+.consent {
+  font-size: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 26px 0;
+}
+.consent input {
+  margin-top: 5px;
+  accent-color: var(--primary);
+}
+.consent a {
+  text-decoration: underline;
+}
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.feedback {
+  padding: 18px;
+  background: #e9f4ee;
+  color: #185a37;
+  margin-bottom: 20px;
+  overflow-wrap: anywhere;
+}
+.feedback.error {
+  background: #fff0f1;
+  color: var(--error);
+}
+.feedback a {
+  display: block;
+  text-decoration: underline;
+  margin-top: 12px;
+}
+.fine-print {
+  font-size: 11px;
+  margin-top: 16px;
+}
+.pass {
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 40px;
+  border: 1px solid var(--border);
+  border-top: 6px solid var(--primary);
+}
+.pass h2 {
+  margin-top: 28px;
+}
+.pass code {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+@media (max-width: 1100px) {
+  .form-layout {
+    gap: 35px;
+    grid-template-columns: 250px 1fr;
+  }
+  .form-card {
+    padding: 28px;
+  }
+}
+@media (max-width: 800px) {
+  .form-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .form-aside {
+    padding: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .form-card {
+    padding: 22px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .field.full {
+    grid-column: auto;
+  }
+  .pass {
+    padding: 25px;
+    margin: 25px 20px;
+  }
+}
+@media print {
+  .pass {
+    border: 1px solid #aaa;
+    margin: 0;
+    max-width: none;
+  }
+}
+.form-aside p,
+.form-aside a {
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.form-aside a {
+  min-height: 32px;
+}
+.field {
+  scroll-margin-top: 130px;
+}
+.field label {
+  font-size: 14px;
+}
+.field input,
+.field textarea,
+.field select {
+  font-size: 16px;
+}
+.field small,
+.fine-print {
+  font-size: 13px;
+}
+.consent {
+  font-size: 14px;
+}
+.consent input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.feedback {
+  scroll-margin-top: 125px;
+  font-size: 16px;
+}
+.form-error-summary {
+  margin: 0 0 24px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--error);
+  background: #fff0f1;
+  color: var(--error);
+  font-size: 14px;
+}
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+@media (max-width: 800px) {
+  .form-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-layout > .form-aside {
+    order: 2;
+    width: 100%;
+  }
+  .form-layout > .form-card {
+    width: 100%;
+  }
+  .form-card {
+    padding: 24px;
+  }
+}
+@media (max-width: 380px) {
+  .form-card {
+    padding: 20px;
+  }
+}
+.form-card {
+  padding: 30px;
+}
+.form-aside {
+  padding: 25px;
+}
+.form-aside h2 {
+  font-size: 26px;
+}
+.form-layout {
+  gap: 32px;
+}
+.captcha-control {
+  margin: 20px 0;
+}
+.captcha-control .fine-print {
+  margin: 10px 0;
+}
+@media (max-width: 800px) {
+  .form-card,
+  .form-aside {
+    padding: 22px;
+  }
+  .form-layout {
+    gap: 25px;
+  }
+}

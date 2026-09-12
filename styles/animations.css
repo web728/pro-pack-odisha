@@ -1,0 +1,11 @@
+/* Keyframes that are better kept in CSS than JavaScript. */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes production-line {
+  to {
+    stroke-dashoffset: -620;
+  }
+}

@@ -1,0 +1,242 @@
+/* Shared page heroes, content cards, services and FAQ patterns. */
+.page-hero {
+  background: #f3f5f4;
+  padding: 28px 0 68px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero .container {
+  position: relative;
+  z-index: 1;
+}
+.breadcrumbs {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 45px;
+}
+.page-hero h1 {
+  max-width: 850px;
+  font-size: clamp(37px, 4.5vw, 62px);
+  margin-bottom: 20px;
+}
+.lead {
+  font-size: 18px;
+  max-width: 680px;
+  margin-bottom: 0;
+}
+.hero-ring {
+  width: 480px;
+  height: 480px;
+  border: 70px solid #e8eeec;
+  border-radius: 50%;
+  position: absolute;
+  right: -180px;
+  bottom: -300px;
+}
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+}
+.content-card {
+  padding: 36px;
+  border: 1px solid var(--border);
+}
+.content-card p,
+.content-card li {
+  font-size: 14px;
+}
+.content-card h3 {
+  line-height: 1.3;
+}
+.detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 30px;
+}
+.detail-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.body-copy {
+  max-width: 780px;
+}
+.body-copy p {
+  line-height: 1.85;
+}
+.body-copy h2 {
+  font-size: 32px;
+  margin-top: 40px;
+}
+.body-copy h2:first-child {
+  margin-top: 0;
+}
+.notice {
+  padding: 18px 22px;
+  background: #fff7e9;
+  border-left: 3px solid #ae7730;
+  font-size: 13px;
+  color: #644924;
+  margin: 20px 0;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.service-card {
+  padding: 30px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s;
+}
+.service-card:hover {
+  border-color: var(--primary);
+}
+.service-card > span {
+  font-size: 12px;
+  color: var(--primary);
+  margin-bottom: 28px;
+}
+.service-card h2 {
+  font-size: 23px;
+}
+.service-card p {
+  font-size: 14px;
+}
+@media (max-width: 800px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .page-hero {
+    padding-bottom: 45px;
+  }
+  .breadcrumbs {
+    margin-bottom: 30px;
+  }
+  .lead {
+    font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+  .detail-list {
+    grid-template-columns: 1fr;
+  }
+  .content-card {
+    padding: 25px;
+  }
+}
+@media print {
+  .page-hero {
+    display: none;
+  }
+}
+.organizer-contacts {
+  display: grid;
+  gap: 12px;
+}
+.organizer-contacts a {
+  font-size: 16px;
+  min-height: 36px;
+  overflow-wrap: anywhere;
+}
+.breadcrumbs {
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.content-card p,
+.content-card li,
+.detail-list li,
+.service-card p {
+  font-size: 16px;
+}
+@media (max-width: 800px) {
+  .service-card > span {
+    font-size: 12px;
+  }
+}
+.faq-list {
+  max-width: 900px;
+  margin: 32px 0;
+}
+.faq-list details {
+  border-bottom: 1px solid var(--border, #d8dede);
+  padding: 20px 0;
+}
+.faq-list summary {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 6px 0;
+}
+.faq-list p {
+  margin-top: 16px;
+  max-width: 75ch;
+}
+.page-hero {
+  padding: 34px 0 38px;
+}
+.page-hero h1 {
+  font-size: clamp(29px, 3.2vw, 44px);
+  max-width: 850px;
+  margin-bottom: 14px;
+}
+.page-hero .lead {
+  font-size: 17px;
+  max-width: 760px;
+  margin-bottom: 0;
+}
+.breadcrumbs {
+  margin-bottom: 20px;
+}
+.hero-ring {
+  width: 240px;
+  height: 240px;
+}
+.content-card,
+.service-card {
+  padding: 26px;
+}
+.content-grid,
+.service-grid {
+  gap: 20px;
+}
+.faq-list {
+  margin: 22px 0;
+  max-width: 940px;
+}
+.faq-list details {
+  padding: 13px 0;
+}
+.faq-list summary {
+  font-size: 16px;
+  min-height: 44px;
+}
+@media (max-width: 800px) {
+  .page-hero {
+    padding: 25px 0 28px;
+  }
+  .page-hero h1 {
+    font-size: 30px;
+  }
+  .page-hero .lead {
+    font-size: 16px;
+  }
+  .breadcrumbs {
+    margin-bottom: 15px;
+  }
+}

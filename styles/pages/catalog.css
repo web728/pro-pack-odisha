@@ -1,0 +1,98 @@
+/* Sector catalog and resource-list page styles. */
+.food-graphic {
+  height: 100%;
+  background: #dce8e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+  color: #37594f;
+  background-image:
+    linear-gradient(#37594f0a 1px, transparent 1px),
+    linear-gradient(90deg, #37594f0a 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.food-graphic small {
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+.sector-detail {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0;
+  scroll-margin-top: 100px;
+}
+.sector-detail:first-child {
+  padding-top: 0;
+}
+.sector-detail-image {
+  position: relative;
+  min-height: 190px;
+}
+.sector-detail-image img {
+  object-fit: cover;
+}
+.sector-detail .food-graphic {
+  height: 100%;
+}
+.sector-detail h2 {
+  font-size: 27px;
+}
+.sector-topics {
+  padding-left: 20px;
+  columns: 2;
+  gap: 32px;
+  color: var(--muted);
+}
+.sector-topics li {
+  break-inside: avoid;
+  margin-bottom: 7px;
+}
+.resource-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+}
+.resource-row:first-child {
+  padding-top: 0;
+}
+.resource-row > div {
+  max-width: 670px;
+}
+.resource-row h2 {
+  font-size: 25px;
+}
+.resource-row p {
+  margin-bottom: 8px;
+}
+@media (max-width: 800px) {
+  .sector-detail {
+    grid-template-columns: 180px 1fr;
+    gap: 22px;
+  }
+  .sector-topics {
+    columns: 1;
+  }
+}
+@media (max-width: 640px) {
+  .sector-detail {
+    grid-template-columns: 1fr;
+  }
+  .sector-detail-image {
+    height: 170px;
+  }
+  .resource-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .resource-row p {
+    margin-bottom: 0;
+  }
+}
