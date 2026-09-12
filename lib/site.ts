@@ -7,10 +7,10 @@ export const event = {
   description:
     "Connect with the plastic, printing, packaging, food processing and engineering industries at Propack Odisha, 25–28 February 2027 in Bhubaneswar.",
 };
-export const siteUrl = process.env.SITE_URL || "https://odishapropack.com";
+export const siteUrl = process.env.SITE_URL || "https://www.propackodisha.com";
 // Public search identity stays independent of the local form-request origin.
 export const seoUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://odishapropack.com"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.propackodisha.com"
 ).replace(/\/$/, "");
 export const sectors = [
   {

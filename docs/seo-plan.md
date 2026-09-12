@@ -4,14 +4,14 @@
 
 These are intent hypotheses based on the supplied exhibitor/visitor profiles and packaging-industry exhibition material, not measured keyword volumes or guaranteed rankings.
 
-| Audience / intent | Queries to target naturally | Main destination |
-|---|---|---|
-| People looking for the event | Propack Odisha International Expo 2027; Propack Odisha dates; Propack Odisha venue | Home |
-| Regional machinery buyers | packaging exhibition Odisha; printing exhibition Bhubaneswar; plastics expo Odisha | About and exhibitors |
-| Procurement teams, converters, food processors | packaging machinery exhibition; printing and converting machinery; food processing equipment expo Odisha | Exhibitors and visitors |
-| Companies planning participation | Propack Odisha stall booking; exhibitor registration Bhubaneswar expo | Exhibitor registration |
-| Visitors arranging travel | Propack Odisha visitor registration; Janata Maidan exhibition February 2027 | Visitors and homepage questions |
-| Existing exhibitors | expo power requirement; fascia name; exhibitor badges | Exhibitor service centre |
+| Audience / intent                              | Queries to target naturally                                                                              | Main destination                |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| People looking for the event                   | Propack Odisha International Expo 2027; Propack Odisha dates; Propack Odisha venue                       | Home                            |
+| Regional machinery buyers                      | packaging exhibition Odisha; printing exhibition Bhubaneswar; plastics expo Odisha                       | About and exhibitors            |
+| Procurement teams, converters, food processors | packaging machinery exhibition; printing and converting machinery; food processing equipment expo Odisha | Exhibitors and visitors         |
+| Companies planning participation               | Propack Odisha stall booking; exhibitor registration Bhubaneswar expo                                    | Exhibitor registration          |
+| Visitors arranging travel                      | Propack Odisha visitor registration; Janata Maidan exhibition February 2027                              | Visitors and homepage questions |
+| Existing exhibitors                            | expo power requirement; fascia name; exhibitor badges                                                    | Exhibitor service centre        |
 
 The website uses the full event name, consistent short name, one organizer (OSME), explanatory page titles, canonical URLs, social previews, event and breadcrumb structured data, accessible server-rendered content, local fonts and optimized images. FAQs answer actual attendance and participation questions without inventing ticket prices or opening hours. No fabricated ratings, attendance, partners or keyword-stuffed city pages.
 
@@ -27,7 +27,7 @@ The website uses the full event name, consistent short name, one organizer (OSME
 
 **Contact:** +91 70083 41944 / +91 77518 09433
 
-**Website:** https://odishapropack.com/ (existing configured domain; verify ownership and final production origin before publication)
+**Website:** https://www.propackodisha.com/ (existing configured domain; verify ownership and final production origin before publication)
 
 **Social caption:** Discover machinery, materials and industry connections at Propack Odisha International Expo. 25–28 February 2027 · Janata Maidan, Bhubaneswar. Organized by OSME. Explore visitor registration and exhibitor enquiries on the official website.
 
@@ -45,7 +45,7 @@ Subject: Event calendar information — Propack Odisha International Expo 2027
 
 Hello,
 
-Please consider the following event for your industry calendar: Propack Odisha International Expo, 25–28 February 2027, Janata Maidan, Bhubaneswar, Odisha. The event covers packaging, printing, plastics, food processing and engineering, and is organized solely by OSME. Official information and participation enquiries are available at https://odishapropack.com/. Please use the attached event listing and contact +91 70083 41944 / +91 77518 09433 to verify details.
+Please consider the following event for your industry calendar: Propack Odisha International Expo, 25–28 February 2027, Janata Maidan, Bhubaneswar, Odisha. The event covers packaging, printing, plastics, food processing and engineering, and is organized solely by OSME. Official information and participation enquiries are available at https://www.propackodisha.com/. Please use the attached event listing and contact +91 70083 41944 / +91 77518 09433 to verify details.
 
 Thank you.
 
