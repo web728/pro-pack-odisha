@@ -1,26 +1,36 @@
 import "server-only";
 import { GoogleAuth } from "google-auth-library";
 
-// Helper to resolve credentials via Base64 or standard env keys
 function getGoogleCredentials() {
-  if (process.env.GOOGLE_SERVICE_ACCOUNT_BASE64) {
+  // Check if either BASE64 or GOOGLE_PRIVATE_KEY holds the encoded JSON file
+  const possibleBase64 =
+    process.env.GOOGLE_SERVICE_ACCOUNT_BASE64 || process.env.GOOGLE_PRIVATE_KEY;
+
+  if (possibleBase64 && possibleBase64.trim().startsWith("ewog")) {
     try {
-      const decoded = Buffer.from(
-        process.env.GOOGLE_SERVICE_ACCOUNT_BASE64,
-        "base64"
-      ).toString("utf-8");
-      return JSON.parse(decoded);
+      const decoded = Buffer.from(possibleBase64.trim(), "base64").toString("utf-8");
+      const parsed = JSON.parse(decoded);
+      if (parsed.client_email && parsed.private_key) {
+        return {
+          client_email: parsed.client_email,
+          private_key: parsed.private_key.replace(/\\n/g, "\n"),
+        };
+      }
     } catch (err) {
-      console.error("Failed to parse GOOGLE_SERVICE_ACCOUNT_BASE64:", err);
+      console.error("Failed to decode Base64 Google credentials:", err);
     }
   }
 
+  // Fallback: Agar standard PEM format me ho
+  let privateKey = process.env.GOOGLE_PRIVATE_KEY || "";
+  privateKey = privateKey.trim().replace(/^["']|["']$/g, "");
+  privateKey = privateKey.replace(/\\r/g, "").replace(/\\n/g, "\n");
+
   return {
-    client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+    client_email: process.env.GOOGLE_CLIENT_EMAIL?.trim().replace(/^["']|["']$/g, ""),
+    private_key: privateKey,
   };
 }
-
 const auth = () =>
   new GoogleAuth({
     credentials: getGoogleCredentials(),
@@ -53,7 +63,7 @@ export async function writeSheetRow(
   _row: number,
   rawFields: Record<string, string | undefined> | string[]
 ) {
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID?.trim().replace(/^["']|["']$/g, "");
   if (!spreadsheetId) {
     console.warn("GOOGLE_SHEET_ID missing; skipping Google Sheet write.");
     return false;
