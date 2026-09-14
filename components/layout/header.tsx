@@ -41,6 +41,29 @@ interface NavGroup {
 
 // 1. Precise, segregated IA
 const navGroups: NavGroup[] = [
+    {
+    label: "About",
+    items: [
+      {
+        title: "About Propack Odisha",
+        href: "/about",
+        desc: "Vision, highlights & exhibition legacy",
+        icon: Building2,
+      },
+      {
+        title: "About OASME",
+        href: "/about-organizers",
+        desc: "Apex MSME representative body",
+        icon: Sparkles,
+      },
+      {
+        title: "Venue & Location",
+        href: "/venue",
+        desc: "Janata Maidan, Bhubaneswar route",
+        icon: Map,
+      },
+    ],
+  },
   {
     label: "Exhibit",
     items: [
@@ -117,29 +140,6 @@ const navGroups: NavGroup[] = [
     ],
   },
   {
-    label: "About",
-    items: [
-      {
-        title: "About Propack Odisha",
-        href: "/about",
-        desc: "Vision, highlights & exhibition legacy",
-        icon: Building2,
-      },
-      {
-        title: "About OASME",
-        href: "/about-organizers",
-        desc: "Apex MSME representative body",
-        icon: Sparkles,
-      },
-      {
-        title: "Venue & Location",
-        href: "/venue",
-        desc: "Janata Maidan, Bhubaneswar route",
-        icon: Map,
-      },
-    ],
-  },
-  {
     label: "Downloads",
     items: [
       {
@@ -173,7 +173,7 @@ export function Brand({ onNavigate }: { onNavigate?: () => void }) {
       onClick={onNavigate}
     >
       <Image
-        src="/logo/logo-up.png"
+        src="/logo/logo-bg.png"
         alt="Propack Odisha International Expo"
         width={200}
         height={80}
