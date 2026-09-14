@@ -1,19 +1,27 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
+import { AlertCircle, RefreshCw } from "lucide-react";
+
 type CaptchaApi = {
   render: (el: HTMLElement, options: Record<string, unknown>) => number;
   reset: (id: number) => void;
 };
+
 declare global {
   interface Window {
     grecaptcha?: CaptchaApi;
     propackCaptchaReady?: () => void;
   }
 }
+
 let loading: Promise<void> | undefined;
+
 function loadCaptcha() {
+  if (typeof window === "undefined") return Promise.reject();
   if (window.grecaptcha?.render) return Promise.resolve();
-  if (!loading)
+
+  if (!loading) {
     loading = new Promise<void>((resolve, reject) => {
       const script = document.createElement("script");
       window.propackCaptchaReady = () => resolve();
@@ -28,8 +36,11 @@ function loadCaptcha() {
       };
       document.head.appendChild(script);
     });
+  }
+
   return loading;
 }
+
 export function Recaptcha({
   onToken,
   resetKey,
@@ -40,19 +51,28 @@ export function Recaptcha({
   const host = useRef<HTMLDivElement>(null);
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
-  const siteKey = process.env.RECAPTCHA_SITE_KEY;
+
+  // ✅ Client accessible env variable with fallback
+  const siteKey =
+    process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
+    process.env.RECAPTCHA_SITE_KEY;
+
   useEffect(() => {
     if (!siteKey) return;
+
     let active = true;
     let widget: number | undefined;
     const element = host.current;
+
     onToken("");
+
     loadCaptcha()
       .then(() => {
         if (!active || !element || !window.grecaptcha) return;
+
         widget = window.grecaptcha.render(element, {
           sitekey: siteKey,
-          size: "compact",
+          size: "normal", // 'compact' mobile ke liye theek hai, standard box ke liye 'normal' better rehta hai
           theme: "light",
           callback: (token: string) => {
             if (active) {
@@ -63,71 +83,87 @@ export function Recaptcha({
           "expired-callback": () => {
             if (active) {
               onToken("");
-              setError(
-                "Verification expired. Please complete the check again.",
-              );
+              setError("Verification expired. Please check the box again.");
             }
           },
           "error-callback": () => {
             if (active) {
               onToken("");
-              setError(
-                "Verification could not load. Check your connection and retry.",
-              );
+              setError("Verification could not load. Check your connection.");
             }
           },
         });
       })
       .catch(() => {
-        if (active)
-          setError(
-            "Verification could not load. Check your connection and retry.",
-          );
+        if (active) {
+          setError("Verification could not load. Check your connection.");
+        }
       });
-    return () => {
-      active = false;
-      if (widget !== undefined) {
-        try {
-          window.grecaptcha?.reset(widget);
-        } catch {}
-      }
-      element?.replaceChildren();
-    };
-  }, [siteKey, onToken, resetKey, attempt]);
-  if (!siteKey)
+
+  return () => {
+    active = false;
+    if (widget !== undefined) {
+      try {
+        window.grecaptcha?.reset(widget);
+      } catch {}
+    }
+    if (element) {
+      element.innerHTML = "";
+    }
+  };
+}, [siteKey, onToken, resetKey, attempt]);
+
+  if (!siteKey) {
     return (
-      <p className="fine-print">
-        Online verification is not available yet. For assistance, call{" "}
-        <a href="tel:+917008341944">70083 41944</a>.
-      </p>
+      <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-900">
+        reCAPTCHA is not configured. Add{" "}
+        <code className="font-mono font-bold">NEXT_PUBLIC_RECAPTCHA_SITE_KEY</code>{" "}
+        to your environment variables.
+      </div>
     );
+  }
+
   return (
-    <div className="captcha-control">
-      <p className="fine-print">
-        Complete the security check before submitting.
+    <div className="space-y-2.5">
+      <p className="text-xs font-medium text-slate-500">
+        Security Verification <span className="text-red-600">*</span>
       </p>
-      <div ref={host} />
+
+      {/* reCAPTCHA widget container */}
+      <div className="overflow-x-auto py-1">
+        <div ref={host} className="inline-block min-h-[78px]" />
+      </div>
+
+      {/* Error alert with retry button */}
       {error && (
-        <div role="alert">
-          <p className="field-error">{error}</p>
+        <div
+          role="alert"
+          className="flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 p-2.5 text-xs text-red-700"
+        >
+          <AlertCircle size={14} className="shrink-0" />
+          <span className="flex-1">{error}</span>
           <button
             type="button"
-            className="text-link"
             onClick={() => {
               setError("");
               setAttempt((a) => a + 1);
             }}
+            className="inline-flex items-center gap-1 font-bold underline hover:text-red-900"
           >
-            Retry verification
+            <RefreshCw size={12} />
+            <span>Retry</span>
           </button>
         </div>
       )}
-      <p className="fine-print">
-        Google reCAPTCHA helps protect this form.{" "}
+
+      {/* Fine-print legal notes */}
+      <p className="text-[11px] text-slate-400">
+        Protected by Google reCAPTCHA ·{" "}
         <a
           href="https://policies.google.com/privacy"
           target="_blank"
           rel="noreferrer"
+          className="underline hover:text-slate-600"
         >
           Privacy
         </a>{" "}
@@ -136,6 +172,7 @@ export function Recaptcha({
           href="https://policies.google.com/terms"
           target="_blank"
           rel="noreferrer"
+          className="underline hover:text-slate-600"
         >
           Terms
         </a>

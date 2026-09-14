@@ -8,9 +8,7 @@ import {
   CheckCircle2,
   AlertCircle,
   FileUp,
-  HelpCircle,
   Phone,
-  ExternalLink,
   ShieldCheck,
 } from "lucide-react";
 import { Recaptcha } from "./recaptcha";
@@ -60,7 +58,7 @@ export function SubmissionForm({ type }: { type: string }) {
             }));
         }
       } catch {
-        // Keep the saved reference visible during a temporary connection failure.
+        // Retain current feedback during temporary network dip
       }
     }, 10000);
     return () => {
@@ -72,33 +70,39 @@ export function SubmissionForm({ type }: { type: string }) {
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (inFlight.current || result?.ok) return;
+
     const data = new FormData(e.currentTarget);
     const parsed = schemaFor(type).safeParse(
       Object.fromEntries(data.entries()),
     );
     const nextErrors: Record<string, string> = {};
-    if (!parsed.success)
-      for (const issue of parsed.error.issues)
-        nextErrors[String(issue.path[0])] = issue.message;
 
+    if (!parsed.success) {
+      for (const issue of parsed.error.issues) {
+        nextErrors[String(issue.path[0])] = issue.message;
+      }
+    }
+
+    // File Validation
     for (const field of config.fields.filter((f) => f.type === "file")) {
       const file = data.get(field.name) as File;
-      if (field.required && !file?.size)
+      if (field.required && !file?.size) {
         nextErrors[field.name] = "Please attach a file.";
-      else if (file?.size > 2 * 1024 * 1024)
+      } else if (file?.size > 2 * 1024 * 1024) {
         nextErrors[field.name] = "The maximum file size is 2 MB.";
-      else if (
+      } else if (
         file?.size &&
         !(
           field.name === "logo"
             ? ["image/png", "image/jpeg"]
             : ["image/png", "image/jpeg", "application/pdf"]
         ).includes(file.type)
-      )
+      ) {
         nextErrors[field.name] =
           field.name === "logo"
             ? "Choose a PNG or JPEG image."
             : "Choose a PDF, PNG or JPEG file.";
+      }
     }
 
     setErrors(nextErrors);
@@ -109,10 +113,15 @@ export function SubmissionForm({ type }: { type: string }) {
       return;
     }
 
-    if (process.env.RECAPTCHA_SITE_KEY && !captchaToken) {
+    // ✅ FIXED: Check NEXT_PUBLIC_ key properly or fallback to checking captchaToken directly
+    const siteKey =
+      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
+      process.env.RECAPTCHA_SITE_KEY;
+
+    if (!captchaToken) {
       setResult({
         ok: false,
-        message: "Please complete the security check before submitting.",
+        message: "Please tick 'I'm not a robot' security checkbox before submitting.",
       });
       return;
     }
@@ -131,15 +140,18 @@ export function SubmissionForm({ type }: { type: string }) {
         body: data,
       });
       const json = await res.json();
+
       if (!res.ok) {
         setErrors(json.errors || {});
         setResult({
           ok: false,
           message:
             json.message ||
-            "We could not submit your details. Please try again.",
+            "We could not submit your details. Please check the fields and try again.",
         });
-      } else setResult({ ok: true, ...json });
+      } else {
+        setResult({ ok: true, ...json });
+      }
     } catch {
       setResult({
         ok: false,
@@ -165,7 +177,7 @@ export function SubmissionForm({ type }: { type: string }) {
         </h2>
         <p className="mt-1.5 text-xs text-slate-500 sm:text-sm">
           Please fill out the form accurately. Fields marked with an asterisk (
-          <span className="text-red-600">*</span>) are mandatory.
+          <span className="text-red-600 font-bold">*</span>) are mandatory.
         </p>
       </div>
 
@@ -303,7 +315,7 @@ export function SubmissionForm({ type }: { type: string }) {
                         {(field.required ||
                           (type === "exhibitor-badges" &&
                             /^person\d/.test(field.name))) && (
-                          <span className="text-red-600"> *</span>
+                          <span className="text-red-600 font-bold"> *</span>
                         )}
                       </span>
 
@@ -314,7 +326,7 @@ export function SubmissionForm({ type }: { type: string }) {
                       )}
                     </label>
 
-                    {/* Field Control Type Routing */}
+                    {/* Field Input Routing */}
                     {field.type === "textarea" ? (
                       <textarea
                         id={field.name}
@@ -484,7 +496,7 @@ export function SubmissionForm({ type }: { type: string }) {
                 I agree to the processing and use of my contact details to
                 fulfill this submission, as described in the{" "}
                 <Link
-                  href="/privacy"
+                  href="/privacy-policy"
                   className="font-semibold text-slate-900 underline decoration-slate-400 underline-offset-4 hover:decoration-slate-900"
                 >
                   privacy policy
