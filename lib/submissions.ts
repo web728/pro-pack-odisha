@@ -6,6 +6,7 @@ import { writeSheetRow } from "./googleSheets";
 import { sendNotification } from "./email";
 import { signToken } from "./tokens";
 import { runDelivery } from "./delivery";
+
 export type Submission = {
   _id: string;
   formType: string;
@@ -23,19 +24,24 @@ export type Submission = {
   attempts: number;
   lastAttempt?: Date;
 };
+
 export function integrationsConfigured() {
   return true;
 }
+
 export function submissionAccess(id: string, type: string) {
   if (type === "visitor-registration")
     return `/view-pass?token=${signToken(id, "pass", 60 * 60 * 24 * 180)}`;
   if (type === "brochure")
     return `/api/brochure?token=${signToken(id, "brochure")}`;
+  return undefined;
 }
+
 export async function deliver(id: string) {
   const db = await database();
   const collection = db.collection<Submission>("submissions");
   const now = new Date();
+
   const doc = await collection.findOneAndUpdate(
     { _id: id, deliveryComplete: false, leaseUntil: { $lte: now } },
     {
@@ -44,8 +50,13 @@ export async function deliver(id: string) {
     },
     { returnDocument: "after" },
   );
+
   if (!doc) return false;
+
   try {
+    const config = mailConfig();
+    const recipients = config.recipients?.filter(Boolean) || [];
+
     await runDelivery(doc, {
       reserveRow: async () => {
         const counter = await db
@@ -57,13 +68,25 @@ export async function deliver(id: string) {
           );
         return counter!.value + 1;
       },
+
       checkpoint: async (patch) => {
         await collection.updateOne({ _id: id }, { $set: patch });
       },
-      sheet: (row, values) => writeSheetRow(doc.formType, row, values),
-      notify: (recipient) =>
-        sendNotification(
-          mailConfig().recipients[recipient - 1]!,
+
+      sheet: async (row, values) => {
+        // writeSheetRow accepts doc.fields for single-tab mapping
+        await writeSheetRow(doc.formType, row, doc.fields || values);
+      },
+
+      notify: async (recipient) => {
+        const targetEmail = recipients[recipient - 1];
+        if (!targetEmail) {
+          console.warn(`Recipient index ${recipient} not configured in mailConfig.`);
+          return;
+        }
+
+        await sendNotification(
+          targetEmail,
           recipient,
           id,
           doc.formType,
@@ -71,10 +94,14 @@ export async function deliver(id: string) {
           doc.files,
           doc.createdAt,
           doc.source,
-        ),
+        );
+      },
     });
+
     return true;
-  } catch {
+  } catch (err) {
+    console.error("Delivery processing failed for submission ID:", id, err);
+
     await collection.updateOne(
       { _id: id },
       {
@@ -87,6 +114,7 @@ export async function deliver(id: string) {
         },
       },
     );
+
     return false;
   }
 }

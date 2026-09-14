@@ -7,3 +7,13 @@ private/
 playwright-report/
 test-results/
 *.tsbuildinfo
+
+# Credentials & Service Account Keys
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!components.json
+propack-odisha-forms*
+*-credentials.json
+credentials/
