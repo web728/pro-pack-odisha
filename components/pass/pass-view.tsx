@@ -76,11 +76,11 @@ export function PassLookup() {
             <h2 className="font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
               Open your visitor pass
             </h2>
-            <p className="mt-1 text-xs leading-relaxed text-slate-500 sm:text-sm">
-              Paste the private pass link you saved after registration. If you
-              have misplaced it, reach out to the OASME secretariat with your
-              submission reference.
-            </p>
+         <p className="mt-1 text-xs leading-relaxed text-slate-500 sm:text-sm">
+  Paste the private pass link you saved after registration. If you
+  have misplaced it, reach out to the OASME team with your
+  submission reference.
+</p>
           </div>
         </div>
 

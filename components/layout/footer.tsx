@@ -164,54 +164,57 @@ export function Footer() {
               </li>
             </ul>
           </div>
+{/* Col 4: Contact Desk (3 cols) */}
 
-          {/* Col 4: Contact & Secretariat Desk (3 cols) */}
-          <div className="lg:col-span-3">
-            <h3 className="font-[family-name:var(--font-heading)] text-xs font-bold uppercase tracking-widest text-white">
-              Let’s Talk Business
-            </h3>
-            <div className="mt-5 space-y-3.5 text-sm">
-              <a
-                href="tel:+917008341944"
-                className="flex items-center gap-2.5 transition-colors hover:text-white"
-              >
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[var(--primary)]">
-                  <Phone size={13} />
-                </span>
-                <span>+91 70083 41944</span>
-              </a>
+<div className="lg:col-span-3">
+  <h3 className="font-[family-name:var(--font-heading)] text-xs font-bold uppercase tracking-widest text-white">
+    Let’s Talk Business
+  </h3>
 
-              <a
-                href="tel:+917751809433"
-                className="flex items-center gap-2.5 transition-colors hover:text-white"
-              >
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[var(--primary)]">
-                  <Phone size={13} />
-                </span>
-                <span>+91 77518 09433</span>
-              </a>
+  <div className="mt-5 space-y-3.5 text-sm">
+    {/* Primary Number */}
+    <a
+      href="tel:+917751809433"
+      className="flex items-center gap-2.5 transition-colors hover:text-white"
+    >
+      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[var(--primary)]">
+        <Phone size={13} />
+      </span>
+      <span>+91 77518 09433</span>
+    </a>
 
-              <a
-                href="mailto:info@oasme.org.in"
-                className="flex items-center gap-2.5 transition-colors hover:text-white"
-              >
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[var(--primary)]">
-                  <Mail size={13} />
-                </span>
-                <span className="break-all">info@oasme.org.in</span>
-              </a>
+    {/* Secondary Number */}
+    <a
+      href="tel:+917008341944"
+      className="flex items-center gap-2.5 transition-colors hover:text-white"
+    >
+      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[var(--primary)]">
+        <Phone size={13} />
+      </span>
+      <span>+91 70083 41944</span>
+    </a>
 
-              <div className="pt-2">
-                <Link
-                  href="/contact-us"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-white underline decoration-slate-600 underline-offset-4 hover:decoration-white transition-all"
-                >
-                  <span>All secretariat contact details</span>
-                  <ArrowUpRight size={13} />
-                </Link>
-              </div>
-            </div>
-          </div>
+    <a
+      href="mailto:info@oasme.org.in"
+      className="flex items-center gap-2.5 transition-colors hover:text-white"
+    >
+      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[var(--primary)]">
+        <Mail size={13} />
+      </span>
+      <span className="break-all">info@oasme.org.in</span>
+    </a>
+
+    <div className="pt-2">
+      <Link
+        href="/contact-us"
+        className="inline-flex items-center gap-1.5 text-xs font-semibold text-white underline decoration-slate-600 underline-offset-4 transition-all hover:decoration-white"
+      >
+        <span>View All Contact Details</span>
+        <ArrowUpRight size={13} />
+      </Link>
+    </div>
+  </div>
+</div>
 
         </div>
 

@@ -52,10 +52,7 @@ export default async function FormPage({
           
           {/* Trust & Assistance Indicators Bar */}
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-200/80 bg-white px-5 py-3 shadow-2xs text-xs text-slate-600">
-            <div className="flex items-center gap-2">
-              <ShieldCheck size={16} className="text-emerald-600 shrink-0" />
-              <span>Direct encrypted routing to OASME secretariat</span>
-            </div>
+          
 
             <div className="hidden sm:flex items-center gap-6">
               <span className="flex items-center gap-1.5">

@@ -41,44 +41,47 @@ export function FormAside({ slug }: { slug: string }) {
         </div>
       </div>
 
-      {/* 2. Direct Desk Assistance */}
-      <div className="border-t border-[var(--border)] pt-5">
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--foreground,#111827)]">
-          <Headphones size={15} className="text-[var(--primary)]" />
-          <span>Secretariat Assistance</span>
-        </div>
+     {/* 2. Direct Desk Assistance */}
 
-        <p className="mt-2 text-xs leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-sm">
-          Need help with your{" "}
-          <strong className="font-semibold text-[var(--foreground,#111827)]">
-            {slug === "contact-us" ? "enquiry" : "registration or stall requirements"}
-          </strong>
-          ? Our operations desk is available directly:
-        </p>
+<div className="border-t border-[var(--border)] pt-5">
+  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--foreground,#111827)]">
+    <Headphones size={15} className="text-[var(--primary)]" />
+    <span>Direct Assistance</span>
+  </div>
 
-        {/* Phone Helplines */}
-        <div className="mt-3.5 space-y-2">
-          <a
-            href="tel:+917008341944"
-            className="group flex items-center gap-2.5 rounded-xl border border-[var(--border)] bg-[#f7f8f7] px-3.5 py-2.5 text-xs font-semibold text-[var(--foreground,#111827)] transition-all hover:border-[var(--primary)] hover:bg-white sm:text-sm"
-          >
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-white text-[var(--primary)] shadow-2xs group-hover:bg-[var(--primary)] group-hover:text-white transition-colors">
-              <Phone size={12} />
-            </span>
-            <span>+91 70083 41944</span>
-          </a>
+  <p className="mt-2 text-xs leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-sm">
+    Need help with your{" "}
+    <strong className="font-semibold text-[var(--foreground,#111827)]">
+      {slug === "contact-us" ? "enquiry" : "registration or stall requirements"}
+    </strong>
+    ? Our operations desk is available directly:
+  </p>
 
-          <a
-            href="tel:+917751809433"
-            className="group flex items-center gap-2.5 rounded-xl border border-[var(--border)] bg-[#f7f8f7] px-3.5 py-2.5 text-xs font-semibold text-[var(--foreground,#111827)] transition-all hover:border-[var(--primary)] hover:bg-white sm:text-sm"
-          >
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-white text-[var(--primary)] shadow-2xs group-hover:bg-[var(--primary)] group-hover:text-white transition-colors">
-              <Phone size={12} />
-            </span>
-            <span>+91 77518 09433</span>
-          </a>
-        </div>
-      </div>
+  {/* Phone Helplines */}
+  <div className="mt-3.5 space-y-2">
+    {/* Primary Number */}
+    <a
+      href="tel:+917751809433"
+      className="group flex items-center gap-2.5 rounded-xl border border-[var(--border)] bg-[#f7f8f7] px-3.5 py-2.5 text-xs font-semibold text-[var(--foreground,#111827)] transition-all hover:border-[var(--primary)] hover:bg-white sm:text-sm"
+    >
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-white text-[var(--primary)] shadow-2xs transition-colors group-hover:bg-[var(--primary)] group-hover:text-white">
+        <Phone size={12} />
+      </span>
+      <span>+91 77518 09433</span>
+    </a>
+
+    {/* Secondary Number */}
+    <a
+      href="tel:+917008341944"
+      className="group flex items-center gap-2.5 rounded-xl border border-[var(--border)] bg-[#f7f8f7] px-3.5 py-2.5 text-xs font-semibold text-[var(--foreground,#111827)] transition-all hover:border-[var(--primary)] hover:bg-white sm:text-sm"
+    >
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-white text-[var(--primary)] shadow-2xs transition-colors group-hover:bg-[var(--primary)] group-hover:text-white">
+        <Phone size={12} />
+      </span>
+      <span>+91 70083 41944</span>
+    </a>
+  </div>
+</div>
 
       {/* 3. Official Email Desks (Shown on contact-us) */}
       {slug === "contact-us" && (
@@ -109,14 +112,15 @@ export function FormAside({ slug }: { slug: string }) {
       )}
 
       {/* 4. Contextual Archival Disclaimers */}
-      {slug === "brochure" && (
-        <div className="flex gap-2.5 rounded-xl border border-amber-200 bg-amber-50/90 p-3.5 text-xs leading-relaxed text-amber-900">
-          <Info size={16} className="mt-0.5 shrink-0 text-amber-600" />
-          <span>
-            <strong>Archive Note:</strong> Demonstrates the historical 2023 edition layout. Connect with the secretariat desk for current 2027 stall allocations.
-          </span>
-        </div>
-      )}
+     {slug === "brochure" && (
+  <div className="flex gap-2.5 rounded-xl border border-amber-200 bg-amber-50/90 p-3.5 text-xs leading-relaxed text-amber-900">
+    <Info size={16} className="mt-0.5 shrink-0 text-amber-600" />
+    <span>
+      <strong>Archive Note:</strong> Demonstrates the historical 2023 edition layout.
+      Contact the event team for current 2027 stall allocations.
+    </span>
+  </div>
+)}
 
       {slug === "power-requirement" && (
         <div className="flex gap-2.5 rounded-xl border border-amber-200 bg-amber-50/90 p-3.5 text-xs leading-relaxed text-amber-900">

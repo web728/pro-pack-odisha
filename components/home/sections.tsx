@@ -181,9 +181,28 @@ export function EventSnapshot() {
    ========================================================================= */
 export function SectorPreview() {
   return (
-    <section id="industries" className="border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
-      <div className="container mx-auto px-4 sm:px-6">
-        
+    <section id="industries" className="relative overflow-hidden border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
+      {/* Background PNG Image on Right Top Corner */}
+      <div
+        className="pointer-events-none absolute right-0 top-0 z-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <div className="relative h-[220px] w-[220px] sm:h-[280px] sm:w-[280px] lg:h-[340px] lg:w-[340px] opacity-85">
+          <Image
+            src="/assets/svg.png" // Yahan apni PNG image ka public folder wala path daalein
+            alt=""
+            fill
+            className="object-contain object-top-right"
+            priority
+          />
+        </div>
+
+        {/* Ambient Warm Corner Light */}
+        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[var(--primary)]/[0.04] blur-3xl" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
+
         {/* Header Strip */}
         <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
@@ -274,8 +293,10 @@ export function ParticipationPreview() {
   ];
 
   return (
-    <section className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
-      <div className="container mx-auto grid grid-cols-1 gap-6 px-4 sm:px-6 md:grid-cols-2 lg:gap-8">
+    <section className="relative overflow-hidden border-b border-[var(--border)] bg-white py-12 lg:py-16">
+     
+      
+      <div className="container relative z-10 mx-auto grid grid-cols-1 gap-6 px-4 sm:px-6 md:grid-cols-2 lg:gap-8">
         {cards.map((card, index) => (
           <motion.article
             key={card.label}

@@ -185,11 +185,11 @@ export default function VenuePage() {
                   Heart of Odisha&apos;s Capital Hub
                 </h2>
 
-                <p className="mt-3 text-xs leading-relaxed text-slate-600 sm:text-sm">
-                  Janata Maidan is Odisha&apos;s most prominent open-air and hangar exhibition arena,
-                  situated adjacent to major 5-star hotels (Mayfair, Swosti Premium), technology parks,
-                  and state administrative secretariats.
-                </p>
+              <p className="mt-3 text-xs leading-relaxed text-slate-600 sm:text-sm">
+  Janata Maidan is Odisha&apos;s most prominent open-air and hangar exhibition arena,
+  situated adjacent to major 5-star hotels (Mayfair, Swosti Premium), technology parks,
+  and key commercial areas.
+</p>
 
                 <div className="mt-6 space-y-3.5 border-t border-slate-100 pt-5">
                   <div className="flex items-start gap-3">

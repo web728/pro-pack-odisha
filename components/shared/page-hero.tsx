@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Home, ChevronRight } from "lucide-react";
 import { RevealDiv } from "@/components/shared/motion";
 import { Eyebrow } from "./eyebrow";
@@ -14,49 +15,22 @@ interface PageHeroProps {
 export function PageHero({ eyebrow, title, description }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden border-b border-[var(--border)] bg-[#f6f7f6] py-12 print:hidden sm:py-14 lg:py-16">
-      {/* Background SVG: Subtle Modern Curved Sweep + Soft Dot Array */}
+      {/* Background PNG Image on Right Top Corner */}
       <div
-        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+        className="pointer-events-none absolute right-0 top-0 z-0 overflow-hidden"
         aria-hidden="true"
       >
-        <svg
-          className="absolute right-0 top-0 h-full w-[650px] stroke-slate-400/[0.22] [mask-image:linear-gradient(to_bottom_left,white_30%,transparent_85%)] lg:w-[820px]"
-          viewBox="0 0 800 400"
-          fill="none"
-        >
-          {/* Subtle Dot Array Grid */}
-          <defs>
-            <pattern
-              id="clean-dot-array"
-              width="24"
-              height="24"
-              patternUnits="userSpaceOnUse"
-            >
-              <circle cx="2" cy="2" r="1" className="fill-slate-400/30" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#clean-dot-array)" stroke="none" />
-
-          {/* Clean Smooth Sweeping Industrial Contours */}
-          <path
-            d="M850 -50 C 650 40, 520 180, 480 450"
-            strokeWidth="1.2"
+        <div className="relative h-[250px] w-[250px] sm:h-[320px] sm:w-[320px] lg:h-[380px] lg:w-[380px] opacity-90">
+          <Image
+            src="/assets/svg.png" // Replace with your actual image path
+            alt=""
+            fill
+            className="object-contain object-top-right"
+            priority
           />
-          <path
-            d="M850 40 C 680 120, 570 240, 540 450"
-            strokeWidth="1"
-            strokeDasharray="4 6"
-          />
-          <path
-            d="M850 130 C 720 190, 640 280, 610 450"
-            strokeWidth="1.2"
-          />
+        </div>
 
-          {/* Minimal Primary Accent Node */}
-          <circle cx="563" cy="248" r="3" className="fill-[var(--primary)]" />
-        </svg>
-
-        {/* Ambient Warm Corner Light */}
+        {/* Ambient Warm Corner Light (Optional, remains near image) */}
         <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[var(--primary)]/[0.04] blur-3xl" />
       </div>
 

@@ -48,6 +48,8 @@ export function HomeHero() {
   return (
     <section className="relative flex min-h-[calc(100vh-80px)] w-full items-center overflow-hidden border-b border-[var(--border)] bg-[#f7f8f7] py-10 lg:py-14">
       {/* Container with stretch alignment on desktop */}
+
+      
       <div className="container mx-auto grid grid-cols-1 items-stretch gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:gap-10">
         
         {/* Left: Content Side */}

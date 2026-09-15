@@ -261,55 +261,57 @@ export function Header() {
   };
 
   const tickerItems = (
-    <div className="flex shrink-0 items-center gap-8 px-4 text-sm font-semibold sm:text-base">
-      <span className="inline-flex items-center gap-2 text-slate-900">
-        <CalendarDays size={18} className="text-red-600 shrink-0" />
-        <span>25–28 February 2027</span>
-      </span>
+  <div className="flex shrink-0 items-center gap-8 px-4 text-sm font-semibold sm:text-base">
+    <span className="inline-flex items-center gap-2 text-slate-900">
+      <CalendarDays size={18} className="shrink-0 text-red-600" />
+      <span>25–28 February 2027</span>
+    </span>
 
-      <span className="text-slate-300">•</span>
+    <span className="text-slate-300">•</span>
 
-      <span className="inline-flex items-center gap-2 text-slate-800">
-        <MapPin size={18} className="text-red-600 shrink-0" />
-        <span>Janata Maidan, Bhubaneswar, Odisha</span>
-      </span>
+    <span className="inline-flex items-center gap-2 text-slate-800">
+      <MapPin size={18} className="shrink-0 text-red-600" />
+      <span>Janata Maidan, Bhubaneswar, Odisha</span>
+    </span>
 
-      <span className="text-slate-300">•</span>
+    <span className="text-slate-300">•</span>
 
-      <span className="inline-flex items-center gap-2 rounded-full bg-red-600/10 px-3 py-1 font-bold text-red-700">
-        <Sparkles size={15} />
-        <span>Eastern India&apos;s Largest B2B Industrial Expo</span>
-      </span>
+    <span className="inline-flex items-center gap-2 rounded-full bg-red-600/10 px-3 py-1 font-bold text-red-700">
+      <Sparkles size={15} />
+      <span>Eastern India&apos;s Largest B2B Industrial Expo</span>
+    </span>
 
-      <span className="text-slate-300">•</span>
+    <span className="text-slate-300">•</span>
 
-      <a
-        href="tel:+917008341944"
-        className="inline-flex items-center gap-2 text-slate-800 transition-colors hover:text-red-600"
-      >
-        <Phone size={16} className="text-red-600 shrink-0" />
-        <span>Helpline: +91 70083 41944</span>
-      </a>
+    {/* Primary Helpline */}
+    <a
+      href="tel:+917751809433"
+      className="inline-flex items-center gap-2 text-slate-800 transition-colors hover:text-red-600"
+    >
+      <Phone size={16} className="shrink-0 text-red-600" />
+      <span>Helpline: +91 77518 09433</span>
+    </a>
 
-      <span className="text-slate-300">•</span>
+    <span className="text-slate-300">•</span>
 
-      <a
-        href="tel:+917751809433"
-        className="inline-flex items-center gap-2 text-slate-800 transition-colors hover:text-red-600"
-      >
-        <Phone size={16} className="text-red-600 shrink-0" />
-        <span>+91 77518 09433</span>
-      </a>
+    {/* Secondary Helpline */}
+    <a
+      href="tel:+917008341944"
+      className="inline-flex items-center gap-2 text-slate-800 transition-colors hover:text-red-600"
+    >
+      <Phone size={16} className="shrink-0 text-red-600" />
+      <span>+91 70083 41944</span>
+    </a>
 
-      <span className="text-slate-300">•</span>
+    <span className="text-slate-300">•</span>
 
-      <span className="text-slate-600 font-medium">
-        Organized by Odisha Assembly of Small and Medium Enterprises (OASME)
-      </span>
+    <span className="font-medium text-slate-600">
+      Organized by Odisha Assembly of Small and Medium Enterprises (OASME)
+    </span>
 
-      <span className="text-slate-300">•</span>
-    </div>
-  );
+    <span className="text-slate-300">•</span>
+  </div>
+);
 
   return (
     <>
