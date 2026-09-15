@@ -45,9 +45,7 @@ export function OrganizersContent() {
           {/* Left Column: Organization Profile & Authority */}
           <div className="flex flex-col lg:col-span-7">
             <div className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--primary)]/10 text-[var(--primary)]">
-                <ShieldCheck size={14} />
-              </span>
+            
               <Eyebrow>Apex Industrial Body</Eyebrow>
             </div>
 
@@ -55,16 +53,7 @@ export function OrganizersContent() {
               Odisha Assembly of Small and Medium Enterprises
             </h1>
 
-            {/* Official Registration Badge */}
-            <div className="mt-4 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border border-[var(--border)] bg-white px-3.5 py-2 text-xs text-[var(--muted,#6b7280)] shadow-xs">
-              <span className="font-semibold text-[var(--foreground,#111827)]">
-                Est. 12 August 1985
-              </span>
-              <span>•</span>
-              <span>Regd. Societies Act: CTC No. 4172/373</span>
-              <span>•</span>
-              <span className="text-[var(--primary)] font-medium">Satya Bhawan, Cuttack</span>
-            </div>
+          
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-[var(--muted-foreground,#4b5563)]">
               <p>
@@ -110,11 +99,7 @@ export function OrganizersContent() {
               </div>
             </div>
 
-            {/* OASME Inspiring Motto */}
-            <div className="mt-8 border-l-2 border-[var(--primary)] bg-white/60 p-4 italic text-xs text-[var(--muted-foreground,#4b5563)] sm:text-sm">
-              &ldquo;Do not go ahead of us, we may not follow you. Do not come behind us, we may not lead you. Go by our side, be our friend.&rdquo;
-            </div>
-
+          
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button href="/contact-us">Contact exhibition team</Button>
               <Link
@@ -133,9 +118,7 @@ export function OrganizersContent() {
           <aside className="lg:col-span-5">
             <div className="sticky top-28 rounded-2xl border border-[var(--border)] bg-white p-6 shadow-sm sm:p-8">
               <div className="flex items-center gap-2">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--primary)]/10 text-[var(--primary)]">
-                  <Building2 size={16} />
-                </span>
+             
                 <Eyebrow>OASME</Eyebrow>
               </div>
 
@@ -169,7 +152,7 @@ export function OrganizersContent() {
                   <div>
                     <span className="block text-[11px] text-[var(--muted,#6b7280)]">Helpline 1</span>
                     <strong className="text-sm font-semibold text-[var(--foreground,#111827)]">
-                      +91 70083 41944
+                     +91 77518 09433 
                     </strong>
                   </div>
                 </a>
@@ -184,7 +167,7 @@ export function OrganizersContent() {
                   <div>
                     <span className="block text-[11px] text-[var(--muted,#6b7280)]">Helpline 2</span>
                     <strong className="text-sm font-semibold text-[var(--foreground,#111827)]">
-                      +91 77518 09433
+                      +91 70083 41944
                     </strong>
                   </div>
                 </a>

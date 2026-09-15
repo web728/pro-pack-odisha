@@ -79,12 +79,12 @@ const navGroups: NavGroup[] = [
         desc: "Reserve booth space & utilities",
         icon: Store,
       },
-      {
-        title: "Exhibitor Services",
-        href: "/services",
-        desc: "Badges, fascia, power & directory",
-        icon: Layers,
-      },
+      // {
+      //   title: "Exhibitor Services",
+      //   href: "/services",
+      //   desc: "Badges, fascia, power & directory",
+      //   icon: Layers,
+      // },
       {
         title: "Event Brochure",
         href: "/brochure",
@@ -108,12 +108,12 @@ const navGroups: NavGroup[] = [
         desc: "Free digital delegate entry",
         icon: Ticket,
       },
-      {
-        title: "Retrieve Pass",
-        href: "/view-pass",
-        desc: "Access your saved digital badge",
-        icon: Sparkles,
-      },
+      // {
+      //   title: "Retrieve Pass",
+      //   href: "/view-pass",
+      //   desc: "Access your saved digital badge",
+      //   icon: Sparkles,
+      // },
       {
         title: "Visitor FAQs",
         href: "/visitors#faqs",
@@ -131,12 +131,12 @@ const navGroups: NavGroup[] = [
         desc: "5 core sectors & machinery list",
         icon: Layers,
       },
-      {
-        title: "Odisha Industrial Context",
-        href: "/market",
-        desc: "Plastic clusters & investment zones",
-        icon: TrendingUp,
-      },
+      // {
+      //   title: "Odisha Industrial Context",
+      //   href: "/market",
+      //   desc: "Plastic clusters & investment zones",
+      //   icon: TrendingUp,
+      // },
     ],
   },
   {

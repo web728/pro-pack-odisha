@@ -45,9 +45,7 @@ export function AboutContent() {
             viewport={{ once: true, margin: "-60px" }}
           >
             <div className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--primary)]/10 text-[var(--primary)]">
-                <Sparkles size={14} />
-              </span>
+             
               <Eyebrow>Emerging markets. Growing opportunities.</Eyebrow>
             </div>
 

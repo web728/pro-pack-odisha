@@ -154,11 +154,11 @@ export default function VenuePage() {
                   </a>
                 </div>
 
-                {/* Google Maps Responsive Iframe */}
+                {/* Google Maps Responsive Iframe with Corrected Janata Maidan Bhubaneswar Query */}
                 <div className="relative h-[380px] w-full sm:h-[460px]">
                   <iframe
                     title="Janata Maidan Bhubaneswar Map Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.062067746401!2d85.82025177583636!3d20.29774021250269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909c2db7636e7%3A0x6b4ef896e053f3e1!2sJanata%20Maidan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    src="https://maps.google.com/maps?q=Janata%20Maidan,%20Bhubaneswar,%20Odisha&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     className="h-full w-full border-0"
                     loading="lazy"
                     allowFullScreen
@@ -185,11 +185,11 @@ export default function VenuePage() {
                   Heart of Odisha&apos;s Capital Hub
                 </h2>
 
-              <p className="mt-3 text-xs leading-relaxed text-slate-600 sm:text-sm">
-  Janata Maidan is Odisha&apos;s most prominent open-air and hangar exhibition arena,
-  situated adjacent to major 5-star hotels (Mayfair, Swosti Premium), technology parks,
-  and key commercial areas.
-</p>
+                <p className="mt-3 text-xs leading-relaxed text-slate-600 sm:text-sm">
+                  Janata Maidan is Odisha&apos;s most prominent open-air and hangar exhibition arena,
+                  situated adjacent to major 5-star hotels (Mayfair, Swosti Premium), technology parks,
+                  and key commercial areas.
+                </p>
 
                 <div className="mt-6 space-y-3.5 border-t border-slate-100 pt-5">
                   <div className="flex items-start gap-3">

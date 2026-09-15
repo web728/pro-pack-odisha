@@ -548,10 +548,11 @@ export function SubmissionForm({ type }: { type: string }) {
               <Phone size={13} className="text-red-600 shrink-0" />
               <span>Need help? Call</span>
               <a
-                href="tel:+917008341944"
+                href="tel:+917751809433"
                 className="font-bold text-slate-800 hover:text-red-600 hover:underline"
               >
-                +91 70083 41944
+               
++91 77518 09433
               </a>
             </div>
           </div>
