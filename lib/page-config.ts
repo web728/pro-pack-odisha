@@ -32,10 +32,10 @@ export const contentPages = {
       "Explore the products, technologies and people shaping the future of packaging, printing and allied industries.",
   },
   "about-organizers": {
-    label: "About OSME",
+    label: "About OASME",
     title: "Experience that brings industries together.",
     description:
-      "Meet OSME, the organization behind Propack Odisha International Expo.",
+      "Meet OASME, the organization behind Propack Odisha International Expo.",
   },
   "market-overview": {
     label: "Market overview",

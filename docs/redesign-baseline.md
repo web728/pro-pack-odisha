@@ -10,7 +10,7 @@ Architecture: Next 16.3.4 App Router, React 19, TypeScript, Tailwind 4, Server C
 
 Missing integrations: add reCAPTCHA v2 widget and mandatory server validation, Gmail App Password variable aliases, MongoDB database-name alias and optional Google tab prefix. Existing secrets/configuration are absent. No live-provider completion claim will be made.
 
-Content boundaries: OSME remains the sole displayed organizer per owner instruction. No confirmed conference programme, speakers, current sponsors, verified event gallery or current-edition floor plan exists in the source, so do not invent pages or associations. Existing industrial imagery can illustrate technology, not pretend to show a past event. Keep the brochure explicitly historical.
+Content boundaries: OASME remains the sole displayed organizer per owner instruction. No confirmed conference programme, speakers, current sponsors, verified event gallery or current-edition floor plan exists in the source, so do not invent pages or associations. Existing industrial imagery can illustrate technology, not pretend to show a past event. Keep the brochure explicitly historical.
 
 Reference review: PackPlus separates participation and visitor planning; ProPak Asia groups sectors and resources; Print & Packtech makes dates and registration routes prominent; PackPlus South provides practical visitor planning; Nepal Power Elec uses clear enquiry and registration routes. Apply the journey principles without copying designs or content. Tanzania Buildcon returned a fetch error on two attempts and was not reviewed.
 

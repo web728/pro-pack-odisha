@@ -36,7 +36,6 @@ const staggerContainer: Variants = {
 
 const icons = [Layers3, Printer, Box, Settings2, Factory];
 
-
 /* =========================================================================
    0. SUPPORTED BY STRIP (Refined Minimal B2B)
    ========================================================================= */
@@ -55,7 +54,6 @@ export function SupportedByStrip() {
   return (
     <section className="relative border-b border-[var(--border)] bg-gradient-to-b from-[#f8faf9] to-white py-10 sm:py-14">
       <div className="container mx-auto px-4 sm:px-6">
-        
         {/* Minimal Centered Anchor with Horizontal Accents */}
         <motion.div
           variants={fadeUp}
@@ -104,12 +102,10 @@ export function SupportedByStrip() {
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );
 }
-
 
 /* =========================================================================
    1. EVENT SNAPSHOT (Stats & Summary)
@@ -118,7 +114,6 @@ export function EventSnapshot() {
   return (
     <section className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
       <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
-        
         {/* Left Copy */}
         <motion.div
           className="lg:col-span-7"
@@ -131,7 +126,9 @@ export function EventSnapshot() {
           <h2 className="my-4 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-4xl lg:text-5xl">
             One meeting point.
             <br />
-            <span className="text-[var(--primary)]">A connected value chain.</span>
+            <span className="text-[var(--primary)]">
+              A connected value chain.
+            </span>
           </h2>
           <p className="max-w-[56ch] text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
             Propack Odisha brings technology providers, manufacturers and
@@ -170,7 +167,6 @@ export function EventSnapshot() {
             </motion.div>
           ))}
         </motion.dl>
-
       </div>
     </section>
   );
@@ -181,7 +177,10 @@ export function EventSnapshot() {
    ========================================================================= */
 export function SectorPreview() {
   return (
-    <section id="industries" className="relative overflow-hidden border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
+    <section
+      id="industries"
+      className="relative overflow-hidden border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24"
+    >
       {/* Background PNG Image on Right Top Corner */}
       <div
         className="pointer-events-none absolute right-0 top-0 z-0 overflow-hidden"
@@ -202,7 +201,6 @@ export function SectorPreview() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
-
         {/* Header Strip */}
         <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
@@ -261,7 +259,6 @@ export function SectorPreview() {
             );
           })}
         </motion.div>
-
       </div>
     </section>
   );
@@ -294,8 +291,6 @@ export function ParticipationPreview() {
 
   return (
     <section className="relative overflow-hidden border-b border-[var(--border)] bg-white py-12 lg:py-16">
-     
-      
       <div className="container relative z-10 mx-auto grid grid-cols-1 gap-6 px-4 sm:px-6 md:grid-cols-2 lg:gap-8">
         {cards.map((card, index) => (
           <motion.article
@@ -308,7 +303,9 @@ export function ParticipationPreview() {
             transition={{ delay: index * 0.1 }}
           >
             <div>
-              <span className={`inline-block rounded-full px-3 py-1 text-xs font-semibold tracking-wide ${card.accentBadge}`}>
+              <span
+                className={`inline-block rounded-full px-3 py-1 text-xs font-semibold tracking-wide ${card.accentBadge}`}
+              >
                 {card.label}
               </span>
               <h2 className="mt-5 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-3xl">
@@ -336,7 +333,6 @@ export function TechnologyPreview() {
     <section className="border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 items-stretch gap-10 overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm lg:grid-cols-12">
-          
           {/* Image Side */}
           <motion.div
             className="relative min-h-[300px] w-full sm:min-h-[380px] lg:col-span-5 lg:min-h-full"
@@ -367,7 +363,9 @@ export function TechnologyPreview() {
             <h2 className="my-3 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-3xl lg:text-4xl">
               Materials. Machines.
               <br />
-              <span className="text-[var(--primary)]">Practical possibilities.</span>
+              <span className="text-[var(--primary)]">
+                Practical possibilities.
+              </span>
             </h2>
             <p className="mb-6 max-w-[52ch] text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-base">
               Explore the links between packaging materials, printing processes,
@@ -375,10 +373,11 @@ export function TechnologyPreview() {
               then identify the solutions worth a closer look.
             </p>
             <div>
-              <TextLink href="/sectors">Explore the technology sectors</TextLink>
+              <TextLink href="/sectors">
+                Explore the technology sectors
+              </TextLink>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>
@@ -408,7 +407,8 @@ export function VenuePreview() {
               Janata Maidan, Odisha
             </h2>
             <p className="mt-1 text-xs text-[var(--muted,#6b7280)] sm:text-sm">
-              {event.date} · Contact OSME for opening hours and admission arrangements.
+              {event.date} · Contact OASME for opening hours and admission
+              arrangements.
             </p>
           </div>
         </div>
@@ -424,6 +424,6 @@ export function VenuePreview() {
 }
 
 /* =========================================================================
-   6. ORGANIZER STRIP (OSME Trust Bar)
+   6. ORGANIZER STRIP (OASME Trust Bar)
    ========================================================================= */
-<OrganizerStrip />
+<OrganizerStrip />;

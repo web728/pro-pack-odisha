@@ -36,20 +36,7 @@ export function HeroBackground() {
         </svg>
       </div>
 
-      {/* Modern Floating Glass Toggle Button */}
-      <button
-        type="button"
-        aria-pressed={paused}
-        onClick={() => setPaused((prev) => !prev)}
-        className="group absolute right-3 top-3 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-slate-950/60 px-3 py-1.5 text-xs font-medium text-white/90 shadow-lg backdrop-blur-md transition-all duration-200 hover:border-white/40 hover:bg-slate-900/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-amber-400/50"
-      >
-        <span className="flex h-4 w-4 items-center justify-center rounded-full bg-white/10 text-[var(--primary,#f59e0b)] transition-transform group-hover:scale-110">
-          {paused ? <Play size={10} className="fill-current" /> : <Pause size={10} className="fill-current" />}
-        </span>
-        <span className="text-[11px] tracking-wide">
-          {paused ? "Play motion" : "Pause motion"}
-        </span>
-      </button>
+    
 
       {/* Scoped Keyframes */}
       <style jsx>{`

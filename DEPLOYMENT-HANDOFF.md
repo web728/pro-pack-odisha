@@ -12,7 +12,7 @@ For production: configure environment values first, then run `npm run lint`, `np
 
 The baseline ZIP's DM Sans + Manrope fonts, red/cyan/charcoal/white palette, wordmark and industrial imagery are preserved. The new layout is compact; only the homepage has a continuous decorative motion layer, with a pause control and reduced-motion support.
 
-Full name: Propack Odisha International Expo. Short name: Propack Odisha. Sole displayed organizer: OSME, following the owner's instruction. Supplied public contact emails remain `info@oasme.org.in` and `oasme.ctc@gmail.com`; do not invent replacements. Dates: 25–28 February 2027. Venue: Janata Maidan, Bhubaneswar, Odisha. Phones: 70083 41944 / 77518 09433.
+Full name: Propack Odisha International Expo. Short name: Propack Odisha. Sole displayed organizer: OASME, following the owner's instruction. Supplied public contact emails remain `info@oasme.org.in` and `oasme.ctc@gmail.com`; do not invent replacements. Dates: 25–28 February 2027. Venue: Janata Maidan, Bhubaneswar, Odisha. Phones: 70083 41944 / 77518 09433.
 
 ## Configure the integrations
 

@@ -4,7 +4,7 @@
 
 Audited `odishapropack_old_pages_content.md` (23 extracted pages), the supplied redesign brief, and the upload directory's official logos, photography, brochure, industry graphics and legacy plugin files. The source was sanitized as requested to remove the former co-organizer and its contacts. The extraction parser now retains complete multiline page content, restoring exhibitor and visitor profiles. `lib/source-content.json` is a structured extraction. `page-inventory.md` classifies every page.
 
-The user's updates override older material: 25–28 February 2027, Janata Maidan, Bhubaneswar, Odisha; 70083 41944 / 77518 09433. Only OSME organizer emails are retained. Old 2024/2025 dates, mixed third/fourth edition labels and the previous second phone number are not presented as current. The edition number needs organizer confirmation. Zero animation counters, 10,000 visitor marketing claims and prior sponsors are not treated as confirmed 2027 statistics or partnerships.
+The user's updates override older material: 25–28 February 2027, Janata Maidan, Bhubaneswar, Odisha; 70083 41944 / 77518 09433. Only OASME organizer emails are retained. Old 2024/2025 dates, mixed third/fourth edition labels and the previous second phone number are not presented as current. The edition number needs organizer confirmation. Zero animation counters, 10,000 visitor marketing claims and prior sponsors are not treated as confirmed 2027 statistics or partnerships.
 
 ## Information architecture
 
@@ -43,5 +43,3 @@ Sheets writes use a reserved row and RAW values, preventing formula execution an
 ## External dependencies still required
 
 Atlas URI/database, Google service-account credentials and spreadsheet, SMTP credentials/from address and two recipient addresses, signing secret, retry-job secret and production domain. Opening hours, current admission terms, updated artwork/edition, 2027 brochure and tariffs need organizer input. Live database insertion, sheet delivery and two-recipient email delivery cannot be verified without those credentials. No live email has been sent by this implementation session.
-
-

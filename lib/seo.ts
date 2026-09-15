@@ -35,12 +35,12 @@ export const searchPages: Record<
       "Register your interest in visiting Propack Odisha International Expo for packaging, printing, plastics, food processing and engineering in Bhubaneswar.",
   },
   "about-organizers": {
-    title: "About OSME | Expo Organizer",
+    title: "About OASME | Expo Organizer",
     description:
-      "Meet OSME, the sole organizer of Propack Odisha International Expo. Contact the team for exhibition participation and visitor assistance.",
+      "Meet OASME, the sole organizer of Propack Odisha International Expo. Contact the team for exhibition participation and visitor assistance.",
   },
   "contact-us": {
-    title: "Contact OSME | Expo Enquiries & Venue",
+    title: "Contact OASME | Expo Enquiries & Venue",
     description:
       "Contact the Propack Odisha team on 70083 41944 or 77518 09433. Expo: 25–28 February 2027, Janata Maidan, Bhubaneswar, Odisha.",
   },
@@ -71,7 +71,7 @@ export function pageMetadata(
           url: `${seoUrl}/social-card.png`,
           width: 1200,
           height: 630,
-          alt: "Propack Odisha International Expo, 25–28 February 2027, Bhubaneswar. Organized by OSME.",
+          alt: "Propack Odisha International Expo, 25–28 February 2027, Bhubaneswar. Organized by OASME.",
         },
       ],
     },

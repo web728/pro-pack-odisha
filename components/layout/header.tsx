@@ -278,7 +278,7 @@ export function Header() {
 
     <span className="inline-flex items-center gap-2 rounded-full bg-red-600/10 px-3 py-1 font-bold text-red-700">
       <Sparkles size={15} />
-      <span>Eastern India&apos;s Largest B2B Industrial Expo</span>
+      <span>Eastern India’s B2B Platform for Manufacturing & Processing Industries</span>
     </span>
 
     <span className="text-slate-300">•</span>

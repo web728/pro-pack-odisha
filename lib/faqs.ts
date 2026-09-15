@@ -13,14 +13,14 @@ export const questions = [
   ],
   [
     "How can my company book a stall?",
-    "Submit an exhibitor enquiry with your company details and requirements. OSME will confirm availability, current rates and participation terms. Historical brochure prices are not current stall quotations.",
+    "Submit an exhibitor enquiry with your company details and requirements. OASME will confirm availability, current rates and participation terms. Historical brochure prices are not current stall quotations.",
   ],
   [
     "Is visitor entry free?",
-    "Current admission arrangements have not yet been published. Submit your visitor registration and contact OSME to confirm entry requirements. Registration does not itself guarantee admission.",
+    "Current admission arrangements have not yet been published. Submit your visitor registration and contact OASME to confirm entry requirements. Registration does not itself guarantee admission.",
   ],
   [
     "Who organizes the expo?",
-    "OSME is the sole organizer of Propack Odisha International Expo. For assistance, call 70083 41944 or 77518 09433.",
+    "OASME is the sole organizer of Propack Odisha International Expo. For assistance, call 70083 41944 or 77518 09433.",
   ],
 ];

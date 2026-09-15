@@ -25,7 +25,7 @@ export default function Home() {
     url: seoUrl,
     organizer: {
       "@type": "Organization",
-      name: "OSME",
+      name: "OASME",
       url: `${seoUrl}/about-organizers`,
     },
     location: {
