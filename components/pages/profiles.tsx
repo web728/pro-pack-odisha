@@ -74,13 +74,7 @@ export function Profiles({ title, items }: { title: string; items: string[] }) {
           ))}
         </motion.div>
 
-        {/* Total Count Badge */}
-        <div className="mt-8 flex items-center justify-between border-t border-[var(--border)] pt-5 text-xs text-[var(--muted,#6b7280)]">
-          <span>Catalogued Exhibition Segments</span>
-          <span className="font-mono font-semibold text-[var(--foreground,#111827)]">
-            Total {items.length} Profile Categories
-          </span>
-        </div>
+      
 
       </div>
     </RevealSection>
