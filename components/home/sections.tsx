@@ -49,6 +49,10 @@ export function SupportedByStrip() {
       name: "Ministry of MSME, Government of India",
       logo: "/logo/support-2.png",
     },
+    {
+      name: "Industrial Promotion & Investment Corporation of Odisha",
+      logo: "/logo/ipcal.png",
+    },
   ];
 
   return (
@@ -81,16 +85,16 @@ export function SupportedByStrip() {
             <motion.div
               key={item.name}
               variants={fadeUp}
-              className="group flex flex-col items-center"
+              className="group flex flex-col items-center max-w-[260px] sm:max-w-[280px]"
             >
-              {/* Logo Container with Subtle Hover Lift */}
-              <div className="relative flex h-24 w-[240px] items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.03] sm:h-28 sm:w-[300px]">
+              {/* Uniform Logo Container */}
+              <div className="relative flex h-20 w-[220px] items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.03] sm:h-24 sm:w-[260px]">
                 <Image
                   src={item.logo}
                   alt={item.name}
-                  width={320}
-                  height={110}
-                  className="max-h-20 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.03)] sm:max-h-24"
+                  fill
+                  sizes="(max-width: 768px) 220px, 260px"
+                  className="object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.03)]"
                   priority
                 />
               </div>
@@ -106,7 +110,6 @@ export function SupportedByStrip() {
     </section>
   );
 }
-
 /* =========================================================================
    1. EVENT SNAPSHOT (Stats & Summary)
    ========================================================================= */
