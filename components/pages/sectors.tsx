@@ -28,12 +28,12 @@ export function SectorsContent() {
         {/* Compact Header */}
         <div className="mb-8 max-w-2xl">
           <div className="inline-flex items-center gap-2">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[var(--primary)]/10 text-[var(--primary)]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#15A7AE]/10 text-[#15A7AE]">
               <Layers size={12} />
             </span>
             <Eyebrow>Exhibition Coverage</Eyebrow>
           </div>
-          <h1 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold tracking-tight text-[var(--foreground,#111827)] sm:text-3xl">
+          <h1 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold tracking-tight text-[#1F3864] sm:text-3xl">
             Sectors & Technology Catalog
           </h1>
           <p className="mt-1 text-xs text-[var(--muted-foreground,#4b5563)] sm:text-sm">
@@ -54,7 +54,7 @@ export function SectorsContent() {
                   onClick={() => setActiveTab(i)}
                   className={`group relative flex flex-1 shrink-0 items-center justify-between rounded-xl border p-3.5 text-left transition-all duration-200 sm:p-4 lg:w-full ${
                     isActive
-                      ? "border-[var(--primary)] bg-white shadow-sm ring-1 ring-[var(--primary)]/20"
+                      ? "border-[#EB622F] bg-white shadow-sm ring-1 ring-[#EB622F]/20"
                       : "border-[var(--border)] bg-white/80 hover:border-slate-300 hover:bg-white"
                   }`}
                 >
@@ -62,8 +62,8 @@ export function SectorsContent() {
                     <span
                       className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-mono text-xs font-bold transition-colors ${
                         isActive
-                          ? "bg-[var(--primary)] text-white"
-                          : "bg-[#f7f8f7] text-[var(--muted,#6b7280)] group-hover:text-[var(--foreground,#111827)]"
+                          ? "bg-[#EB622F] text-white"
+                          : "bg-[#f7f8f7] text-[var(--muted,#6b7280)] group-hover:text-[#1F3864]"
                       }`}
                     >
                       0{i + 1}
@@ -73,8 +73,8 @@ export function SectorsContent() {
                       <strong
                         className={`block text-xs font-bold leading-snug sm:text-sm ${
                           isActive
-                            ? "text-[var(--foreground,#111827)]"
-                            : "text-[var(--muted-foreground,#4b5563)] group-hover:text-[var(--foreground,#111827)]"
+                            ? "text-[#1F3864]"
+                            : "text-[var(--muted-foreground,#4b5563)] group-hover:text-[#1F3864]"
                         }`}
                       >
                         {s.name}
@@ -89,7 +89,7 @@ export function SectorsContent() {
                     size={16}
                     className={`hidden transition-transform duration-200 lg:block ${
                       isActive
-                        ? "translate-x-0.5 text-[var(--primary)]"
+                        ? "translate-x-0.5 text-[#EB622F]"
                         : "text-slate-300 group-hover:text-slate-500"
                     }`}
                   />
@@ -116,11 +116,11 @@ export function SectorsContent() {
                     {/* Visual Image / Animation Container */}
                     <div className="relative h-44 w-full overflow-hidden rounded-xl border border-[var(--border)] bg-[#f7f8f7] sm:col-span-5 sm:h-48">
                       {activeTab === 3 ? (
-                        <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-amber-500/10 to-transparent p-4 text-center">
-                          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[var(--primary)] shadow-xs">
+                        <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-[#15A7AE]/10 to-transparent p-4 text-center">
+                          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#15A7AE] shadow-xs">
                             <Settings2 size={26} className="animate-[spin_12s_linear_infinite]" />
                           </span>
-                          <strong className="mt-3 text-xs font-bold tracking-wider text-[var(--foreground,#111827)]">
+                          <strong className="mt-3 text-xs font-bold tracking-wider text-[#1F3864]">
                             PROCESS · PRODUCE · PACK
                           </strong>
                           <span className="text-[11px] text-[var(--muted,#6b7280)]">
@@ -137,19 +137,19 @@ export function SectorsContent() {
                         />
                       )}
                       
-                      <span className="absolute top-2.5 left-2.5 rounded-md bg-white/95 px-2 py-0.5 font-mono text-[10px] font-bold text-[var(--foreground,#111827)] shadow-2xs backdrop-blur-xs">
+                      <span className="absolute top-2.5 left-2.5 rounded-md bg-white/95 px-2 py-0.5 font-mono text-[10px] font-bold text-[#1F3864] shadow-2xs backdrop-blur-xs">
                         SECTOR 0{activeTab + 1}
                       </span>
                     </div>
 
                     {/* Sector Title & Detail */}
                     <div className="sm:col-span-7">
-                      <div className="flex items-center gap-1.5 text-xs font-semibold text-[var(--primary)]">
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-[#15A7AE]">
                         <PackageCheck size={14} />
                         <span>Verified Industry Vertical</span>
                       </div>
 
-                      <h2 className="mt-1.5 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-2xl">
+                      <h2 className="mt-1.5 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[#1F3864] sm:text-2xl">
                         {currentSector.name}
                       </h2>
 
@@ -169,9 +169,9 @@ export function SectorsContent() {
                       {sectorDetails[activeTab]?.map((topic) => (
                         <div
                           key={topic}
-                          className="flex items-start gap-2.5 rounded-lg border border-[var(--border)] bg-[#f7f8f7] p-2.5 text-xs leading-snug text-[var(--foreground,#111827)] transition-colors hover:border-[var(--primary)]/50 hover:bg-white"
+                          className="flex items-start gap-2.5 rounded-lg border border-[var(--border)] bg-[#f7f8f7] p-2.5 text-xs leading-snug text-[#1F3864] transition-colors hover:border-[#EB622F]/50 hover:bg-white"
                         >
-                          <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-[var(--primary)]" />
+                          <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-[#15A7AE]" />
                           <span className="font-medium">{topic}</span>
                         </div>
                       ))}
@@ -179,7 +179,7 @@ export function SectorsContent() {
                   </div>
                 </div>
 
-                {/* Bottom Bar With Bold Red Button & Clear White Text */}
+                {/* Bottom Bar With Brand Orange Button */}
                 <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border)] pt-4">
                   <span className="text-xs font-medium text-[var(--muted-foreground,#4b5563)]">
                     Want to showcase machinery in {currentSector.name}?
@@ -187,7 +187,7 @@ export function SectorsContent() {
                   
                   <Link
                     href="/exhibitor-registration"
-                    className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-xs font-bold !text-white shadow-md transition-all duration-200 hover:bg-red-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500/40 active:scale-95"
+                    className="inline-flex items-center gap-2 rounded-lg bg-[#EB622F] px-4 py-2 text-xs font-bold !text-white shadow-md transition-all duration-200 hover:bg-[#d55526] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#EB622F]/40 active:scale-95"
                   >
                     <span className="!text-white font-bold tracking-wide">
                       Book Stall in Sector 0{activeTab + 1}

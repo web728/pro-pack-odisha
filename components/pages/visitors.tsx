@@ -41,7 +41,7 @@ export function VisitorsContent() {
     {
       num: "03",
       title: "Meet & Procure",
-      desc: "Connect directly with 300+ suppliers and compare commercial rates at Janata Maidan, 25–28 February 2027.",
+      desc: "Connect directly with exhibitors and compare commercial rates at Janata Maidan, 25th to 28th February 2027.",
     },
   ];
 
@@ -50,7 +50,6 @@ export function VisitorsContent() {
       {/* 1. WHY VISIT: Value Proposition Split */}
       <RevealSection className="border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
         <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
-          
           {/* Left: Main Copy & Actions */}
           <motion.div
             className="flex flex-col justify-center lg:col-span-7"
@@ -60,25 +59,27 @@ export function VisitorsContent() {
             viewport={{ once: true, margin: "-60px" }}
           >
             <div className="flex items-center gap-2">
-             
               <Eyebrow>Why Visit</Eyebrow>
             </div>
 
-            <h1 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[var(--foreground,#111827)] sm:text-4xl lg:text-5xl lg:leading-[1.12]">
-              See it. Compare it. <br />
-              <span className="text-[var(--primary)]">Talk to the industry experts.</span>
+            <h1 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl lg:leading-[1.12]">
+              One Expo. Endless Solutions. <br />
+              <span className="text-[#EB622F]">
+                Powering multiple industries. Driving the future.
+              </span>
             </h1>
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
               <p>
-                Engage directly with global manufacturers and exhibitors showcasing live
-                production machinery. Evaluate competing technical solutions and explore
-                practical, cost-effective modernization ideas for your business.
+                Reach a market that is being built right now. Odisha&apos;s
+                packaging demand is being created by new food processing,
+                pharmaceutical, petrochemical, and e-commerce capacity—not
+                competed for in a saturated market.
               </p>
               <p>
-                Connect with suppliers, enterprise buyers, and trade partners across packaging,
-                printing, polymers, and food processing. Exchange insights with business leaders
-                and stay ahead of fast-evolving industrial standards.
+                Connect with suppliers, enterprise buyers, and trade partners
+                across packaging, printing, polymers, and food processing at
+                Janata Maidan, Bhubaneswar.
               </p>
             </div>
 
@@ -86,7 +87,7 @@ export function VisitorsContent() {
               <Button href="/visitor-registration">Register your visit</Button>
               <Link
                 href="/view-pass"
-                className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] bg-white px-4 py-2.5 text-xs font-semibold text-[var(--foreground,#111827)] shadow-2xs transition-all hover:border-[var(--primary)] hover:bg-[var(--primary)]/5 hover:text-[var(--primary)]"
+                className="inline-flex items-center gap-2 rounded-lg border border-[var(--border)] bg-white px-4 py-2.5 text-xs font-semibold text-[#1F3864] shadow-2xs transition-all hover:border-[#EB622F] hover:bg-[#EB622F]/5 hover:text-[#EB622F]"
               >
                 <Ticket size={15} />
                 <span>View registered pass</span>
@@ -104,18 +105,19 @@ export function VisitorsContent() {
           >
             <div className="rounded-2xl border border-[var(--border)] bg-white p-6 shadow-xs transition-all duration-300 hover:shadow-md sm:p-8">
               <div className="flex items-center gap-2">
-                <Compass size={18} className="text-[var(--primary)]" />
-                <span className="text-xs font-bold uppercase tracking-wider text-[var(--foreground,#111827)]">
+                <Compass size={18} className="text-[#15A7AE]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1F3864]">
                   Visitor Roadmap
                 </span>
               </div>
 
-              <h3 className="mt-2 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-2xl">
+              <h3 className="mt-2 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[#1F3864] sm:text-2xl">
                 Make the most of your visit
               </h3>
 
               <p className="mt-1 text-xs text-[var(--muted,#6b7280)]">
-                Three quick milestones to maximize your sourcing efficiency on the exhibition floor:
+                Three quick milestones to maximize your sourcing efficiency on
+                the exhibition floor:
               </p>
 
               <div className="mt-6 space-y-4 border-t border-[var(--border)] pt-5">
@@ -124,12 +126,12 @@ export function VisitorsContent() {
                     key={step.num}
                     className="group flex items-start gap-3.5 rounded-xl border border-transparent p-2 transition-colors hover:border-[var(--border)] hover:bg-[#f7f8f7]"
                   >
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--primary)]/10 font-mono text-xs font-bold text-[var(--primary)] transition-colors group-hover:bg-[var(--primary)] group-hover:text-white">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#15A7AE]/10 font-mono text-xs font-bold text-[#15A7AE] transition-colors group-hover:bg-[#EB622F] group-hover:text-white">
                       {step.num}
                     </span>
 
                     <div>
-                      <strong className="block text-xs font-bold text-[var(--foreground,#111827)] sm:text-sm">
+                      <strong className="block text-xs font-bold text-[#1F3864] sm:text-sm">
                         {step.title}
                       </strong>
                       <p className="mt-0.5 text-xs leading-relaxed text-[var(--muted-foreground,#4b5563)]">
@@ -141,38 +143,40 @@ export function VisitorsContent() {
               </div>
 
               <div className="mt-6 border-t border-[var(--border)] pt-4">
-                <TextLink href="/view-pass">Already registered? View your pass</TextLink>
+                <TextLink href="/view-pass">
+                  Already registered? View your pass
+                </TextLink>
               </div>
             </div>
           </motion.div>
-
         </div>
       </RevealSection>
 
       {/* 2. WHO YOU'LL CONNECT WITH (Profiles directory) */}
-      <Profiles title="Who you’ll connect with" items={visitorProfiles} />
+      <Profiles title="Visitor profile" items={visitorProfiles} />
 
       {/* 3. PLAN YOUR VISIT: Venue Logistics & Maps */}
-      <RevealSection id="plan-your-visit" className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
+      <RevealSection
+        id="plan-your-visit"
+        className="border-b border-[var(--border)] bg-white py-16 lg:py-24"
+      >
         <div className="container mx-auto grid grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-14">
-          
           {/* Left: Venue & Dates Logistics */}
           <div className="lg:col-span-7">
             <div className="flex items-center gap-2">
-            
               <Eyebrow>Your Destination</Eyebrow>
             </div>
 
-            <h2 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[var(--foreground,#111827)] sm:text-4xl">
+            <h2 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl">
               Meet us in Bhubaneswar
             </h2>
 
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {/* Location Badge */}
               <div className="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[#f7f8f7] p-4">
-                <MapPin size={20} className="mt-0.5 shrink-0 text-[var(--primary)]" />
+                <MapPin size={20} className="mt-0.5 shrink-0 text-[#15A7AE]" />
                 <div>
-                  <strong className="block text-sm font-bold text-[var(--foreground,#111827)]">
+                  <strong className="block text-sm font-bold text-[#1F3864]">
                     Janata Maidan
                   </strong>
                   <span className="text-xs text-[var(--muted,#6b7280)]">
@@ -183,38 +187,43 @@ export function VisitorsContent() {
 
               {/* Dates Badge */}
               <div className="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[#f7f8f7] p-4">
-                <Calendar size={20} className="mt-0.5 shrink-0 text-[var(--primary)]" />
+                <Calendar
+                  size={20}
+                  className="mt-0.5 shrink-0 text-[#15A7AE]"
+                />
                 <div>
-                  <strong className="block text-sm font-bold text-[var(--foreground,#111827)]">
-                    25–28 February 2027
+                  <strong className="block text-sm font-bold text-[#1F3864]">
+                    25th to 28th February 2027
                   </strong>
                   <span className="text-xs text-[var(--muted,#6b7280)]">
-                    Four Full Days · 10:00 AM – 6:00 PM
+                    Four Days · Free entry for trade visitors
                   </span>
                 </div>
               </div>
             </div>
 
             <p className="mt-5 text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)]">
-              Contact the organizing committee for delegation registration, parking allocations,
-              official hotel accommodations, and on-site accessibility assistance prior to your journey.
+              Free for registered trade visitors; all seminar sessions open to
+              delegates at no charge.
             </p>
           </div>
 
           {/* Right: Google Maps Navigation Action Box */}
           <div className="lg:col-span-5">
-            <div className="flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[#f7f8f7] p-6 shadow-xs transition-all hover:border-[var(--primary)]/50 sm:p-8">
+            <div className="flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[#f7f8f7] p-6 shadow-xs transition-all hover:border-[#EB622F]/50 sm:p-8">
               <div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white border border-[var(--border)] text-[var(--primary)] shadow-2xs">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white border border-[var(--border)] text-[#15A7AE] shadow-2xs">
                   <Map size={22} />
                 </div>
 
-                <h3 className="mt-4 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[var(--foreground,#111827)]">
+                <h3 className="mt-4 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[#1F3864]">
                   Plan your journey route
                 </h3>
 
                 <p className="mt-2 text-xs leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-sm">
-                  Conveniently situated in the institutional heart of Bhubaneswar, accessible within 20 minutes from Biju Patnaik International Airport (BBI) and railway hub.
+                  Conveniently situated at Janata Maidan, Bhubaneswar, the same
+                  ground that hosted Utkarsh Odisha: Make in Odisha Conclave
+                  2025.
                 </p>
               </div>
 
@@ -223,9 +232,11 @@ export function VisitorsContent() {
                   href="https://www.google.com/maps/search/?api=1&query=Janata+Maidan+Bhubaneswar+Odisha"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex w-full items-center justify-between rounded-xl bg-slate-900 px-4 py-3 text-xs font-semibold !text-white shadow-sm transition-all duration-200 hover:bg-slate-800"
+                  className="group inline-flex w-full items-center justify-between rounded-xl bg-[#1F3864] px-4 py-3 text-xs font-semibold !text-white shadow-sm transition-all duration-200 hover:bg-[#162747]"
                 >
-                  <span className="!text-white font-medium">Open venue directions in Google Maps</span>
+                  <span className="!text-white font-medium">
+                    Open venue directions in Google Maps
+                  </span>
                   <ArrowUpRight
                     size={15}
                     className="!text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -234,7 +245,6 @@ export function VisitorsContent() {
               </div>
             </div>
           </div>
-
         </div>
       </RevealSection>
 

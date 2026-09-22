@@ -39,7 +39,6 @@ export function Footer() {
 
       <div className="container relative z-10 mx-auto px-4 py-16 sm:px-6 lg:py-20">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          
           {/* Col 1: Brand & Venue Info (4 cols) */}
           <div className="flex flex-col justify-between lg:col-span-4">
             <div className="space-y-4">
@@ -48,19 +47,19 @@ export function Footer() {
               </div>
 
               <p className="max-w-sm text-sm font-medium leading-relaxed text-slate-400">
-                A meeting place for industries. <br />
-                A starting point for boundless commercial possibilities.
+                One Expo. Endless Solutions. <br />
+                Powering multiple industries. Driving the future.
               </p>
             </div>
 
             {/* Quick Venue Badge */}
             <div className="mt-8 space-y-2.5 rounded-xl border border-slate-800 bg-[#202b31]/60 p-4 backdrop-blur-xs">
               <div className="flex items-center gap-2 text-xs font-semibold text-white">
-                <CalendarDays size={15} className="text-[var(--primary)] shrink-0" />
-                <span>25–28 February 2027</span>
+                <CalendarDays size={15} className="text-[#EB622F] shrink-0" />
+                <span>25th to 28th February 2027</span>
               </div>
               <div className="flex items-start gap-2 text-xs text-slate-400">
-                <MapPin size={15} className="text-[var(--primary)] mt-0.5 shrink-0" />
+                <MapPin size={15} className="text-[#EB622F] mt-0.5 shrink-0" />
                 <span>Janata Maidan, Bhubaneswar, Odisha, India</span>
               </div>
             </div>
@@ -77,7 +76,7 @@ export function Footer() {
                   href="/about"
                   className="transition-colors hover:text-white"
                 >
-                  About Propack Odisha
+                  About PROPACK Odisha
                 </Link>
               </li>
               <li>
@@ -94,14 +93,6 @@ export function Footer() {
                   className="transition-colors hover:text-white"
                 >
                   Exhibition Sectors
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/market"
-                  className="transition-colors hover:text-white"
-                >
-                  Odisha Market Context
                 </Link>
               </li>
               <li>
@@ -124,7 +115,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/exhibitor-registration"
-                  className="inline-flex items-center gap-1 font-semibold text-red-400 hover:text-red-300 transition-colors"
+                  className="inline-flex items-center gap-1 font-semibold text-[#EB622F] hover:text-[#d55526] transition-colors"
                 >
                   <span>Exhibitor registration</span>
                   <ArrowUpRight size={13} />
@@ -148,14 +139,6 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/view-pass"
-                  className="transition-colors hover:text-white"
-                >
-                  View visitor pass
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/visitors#plan-your-visit"
                   className="transition-colors hover:text-white"
                 >
@@ -164,58 +147,57 @@ export function Footer() {
               </li>
             </ul>
           </div>
-{/* Col 4: Contact Desk (3 cols) */}
 
-<div className="lg:col-span-3">
-  <h3 className="font-[family-name:var(--font-heading)] text-xs font-bold uppercase tracking-widest text-white">
-    Let’s Talk Business
-  </h3>
+          {/* Col 4: Contact Desk (3 cols) */}
+          <div className="lg:col-span-3">
+            <h3 className="font-[family-name:var(--font-heading)] text-xs font-bold uppercase tracking-widest text-white">
+              Let’s Talk Business
+            </h3>
 
-  <div className="mt-5 space-y-3.5 text-sm">
-    {/* Primary Number */}
-    <a
-      href="tel:+917751809433"
-      className="flex items-center gap-2.5 transition-colors hover:text-white"
-    >
-      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[var(--primary)]">
-        <Phone size={13} />
-      </span>
-      <span>+91 77518 09433</span>
-    </a>
+            <div className="mt-5 space-y-3.5 text-sm">
+              {/* Primary Number */}
+              <a
+                href="tel:+917751809433"
+                className="flex items-center gap-2.5 transition-colors hover:text-white"
+              >
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[#EB622F]">
+                  <Phone size={13} />
+                </span>
+                <span>+91 77518 09433</span>
+              </a>
 
-    {/* Secondary Number */}
-    <a
-      href="tel:+917008341944"
-      className="flex items-center gap-2.5 transition-colors hover:text-white"
-    >
-      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[var(--primary)]">
-        <Phone size={13} />
-      </span>
-      <span>+91 70083 41944</span>
-    </a>
+              {/* Secondary Number */}
+              <a
+                href="tel:+917008341944"
+                className="flex items-center gap-2.5 transition-colors hover:text-white"
+              >
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[#EB622F]">
+                  <Phone size={13} />
+                </span>
+                <span>+91-70083 41944</span>
+              </a>
 
-    <a
-      href="mailto:info@oasme.org.in"
-      className="flex items-center gap-2.5 transition-colors hover:text-white"
-    >
-      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[var(--primary)]">
-        <Mail size={13} />
-      </span>
-      <span className="break-all">info@oasme.org.in</span>
-    </a>
+              <a
+                href="mailto:oasme.odisha@gmail.com"
+                className="flex items-center gap-2.5 transition-colors hover:text-white"
+              >
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[#EB622F]">
+                  <Mail size={13} />
+                </span>
+                <span className="break-all">oasme.odisha@gmail.com</span>
+              </a>
 
-    <div className="pt-2">
-      <Link
-        href="/contact-us"
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-white underline decoration-slate-600 underline-offset-4 transition-all hover:decoration-white"
-      >
-        <span>View All Contact Details</span>
-        <ArrowUpRight size={13} />
-      </Link>
-    </div>
-  </div>
-</div>
-
+              <div className="pt-2">
+                <Link
+                  href="/contact-us"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-white underline decoration-slate-600 underline-offset-4 transition-all hover:decoration-white"
+                >
+                  <span>View All Contact Details</span>
+                  <ArrowUpRight size={13} />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Organizer Ribbon / Trust Anchor */}
@@ -229,7 +211,8 @@ export function Footer() {
                 Odisha Assembly of Small and Medium Enterprises (OASME)
               </strong>
               <span className="text-slate-400">
-                Apex representative body catalyzing MSME industrial growth across Eastern India.
+                Organised and delivered by OASME for the packaging, printing,
+                plastics and processing value chain.
               </span>
             </div>
           </div>
@@ -246,7 +229,8 @@ export function Footer() {
         {/* Bottom Bar: Copyright & Legal */}
         <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 text-xs text-slate-400 sm:flex-row">
           <span>
-            © {currentYear} Propack Odisha International Expo. All rights reserved.
+            © {currentYear} PROPACK Odisha International Expo. All rights
+            reserved.
           </span>
 
           <div className="flex items-center gap-6">
@@ -254,14 +238,13 @@ export function Footer() {
               href="/privacy"
               className="inline-flex items-center gap-1 transition-colors hover:text-white"
             >
-              <ShieldCheck size={13} className="text-emerald-500" />
+              <ShieldCheck size={13} className="text-[#15A7AE]" />
               <span>Privacy Policy</span>
             </Link>
             <span className="text-slate-700">•</span>
-            <span>Organized by OASME</span>
+            <span>Organised by OASME</span>
           </div>
         </div>
-
       </div>
     </footer>
   );

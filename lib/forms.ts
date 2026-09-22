@@ -105,7 +105,7 @@ export const forms: Record<
   brochure: {
     title: "Explore the exhibition brochure",
     intro:
-      "Access the archived 2023 brochure with updated organizer contact information. Event dates, prices and participation information inside do not apply to 2027.",
+      "Explore the latest 2027 brochure for complete event information and organizer details.",
     button: "Request brochure access",
     fields: [
       ...person,

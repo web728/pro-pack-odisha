@@ -34,7 +34,7 @@ export function BreadcrumbSchema({
       {
         "@type": "ListItem",
         position: 1,
-        name: "Propack Odisha",
+        name: "PROPACK Odisha 2027",
         item: baseUrl,
       },
       {
@@ -67,35 +67,16 @@ export function ContentPage({
 }) {
   const page = contentPages[slug] || {
     label: "Overview",
-    title: "Propack Odisha 2027",
-    description: "International Exhibition on Packaging, Food Processing & Allied Machinery.",
+    title: "PROPACK Odisha 2027",
+    description:
+      "Eastern India's Largest MSME Exhibition on Packaging, Printing, Plastics & Processing Machinery.",
   };
 
   return (
     <>
       <BreadcrumbSchema slug={slug} label={page.label} />
 
-      {/* Visual Breadcrumbs Strip */}
-      <nav
-        aria-label="Breadcrumb"
-        className="border-b border-[var(--border)] bg-white/70 py-2.5 backdrop-blur-md"
-      >
-        <div className="container mx-auto flex items-center gap-2 px-4 text-xs font-medium text-[var(--muted,#6b7280)] sm:px-6">
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 transition-colors hover:text-[var(--foreground,#111827)]"
-          >
-            <Home size={13} className="text-[var(--primary)]" />
-            <span>Home</span>
-          </Link>
-
-          <ChevronRight size={13} className="text-slate-400" />
-
-          <span className="font-semibold text-[var(--foreground,#111827)] truncate max-w-[240px] sm:max-w-none">
-            {page.label}
-          </span>
-        </div>
-      </nav>
+   
 
       {/* Hero Banner */}
       <PageHero

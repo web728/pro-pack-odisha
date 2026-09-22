@@ -20,9 +20,9 @@ import { PageHero, CTA, Eyebrow } from "@/components/shared/ui";
 import { RevealSection } from "@/components/shared/motion";
 
 export const metadata: Metadata = {
-  title: "Venue & Location | Janata Maidan, Bhubaneswar | Propack Odisha 2027",
+  title: "Venue & Location | Janata Maidan, Bhubaneswar | PROPACK Odisha 2027",
   description:
-    "Official venue location, route directions, transport connectivity, and facilities for Propack Odisha 2027 at Janata Maidan, Bhubaneswar.",
+    "Official venue location, route directions, transport connectivity, and facilities for PROPACK Odisha 2027 at Janata Maidan, Bhubaneswar.",
 };
 
 const transitHighlights = [
@@ -31,21 +31,21 @@ const transitHighlights = [
     title: "Biju Patnaik Int'l Airport (BBI)",
     distance: "7.5 km",
     time: "15–20 mins drive",
-    desc: "Direct domestic flights connecting Delhi, Mumbai, Kolkata, Bengaluru, Hyderabad, and Chennai.",
+    desc: "Direct domestic flights connecting major Indian business hubs.",
   },
   {
     icon: Train,
     title: "Bhubaneswar Railway Station (BBS)",
     distance: "6.0 km",
     time: "12–15 mins drive",
-    desc: "Major East Coast rail hub with daily superfast Express & Vande Bharat trains.",
+    desc: "Major East Coast rail hub with daily Express & Vande Bharat trains.",
   },
   {
     icon: Car,
     title: "National Highway 16 (NH-16)",
     distance: "1.8 km",
     time: "4 mins connection",
-    desc: "Golden quadrilateral arterial corridor connecting Chennai, Visakhapatnam, and Kolkata.",
+    desc: "Golden quadrilateral arterial corridor connecting Eastern India.",
   },
 ];
 
@@ -90,36 +90,36 @@ export default function VenuePage() {
       <div className="border-b border-slate-200/80 bg-white">
         <div className="container mx-auto grid grid-cols-1 divide-y divide-slate-100 px-4 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-6">
           <div className="flex items-center gap-3.5 py-4 sm:justify-center">
-            <MapPin size={20} className="text-red-600 shrink-0" />
+            <MapPin size={20} className="text-[#EB622F] shrink-0" />
             <div>
               <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 Official Venue
               </span>
-              <strong className="text-xs font-bold text-slate-900 sm:text-sm">
-                Janata Maidan, Jayadev Vihar
+              <strong className="text-xs font-bold text-[#1F3864] sm:text-sm">
+                Janata Maidan, Bhubaneswar
               </strong>
             </div>
           </div>
 
           <div className="flex items-center gap-3.5 py-4 sm:justify-center">
-            <CalendarDays size={20} className="text-red-600 shrink-0" />
+            <CalendarDays size={20} className="text-[#EB622F] shrink-0" />
             <div>
               <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 Event Schedule
               </span>
-              <strong className="text-xs font-bold text-slate-900 sm:text-sm">
-                25–28 February 2027
+              <strong className="text-xs font-bold text-[#1F3864] sm:text-sm">
+                25th to 28th February 2027
               </strong>
             </div>
           </div>
 
           <div className="flex items-center gap-3.5 py-4 sm:justify-center">
-            <Clock size={20} className="text-red-600 shrink-0" />
+            <Clock size={20} className="text-[#EB622F] shrink-0" />
             <div>
               <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 Exhibition Timings
               </span>
-              <strong className="text-xs font-bold text-slate-900 sm:text-sm">
+              <strong className="text-xs font-bold text-[#1F3864] sm:text-sm">
                 10:00 AM – 06:00 PM
               </strong>
             </div>
@@ -131,15 +131,13 @@ export default function VenuePage() {
       <RevealSection className="border-b border-slate-200/80 bg-[#f7f8f7] py-14 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
-            
             {/* Left: Map Box (7 Cols) */}
             <div className="lg:col-span-7">
               <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                
                 {/* Map Top Bar */}
                 <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3.5 bg-slate-50/50">
-                  <div className="flex items-center gap-2 text-xs font-bold text-slate-800">
-                    <Navigation size={15} className="text-red-600" />
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#1F3864]">
+                    <Navigation size={15} className="text-[#15A7AE]" />
                     <span>Live GPS Location</span>
                   </div>
 
@@ -147,14 +145,14 @@ export default function VenuePage() {
                     href={googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-red-600 hover:text-red-700 hover:underline"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#EB622F] hover:text-[#d55526] hover:underline"
                   >
                     <span>Open in Maps App</span>
                     <ArrowUpRight size={14} />
                   </a>
                 </div>
 
-                {/* Google Maps Responsive Iframe with Corrected Janata Maidan Bhubaneswar Query */}
+                {/* Google Maps Responsive Iframe */}
                 <div className="relative h-[380px] w-full sm:h-[460px]">
                   <iframe
                     title="Janata Maidan Bhubaneswar Map Location"
@@ -169,8 +167,12 @@ export default function VenuePage() {
                 {/* Address Strip Below Map */}
                 <div className="p-4 sm:p-5 border-t border-slate-100 bg-white">
                   <p className="text-xs text-slate-600 sm:text-sm">
-                    <strong className="font-semibold text-slate-900">Address: </strong>
-                    Janata Maidan, Nandankanan Rd, Jayadev Vihar, Bhubaneswar, Odisha 751013, India.
+                    <strong className="font-semibold text-[#1F3864]">
+                      Address:{" "}
+                    </strong>
+                    Janata Maidan, Chandrasekharpur, Bhubaneswar, Odisha, India.
+                    Same ground that hosted Utkarsh Odisha: Make in Odisha
+                    Conclave 2025.
                   </p>
                 </div>
               </div>
@@ -180,38 +182,43 @@ export default function VenuePage() {
             <div className="space-y-6 lg:col-span-5">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs sm:p-8">
                 <Eyebrow>Strategic Location</Eyebrow>
-                
-                <h2 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+
+                <h2 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[#1F3864] sm:text-3xl">
                   Heart of Odisha&apos;s Capital Hub
                 </h2>
 
                 <p className="mt-3 text-xs leading-relaxed text-slate-600 sm:text-sm">
-                  Janata Maidan is Odisha&apos;s most prominent open-air and hangar exhibition arena,
-                  situated adjacent to major 5-star hotels (Mayfair, Swosti Premium), technology parks,
-                  and key commercial areas.
+                  Janata Maidan is Odisha&apos;s most prominent exhibition
+                  arena, offering a fully covered, air-conditioned hall venue
+                  situated adjacent to major business hotels and commercial
+                  zones.
                 </p>
 
                 <div className="mt-6 space-y-3.5 border-t border-slate-100 pt-5">
                   <div className="flex items-start gap-3">
-                    <Building2 size={18} className="mt-0.5 shrink-0 text-red-600" />
+                    <Building2
+                      size={18}
+                      className="mt-0.5 shrink-0 text-[#15A7AE]"
+                    />
                     <div>
-                      <strong className="block text-xs font-semibold text-slate-900 sm:text-sm">
+                      <strong className="block text-xs font-semibold text-[#1F3864] sm:text-sm">
                         Prime Hospitality Radius
                       </strong>
                       <span className="text-xs text-slate-500">
-                        Over 2,500+ star category hotel rooms within a 3–5 km radius.
+                        Over star category hotels within close proximity.
                       </span>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Car size={18} className="mt-0.5 shrink-0 text-red-600" />
+                    <Car size={18} className="mt-0.5 shrink-0 text-[#15A7AE]" />
                     <div>
-                      <strong className="block text-xs font-semibold text-slate-900 sm:text-sm">
+                      <strong className="block text-xs font-semibold text-[#1F3864] sm:text-sm">
                         Direct Arterial Access
                       </strong>
                       <span className="text-xs text-slate-500">
-                        Direct 4-lane approach from Jayadev Vihar square & Nandankanan road.
+                        Smooth connectivity from Jayadev Vihar square &
+                        Nandankanan road.
                       </span>
                     </div>
                   </div>
@@ -222,15 +229,16 @@ export default function VenuePage() {
                     href={googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-xs font-bold !text-white shadow-sm transition-all hover:bg-red-700 hover:shadow-md active:scale-95 sm:text-sm"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#EB622F] px-5 py-3 text-xs font-bold !text-white shadow-sm transition-all hover:bg-[#d55526] hover:shadow-md active:scale-95 sm:text-sm"
                   >
-                    <span className="!text-white">Get Directions in Google Maps</span>
+                    <span className="!text-white">
+                      Get Directions in Google Maps
+                    </span>
                     <ArrowUpRight size={16} className="!text-white" />
                   </a>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </RevealSection>
@@ -240,7 +248,7 @@ export default function VenuePage() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-2xl">
             <Eyebrow>Travel & Connectivity</Eyebrow>
-            <h2 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            <h2 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[#1F3864] sm:text-3xl lg:text-4xl">
               Distance from Transit Hubs
             </h2>
             <p className="mt-2 text-xs text-slate-500 sm:text-sm">
@@ -254,21 +262,23 @@ export default function VenuePage() {
               return (
                 <div
                   key={t.title}
-                  className="group rounded-2xl border border-slate-200 bg-[#f7f8f7] p-6 transition-all hover:border-red-600/40 hover:bg-white hover:shadow-sm"
+                  className="group rounded-2xl border border-slate-200 bg-[#f7f8f7] p-6 transition-all hover:border-[#EB622F]/40 hover:bg-white hover:shadow-sm"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-red-600 shadow-2xs group-hover:bg-red-600 group-hover:text-white transition-colors">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#15A7AE] shadow-2xs group-hover:bg-[#EB622F] group-hover:text-white transition-colors">
                       <Icon size={20} />
                     </span>
                     <div className="text-right">
-                      <span className="block font-mono text-base font-bold text-slate-900">
+                      <span className="block font-mono text-base font-bold text-[#1F3864]">
                         {t.distance}
                       </span>
-                      <span className="text-[11px] text-slate-500">{t.time}</span>
+                      <span className="text-[11px] text-slate-500">
+                        {t.time}
+                      </span>
                     </div>
                   </div>
 
-                  <h3 className="mt-5 font-[family-name:var(--font-heading)] text-base font-bold text-slate-900">
+                  <h3 className="mt-5 font-[family-name:var(--font-heading)] text-base font-bold text-[#1F3864]">
                     {t.title}
                   </h3>
 
@@ -287,11 +297,12 @@ export default function VenuePage() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-2xl">
             <Eyebrow>Infrastructure & Amenities</Eyebrow>
-            <h2 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+            <h2 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[#1F3864] sm:text-3xl lg:text-4xl">
               On-Ground Expo Facilities
             </h2>
             <p className="mt-2 text-xs text-slate-500 sm:text-sm">
-              Engineered to support heavy converting machinery displays and large delegation throughput.
+              Engineered to support heavy converting machinery displays and
+              large delegation throughput.
             </p>
           </div>
 
@@ -303,11 +314,11 @@ export default function VenuePage() {
                   key={f.title}
                   className="rounded-2xl border border-slate-200 bg-white p-6 shadow-2xs"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#15A7AE]/10 text-[#15A7AE]">
                     <Icon size={19} />
                   </span>
 
-                  <h3 className="mt-4 font-[family-name:var(--font-heading)] text-sm font-bold text-slate-900 sm:text-base">
+                  <h3 className="mt-4 font-[family-name:var(--font-heading)] text-sm font-bold text-[#1F3864] sm:text-base">
                     {f.title}
                   </h3>
 

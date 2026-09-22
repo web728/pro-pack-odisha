@@ -18,52 +18,52 @@ const headingFont = Manrope({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a",
+  themeColor: "#1F3864",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://propackodisha.com"),
+  metadataBase: new URL("https://odishapropack.com"),
   title: {
-    default: "Propack Odisha 2027 | Premier Packaging & Processing Expo",
-    template: "%s | Propack Odisha 2027",
+    default: "PROPACK Odisha 2027 | Eastern India's Largest MSME Exhibition",
+    template: "%s | PROPACK Odisha 2027",
   },
   description:
-    "Join Eastern India's largest international exhibition on packaging, processing, printing, and plastics machinery at Bhubaneswar, Odisha.",
+    "Join PROPACK Odisha 2027 - Eastern India's largest international exhibition on packaging, processing, printing, and plastics machinery at Janata Maidan, Bhubaneswar, Odisha.",
   keywords: [
-    "Propack Odisha 2027",
+    "PROPACK Odisha 2027",
     "Packaging Expo Bhubaneswar",
     "Food Processing Machinery Exhibition",
     "Plastics Expo Odisha",
-    "Industrial Trade Show India",
+    "OASME Exhibition",
   ],
-  authors: [{ name: "Propack Odisha Team" }],
-  creator: "Propack Odisha",
-  publisher: "Propack Odisha",
+  authors: [{ name: "OASME" }],
+  creator: "Odisha Assembly of Small and Medium Enterprises (OASME)",
+  publisher: "PROPACK Odisha",
   alternates: {
-    canonical: "https://propackodisha.com",
+    canonical: "https://odishapropack.com",
   },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://propackodisha.com",
-    title: "Propack Odisha 2027 | International Packaging & Food Processing Expo",
+    url: "https://odishapropack.com",
+    title: "PROPACK Odisha 2027 | One Expo. Endless Solutions.",
     description:
-      "Eastern India's flagship B2B exhibition bringing global industrial manufacturers and packaging innovators under one roof.",
-    siteName: "Propack Odisha International Expo",
+      "Eastern India's flagship B2B exhibition bringing packaging, printing, plastics, and processing value chain together.",
+    siteName: "PROPACK Odisha International Expo",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Propack Odisha 2027 International Expo Banner",
+        alt: "PROPACK Odisha 2027 International Expo Banner",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Propack Odisha 2027 | Bhubaneswar",
+    title: "PROPACK Odisha 2027 | Bhubaneswar",
     description:
       "Eastern India's flagship B2B packaging & processing trade show.",
     images: ["/og-image.jpg"],
@@ -89,11 +89,11 @@ export default function RootLayout({
   const eventSchema = {
     "@context": "https://schema.org",
     "@type": "Event",
-    name: "Propack Odisha International Expo 2027",
+    name: "PROPACK Odisha 2027",
     description:
-      "International Exhibition on Packaging, Food Processing, Printing & Converting Machinery.",
-    startDate: "2027-02-12T09:00:00+05:30",
-    endDate: "2027-02-15T18:00:00+05:30",
+      "Eastern India's Largest MSME Exhibition on Packaging, Printing, Plastics & Processing Machinery.",
+    startDate: "2027-02-25T09:00:00+05:30",
+    endDate: "2027-02-28T18:00:00+05:30",
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: {
@@ -108,8 +108,8 @@ export default function RootLayout({
     },
     organizer: {
       "@type": "Organization",
-      name: "Propack Odisha",
-      url: "https://propackodisha.com",
+      name: "Odisha Assembly of Small and Medium Enterprises (OASME)",
+      url: "https://www.oasme.org.in",
     },
   };
 
@@ -124,13 +124,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
         />
       </head>
-      <body className="flex min-h-screen flex-col bg-slate-950 font-sans text-slate-100 selection:bg-amber-400 selection:text-slate-950">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-amber-400 focus:px-4 focus:py-2 focus:font-semibold focus:text-slate-950 shadow-xl"
-        >
-          Skip to content
-        </a>
+      <body className="flex min-h-screen flex-col bg-[#f7f8f7] font-sans text-[#1F3864] selection:bg-[#EB622F] selection:text-white">
+      
         <Header />
         <main id="main" className="flex-1">
           {children}

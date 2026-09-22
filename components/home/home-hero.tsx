@@ -49,7 +49,6 @@ export function HomeHero() {
     <section className="relative flex min-h-[calc(100vh-80px)] w-full items-center overflow-hidden border-b border-[var(--border)] bg-[#f7f8f7] py-10 lg:py-14">
       {/* Container with stretch alignment on desktop */}
       <div className="container mx-auto grid grid-cols-1 items-stretch gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:gap-10">
-        
         {/* Left: Content Side */}
         <motion.div
           className="flex flex-col justify-center py-4 lg:col-span-7"
@@ -58,23 +57,27 @@ export function HomeHero() {
           animate="visible"
         >
           <motion.div variants={itemVariants}>
-            <Eyebrow>Propack Odisha International Expo 2027</Eyebrow>
+            <Eyebrow>4th Edition • Propack Odisha 2027</Eyebrow>
           </motion.div>
 
           <motion.h1
             variants={itemVariants}
-            className="my-3 font-[family-name:var(--font-heading)] text-[34px] font-bold leading-[1.08] tracking-[-2px] text-[var(--foreground,#111827)] sm:text-[44px] md:text-[52px] lg:my-5 lg:text-[clamp(36px,3.8vw,58px)] lg:tracking-[-2.5px]"
+            className="my-3 font-[family-name:var(--font-heading)] text-[34px] font-bold leading-[1.08] tracking-[-2px] text-[#1F3864] sm:text-[44px] md:text-[52px] lg:my-5 lg:text-[clamp(36px,3.8vw,58px)] lg:tracking-[-2.5px]"
           >
-            Where Manufacturing Meets Opportunity.
+            One Expo. Endless Solutions.
             <br />
-            <span className="text-[var(--primary)]">Packaging • Printing • Plastics • Food Processing • Engineering • Green Energy</span>
+            <span className="text-[#EB622F]">
+              Packaging • Printing • Plastics • Processing • Green Energy
+            </span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
             className="mb-4 max-w-[48ch] text-base leading-[1.6] text-[var(--muted-foreground,#4b5563)] sm:text-[17px]"
           >
-            Explore machinery, technology, materials and solutions across Packaging, Printing, Plastics, Food Processing and Engineering — all under one roof.
+            Eastern India's Largest MSME Exhibition powering multiple industries
+            and driving the future through machinery, technology, materials, and
+            sustainable solutions.
           </motion.p>
 
           {/* Event Details */}
@@ -83,25 +86,28 @@ export function HomeHero() {
             className="my-4 flex flex-wrap items-center gap-6 sm:gap-8"
           >
             <div className="flex items-start gap-2.5">
-              <CalendarDays className="mt-0.5 shrink-0 text-[var(--primary)]" size={19} />
+              <CalendarDays
+                className="mt-0.5 shrink-0 text-[#15A7AE]"
+                size={19}
+              />
               <span className="leading-tight">
-                <strong className="block text-[14px] font-semibold text-[var(--foreground,#111827)]">
-                  {event.date}
+                <strong className="block text-[14px] font-semibold text-[#1F3864]">
+                  25th to 28th February 2027
                 </strong>
                 <small className="mt-1 block text-[12px] text-[var(--muted,#6b7280)]">
-                  Four days. Five industries.
+                  Four days. Multiple industries.
                 </small>
               </span>
             </div>
 
             <div className="flex items-start gap-2.5">
-              <MapPin className="mt-0.5 shrink-0 text-[var(--primary)]" size={19} />
+              <MapPin className="mt-0.5 shrink-0 text-[#15A7AE]" size={19} />
               <span className="leading-tight">
-                <strong className="block text-[14px] font-semibold text-[var(--foreground,#111827)]">
-                  Janata Maidan
+                <strong className="block text-[14px] font-semibold text-[#1F3864]">
+                  Janata Maidan, Bhubaneswar
                 </strong>
                 <small className="mt-1 block text-[12px] text-[var(--muted,#6b7280)]">
-                  Bhubaneswar, Odisha
+                  Odisha, India
                 </small>
               </span>
             </div>
@@ -120,7 +126,9 @@ export function HomeHero() {
 
           {/* Brochure Link */}
           <motion.div variants={itemVariants} className="mt-5">
-            <TextLink href="/brochure">Explore the exhibition brochure</TextLink>
+            <TextLink href="/brochure">
+              Explore the exhibition brochure
+            </TextLink>
           </motion.div>
         </motion.div>
 
@@ -149,7 +157,7 @@ export function HomeHero() {
 
           {/* Caption */}
           <div className="absolute bottom-5 left-5 right-5 z-10 text-white sm:bottom-6 sm:left-6 sm:right-6">
-            <span className="block text-xs font-semibold uppercase tracking-wider text-amber-300">
+            <span className="block text-xs font-semibold uppercase tracking-wider text-[#15A7AE]">
               MACHINERY. MATERIALS. TECHNOLOGY.
             </span>
             <strong className="mt-1 block font-[family-name:var(--font-heading)] text-xl font-medium tracking-normal text-white sm:text-2xl">
@@ -157,7 +165,6 @@ export function HomeHero() {
             </strong>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

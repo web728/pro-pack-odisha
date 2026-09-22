@@ -110,6 +110,7 @@ export function SupportedByStrip() {
     </section>
   );
 }
+
 /* =========================================================================
    1. EVENT SNAPSHOT (Stats & Summary)
    ========================================================================= */
@@ -126,17 +127,18 @@ export function EventSnapshot() {
           viewport={{ once: true, margin: "-80px" }}
         >
           <Eyebrow>The exhibition at a glance</Eyebrow>
-          <h2 className="my-4 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-4xl lg:text-5xl">
-            One meeting point.
+          <h2 className="my-4 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl">
+            One Expo. Endless Solutions.
             <br />
-            <span className="text-[var(--primary)]">
-              A connected value chain.
+            <span className="text-[#EB622F]">
+              Powering multiple industries. Driving the future.
             </span>
           </h2>
           <p className="max-w-[56ch] text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
-            Propack Odisha brings technology providers, manufacturers and
-            business buyers together in Bhubaneswar. Explore machinery and
-            materials, compare ideas and start useful conversations.
+            Eastern India's largest MSME exhibition brings technology providers,
+            manufacturers, and business buyers together at Janata Maidan,
+            Bhubaneswar. Explore machinery, sustainable materials, and
+            industrial solutions.
           </p>
           <div className="mt-6">
             <TextLink href="/about">About the expo</TextLink>
@@ -152,16 +154,16 @@ export function EventSnapshot() {
           viewport={{ once: true, margin: "-80px" }}
         >
           {[
-            ["05", "Connected industries"],
+            ["150+", "Exhibiting companies"],
             ["04", "Exhibition days"],
-            ["01", "Business destination"],
+            ["10k+", "Trade visitors"],
           ].map(([value, label]) => (
             <motion.div
               key={label}
               variants={fadeUp}
-              className="border-t-2 border-[var(--primary)] pt-4"
+              className="border-t-2 border-[#15A7AE] pt-4"
             >
-              <dt className="font-[family-name:var(--font-heading)] text-3xl font-extrabold text-[var(--foreground,#111827)] sm:text-4xl lg:text-5xl">
+              <dt className="font-[family-name:var(--font-heading)] text-3xl font-extrabold text-[#1F3864] sm:text-4xl lg:text-5xl">
                 {value}
               </dt>
               <dd className="mt-2 text-xs font-medium text-[var(--muted,#6b7280)] sm:text-sm">
@@ -191,7 +193,7 @@ export function SectorPreview() {
       >
         <div className="relative h-[220px] w-[220px] sm:h-[280px] sm:w-[280px] lg:h-[340px] lg:w-[340px] opacity-85">
           <Image
-            src="/assets/svg.png" // Yahan apni PNG image ka public folder wala path daalein
+            src="/assets/svg.png"
             alt=""
             fill
             className="object-contain object-top-right"
@@ -200,7 +202,7 @@ export function SectorPreview() {
         </div>
 
         {/* Ambient Warm Corner Light */}
-        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[var(--primary)]/[0.04] blur-3xl" />
+        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[#EB622F]/[0.04] blur-3xl" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
@@ -208,7 +210,7 @@ export function SectorPreview() {
         <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <Eyebrow>Explore the sectors</Eyebrow>
-            <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-4xl">
+            <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[#1F3864] sm:text-4xl">
               From raw material to finished product.
             </h2>
           </div>
@@ -233,7 +235,7 @@ export function SectorPreview() {
                 >
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-[var(--primary)]/10 text-[var(--primary)] transition-transform duration-300 group-hover:scale-110">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] transition-transform duration-300 group-hover:scale-110">
                         <Icon size={22} strokeWidth={1.75} />
                       </span>
                       <span className="font-mono text-xs font-semibold tracking-wider text-[var(--muted,#6b7280)]">
@@ -241,7 +243,7 @@ export function SectorPreview() {
                       </span>
                     </div>
 
-                    <h3 className="mt-6 font-[family-name:var(--font-heading)] text-lg font-bold text-[var(--foreground,#111827)] group-hover:text-[var(--primary)] transition-colors">
+                    <h3 className="mt-6 font-[family-name:var(--font-heading)] text-lg font-bold text-[#1F3864] group-hover:text-[#EB622F] transition-colors">
                       {sector.name}
                     </h3>
 
@@ -250,7 +252,7 @@ export function SectorPreview() {
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-1 text-xs font-semibold text-[var(--primary)]">
+                  <div className="mt-6 flex items-center gap-1 text-xs font-semibold text-[#EB622F]">
                     <span>Explore</span>
                     <ArrowUpRight
                       size={16}
@@ -275,7 +277,7 @@ export function ParticipationPreview() {
     {
       label: "For exhibitors",
       title: "Bring your innovation to market.",
-      text: "Showcase equipment and materials, meet business buyers and develop relationships across connected industries.",
+      text: "Showcase machinery, equipment, and materials, meet serious industry professionals, and develop relationships across connected sectors.",
       href: "/exhibitors",
       cta: "Explore exhibiting",
       bgClass: "bg-[#faf2f1] border-rose-200/70",
@@ -284,7 +286,7 @@ export function ParticipationPreview() {
     {
       label: "For visitors",
       title: "Find your next business solution.",
-      text: "For manufacturers, printers, converters, procurement teams and entrepreneurs: compare technologies and meet the people behind them.",
+      text: "For manufacturers, processors, procurement teams, and entrepreneurs: compare technologies, access policy and finance, and network.",
       href: "/visitors",
       cta: "Plan your visit",
       bgClass: "bg-[#eef5f7] border-sky-200/70",
@@ -311,7 +313,7 @@ export function ParticipationPreview() {
               >
                 {card.label}
               </span>
-              <h2 className="mt-5 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-3xl">
+              <h2 className="mt-5 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[#1F3864] sm:text-3xl">
                 {card.title}
               </h2>
               <p className="mt-3 max-w-[44ch] text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-base">
@@ -363,17 +365,15 @@ export function TechnologyPreview() {
             viewport={{ once: true }}
           >
             <Eyebrow>Technology in context</Eyebrow>
-            <h2 className="my-3 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-3xl lg:text-4xl">
+            <h2 className="my-3 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[#1F3864] sm:text-3xl lg:text-4xl">
               Materials. Machines.
               <br />
-              <span className="text-[var(--primary)]">
-                Practical possibilities.
-              </span>
+              <span className="text-[#EB622F]">Sustainable solutions.</span>
             </h2>
             <p className="mb-6 max-w-[52ch] text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-base">
-              Explore the links between packaging materials, printing processes,
-              production equipment and automation. Start with your application,
-              then identify the solutions worth a closer look.
+              Explore the links between packaging, printing, plastics
+              processing, and converting. Discover energy-efficient
+              technologies, mono-material formats, and EPR compliance solutions.
             </p>
             <div>
               <TextLink href="/sectors">
@@ -401,17 +401,17 @@ export function VenuePreview() {
         viewport={{ once: true }}
       >
         <div className="flex items-start gap-4 sm:gap-5">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--primary)]/10 text-[var(--primary)]">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#15A7AE]/10 text-[#15A7AE]">
             <MapPin size={26} />
           </div>
           <div>
             <Eyebrow>Meet in Bhubaneswar</Eyebrow>
-            <h2 className="text-xl font-bold tracking-tight text-[var(--foreground,#111827)] sm:text-2xl">
+            <h2 className="text-xl font-bold tracking-tight text-[#1F3864] sm:text-2xl">
               Janata Maidan, Odisha
             </h2>
             <p className="mt-1 text-xs text-[var(--muted,#6b7280)] sm:text-sm">
-              {event.date} · Contact OASME for opening hours and admission
-              arrangements.
+              25th to 28th February 2027 · Free entry for registered trade
+              visitors
             </p>
           </div>
         </div>
@@ -429,4 +429,6 @@ export function VenuePreview() {
 /* =========================================================================
    6. ORGANIZER STRIP (OASME Trust Bar)
    ========================================================================= */
-<OrganizerStrip />;
+export function OrganizerSection() {
+  return <OrganizerStrip />;
+}

@@ -52,7 +52,6 @@ export function Recaptcha({
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
 
-  // ✅ Client accessible env variable with fallback
   const siteKey =
     process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
     process.env.RECAPTCHA_SITE_KEY;
@@ -72,7 +71,7 @@ export function Recaptcha({
 
         widget = window.grecaptcha.render(element, {
           sitekey: siteKey,
-          size: "normal", // 'compact' mobile ke liye theek hai, standard box ke liye 'normal' better rehta hai
+          size: "normal",
           theme: "light",
           callback: (token: string) => {
             if (active) {
@@ -126,7 +125,7 @@ export function Recaptcha({
   return (
     <div className="space-y-2.5">
       <p className="text-xs font-medium text-slate-500">
-        Security Verification <span className="text-red-600">*</span>
+        Security Verification <span className="text-[#EB622F]">*</span>
       </p>
 
       {/* reCAPTCHA widget container */}
@@ -138,9 +137,9 @@ export function Recaptcha({
       {error && (
         <div
           role="alert"
-          className="flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 p-2.5 text-xs text-red-700"
+          className="flex items-center gap-2 rounded-lg border border-[#EB622F]/30 bg-[#EB622F]/10 p-2.5 text-xs text-[#1F3864]"
         >
-          <AlertCircle size={14} className="shrink-0" />
+          <AlertCircle size={14} className="shrink-0 text-[#EB622F]" />
           <span className="flex-1">{error}</span>
           <button
             type="button"
@@ -148,7 +147,7 @@ export function Recaptcha({
               setError("");
               setAttempt((a) => a + 1);
             }}
-            className="inline-flex items-center gap-1 font-bold underline hover:text-red-900"
+            className="inline-flex items-center gap-1 font-bold underline hover:text-[#1F3864]"
           >
             <RefreshCw size={12} />
             <span>Retry</span>

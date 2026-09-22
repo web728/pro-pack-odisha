@@ -28,13 +28,13 @@ export function Button({
         ? "download-brochure"
         : "learn-more";
 
-  // 1. High-Priority "Book Stall" Primary CTA (Solid Red, Glow on Dark)
+  // 1. High-Priority "Book Stall" Primary CTA (Solid Primary Brand Color, Glow on Dark)
   if (isBookStall && !secondary) {
     return (
       <Link
         data-cta={ctaTag}
         href={href}
-        className={`group inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-5 py-2.5 text-xs font-bold !text-white shadow-md shadow-red-950/20 transition-all duration-200 hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/25 active:scale-95 sm:px-6 sm:py-3 sm:text-sm ${className}`}
+        className={`group inline-flex items-center justify-center gap-2 rounded-xl bg-[#EB622F] px-5 py-2.5 text-xs font-bold !text-white shadow-md shadow-[#EB622F]/20 transition-all duration-200 hover:bg-[#d55526] hover:shadow-lg hover:shadow-[#EB622F]/25 active:scale-95 sm:px-6 sm:py-3 sm:text-sm ${className}`}
       >
         <span className="!text-white font-bold tracking-wide">{children}</span>
         <ArrowUpRight
@@ -68,12 +68,12 @@ export function Button({
       <Link
         data-cta={ctaTag}
         href={href}
-        className={`group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-800 shadow-xs transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 hover:text-black active:scale-95 sm:px-6 sm:py-3 sm:text-sm ${className}`}
+        className={`group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-[#1F3864] shadow-xs transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 hover:text-black active:scale-95 sm:px-6 sm:py-3 sm:text-sm ${className}`}
       >
         <span>{children}</span>
         <ArrowUpRight
           size={16}
-          className="text-slate-400 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-slate-700"
+          className="text-slate-400 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#1F3864]"
         />
       </Link>
     );
@@ -82,8 +82,8 @@ export function Button({
   // 4. Default Primary Button (Light vs Dark Adaptive)
   const defaultBg =
     theme === "dark"
-      ? "bg-white !text-slate-950 hover:bg-slate-100"
-      : "bg-slate-900 !text-white hover:bg-black";
+      ? "bg-white !text-[#1F3864] hover:bg-slate-100"
+      : "bg-[#1F3864] !text-white hover:bg-[#162747]";
 
   return (
     <Link

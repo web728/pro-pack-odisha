@@ -52,16 +52,15 @@ export default async function FormPage({
           
           {/* Trust & Assistance Indicators Bar */}
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-200/80 bg-white px-5 py-3 shadow-2xs text-xs text-slate-600">
-          
-
+            
             <div className="hidden sm:flex items-center gap-6">
               <span className="flex items-center gap-1.5">
-                <Clock size={14} className="text-[var(--primary)]" />
+                <Clock size={14} className="text-[#15A7AE]" />
                 Response within 24 business hours
               </span>
               <span className="text-slate-300">•</span>
               <span className="flex items-center gap-1.5">
-                <Headphones size={14} className="text-[var(--primary)]" />
+                <Headphones size={14} className="text-[#15A7AE]" />
                 Helpline: +91 77518 09433
               </span>
             </div>

@@ -14,7 +14,7 @@ interface PageHeroProps {
 
 export function PageHero({ eyebrow, title, description }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden border-b border-[var(--border)] bg-[#f6f7f6] py-12 print:hidden sm:py-14 lg:py-16">
+    <section className="relative overflow-hidden border-b border-[var(--border)] bg-[#f7f8f7] py-12 print:hidden sm:py-14 lg:py-16">
       {/* Background PNG Image on Right Top Corner */}
       <div
         className="pointer-events-none absolute right-0 top-0 z-0 overflow-hidden"
@@ -22,7 +22,7 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
       >
         <div className="relative h-[250px] w-[250px] sm:h-[320px] sm:w-[320px] lg:h-[380px] lg:w-[380px] opacity-90">
           <Image
-            src="/assets/svg.png" // Replace with your actual image path
+            src="/assets/svg.png"
             alt=""
             fill
             className="object-contain object-top-right"
@@ -30,8 +30,8 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
           />
         </div>
 
-        {/* Ambient Warm Corner Light (Optional, remains near image) */}
-        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[var(--primary)]/[0.04] blur-3xl" />
+        {/* Ambient Teal Accent Glow */}
+        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[#15A7AE]/[0.06] blur-3xl" />
       </div>
 
       {/* Hero Content */}
@@ -42,20 +42,20 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
         >
           <Link
             href="/"
-            className="flex items-center gap-1.5 font-medium transition-colors hover:text-[var(--foreground,#111827)]"
+            className="flex items-center gap-1.5 font-medium transition-colors hover:text-[#1F3864]"
           >
-            <Home size={13} className="text-[var(--primary)]" />
+            <Home size={13} className="text-[#15A7AE]" />
             <span>Home</span>
           </Link>
           <ChevronRight size={13} className="text-slate-400" />
-          <span className="font-semibold text-[var(--foreground,#111827)]">
+          <span className="font-semibold text-[#1F3864]">
             {eyebrow}
           </span>
         </nav>
 
         <Eyebrow>{eyebrow}</Eyebrow>
 
-        <h1 className="my-3 max-w-4xl font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[var(--foreground,#111827)] sm:text-4xl lg:text-[clamp(32px,3.6vw,50px)] lg:leading-[1.12]">
+        <h1 className="my-3 max-w-4xl font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl lg:text-[clamp(32px,3.6vw,50px)] lg:leading-[1.12]">
           {title}
         </h1>
 

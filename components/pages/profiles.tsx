@@ -32,20 +32,19 @@ export function Profiles({ title, items }: { title: string; items: string[] }) {
   return (
     <RevealSection className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6">
-        
         {/* Header Section */}
         <div className="max-w-2xl">
           <div className="flex items-center gap-2">
-           
             <Eyebrow>Find your place</Eyebrow>
           </div>
 
-          <h2 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[var(--foreground,#111827)] sm:text-4xl">
+          <h2 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl">
             {title}
           </h2>
 
           <p className="mt-2 text-sm text-[var(--muted-foreground,#4b5563)] sm:text-base">
-            Covering machinery, conversion equipment, raw materials, and enterprise automation across the value chain.
+            Indicative and not restrictive profiling for packaging materials,
+            processors, machinery manufacturers, and industry professionals.
           </p>
         </div>
 
@@ -61,21 +60,18 @@ export function Profiles({ title, items }: { title: string; items: string[] }) {
             <motion.div
               key={index}
               variants={cardVariant}
-              className="group relative flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[#f7f8f7] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)] hover:bg-white hover:shadow-sm"
+              className="group relative flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[#f7f8f7] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#EB622F] hover:bg-white hover:shadow-sm"
             >
-              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-[var(--primary)] shadow-2xs transition-colors group-hover:bg-[var(--primary)] group-hover:text-white">
+              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white text-[#15A7AE] shadow-2xs transition-colors group-hover:bg-[#EB622F] group-hover:text-white">
                 <CheckCircle2 size={13} strokeWidth={2.5} />
               </span>
 
-              <span className="text-xs font-semibold leading-relaxed text-[var(--foreground,#111827)] transition-colors group-hover:text-[var(--primary)] sm:text-sm">
+              <span className="text-xs font-semibold leading-relaxed text-[#1F3864] transition-colors group-hover:text-[#EB622F] sm:text-sm">
                 {item}
               </span>
             </motion.div>
           ))}
         </motion.div>
-
-      
-
       </div>
     </RevealSection>
   );

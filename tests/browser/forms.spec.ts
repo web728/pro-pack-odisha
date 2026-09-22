@@ -87,7 +87,7 @@ test("recorded submission UI avoids duplicate submissions", async ({
   await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: "Request brochure access" }).click();
   await expect(
-    page.getByRole("link", { name: "Download archived 2023 brochure" }),
+    page.getByRole("link", { name: "Download brochure" }),
   ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Request brochure access" }),

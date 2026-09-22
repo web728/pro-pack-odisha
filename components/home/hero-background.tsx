@@ -25,7 +25,7 @@ export function HeroBackground() {
           {/* Animated Glowing Signal Lines */}
           <path
             d="M-40 80H180L260 160H640M-40 240H100L220 320H640"
-            className={`stroke-[var(--primary,#f59e0b)] stroke-[2] ${
+            className={`stroke-[#EB622F] stroke-[2] ${
               paused ? "[animation-play-state:paused]" : ""
             }`}
             style={{
@@ -35,8 +35,6 @@ export function HeroBackground() {
           />
         </svg>
       </div>
-
-    
 
       {/* Scoped Keyframes */}
       <style jsx>{`

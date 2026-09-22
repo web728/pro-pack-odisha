@@ -39,13 +39,12 @@ interface NavGroup {
   items: NavItem[];
 }
 
-// 1. Precise, segregated IA
 const navGroups: NavGroup[] = [
-    {
+  {
     label: "About",
     items: [
       {
-        title: "About Propack Odisha",
+        title: "About PROPACK Odisha",
         href: "/about",
         desc: "Vision, highlights & exhibition legacy",
         icon: Building2,
@@ -79,12 +78,6 @@ const navGroups: NavGroup[] = [
         desc: "Reserve booth space & utilities",
         icon: Store,
       },
-      // {
-      //   title: "Exhibitor Services",
-      //   href: "/services",
-      //   desc: "Badges, fascia, power & directory",
-      //   icon: Layers,
-      // },
       {
         title: "Event Brochure",
         href: "/brochure",
@@ -108,12 +101,6 @@ const navGroups: NavGroup[] = [
         desc: "Free digital delegate entry",
         icon: Ticket,
       },
-      // {
-      //   title: "Retrieve Pass",
-      //   href: "/view-pass",
-      //   desc: "Access your saved digital badge",
-      //   icon: Sparkles,
-      // },
       {
         title: "Visitor FAQs",
         href: "/visitors#faqs",
@@ -128,15 +115,9 @@ const navGroups: NavGroup[] = [
       {
         title: "Technology Catalog",
         href: "/sectors",
-        desc: "5 core sectors & machinery list",
+        desc: "Core sectors & machinery list",
         icon: Layers,
       },
-      // {
-      //   title: "Odisha Industrial Context",
-      //   href: "/market",
-      //   desc: "Plastic clusters & investment zones",
-      //   icon: TrendingUp,
-      // },
     ],
   },
   {
@@ -151,7 +132,7 @@ const navGroups: NavGroup[] = [
       {
         title: "Event Brochure",
         href: "/brochure",
-        desc: "Archived & official floor plan PDF",
+        desc: "Official floor plan PDF",
         icon: FileText,
       },
       {
@@ -169,12 +150,12 @@ export function Brand({ onNavigate }: { onNavigate?: () => void }) {
     <Link
       href="/"
       className="inline-flex flex-shrink-0 items-center group"
-      aria-label="Propack Odisha home"
+      aria-label="PROPACK Odisha home"
       onClick={onNavigate}
     >
       <Image
         src="/logo/logo-bg.png"
-        alt="Propack Odisha International Expo"
+        alt="PROPACK Odisha International Expo"
         width={200}
         height={80}
         priority
@@ -187,7 +168,9 @@ export function Brand({ onNavigate }: { onNavigate?: () => void }) {
 export function Header() {
   const [open, setOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [mobileExpandedGroup, setMobileExpandedGroup] = useState<string | null>(null);
+  const [mobileExpandedGroup, setMobileExpandedGroup] = useState<string | null>(
+    null,
+  );
 
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -205,10 +188,16 @@ export function Header() {
 
       if (currentScrollY <= 60) {
         setIsVisible(true);
-      } else if (currentScrollY > lastScrollY.current && currentScrollY - lastScrollY.current > 6) {
+      } else if (
+        currentScrollY > lastScrollY.current &&
+        currentScrollY - lastScrollY.current > 6
+      ) {
         setIsVisible(false);
         setActiveDropdown(null);
-      } else if (currentScrollY < lastScrollY.current && lastScrollY.current - currentScrollY > 6) {
+      } else if (
+        currentScrollY < lastScrollY.current &&
+        lastScrollY.current - currentScrollY > 6
+      ) {
         setIsVisible(true);
       }
 
@@ -261,57 +250,57 @@ export function Header() {
   };
 
   const tickerItems = (
-  <div className="flex shrink-0 items-center gap-8 px-4 text-sm font-semibold sm:text-base">
-    <span className="inline-flex items-center gap-2 text-slate-900">
-      <CalendarDays size={18} className="shrink-0 text-red-600" />
-      <span>25–28 February 2027</span>
-    </span>
+    <div className="flex shrink-0 items-center gap-8 px-4 text-sm font-semibold sm:text-base">
+      <span className="inline-flex items-center gap-2 text-[#1F3864]">
+        <CalendarDays size={18} className="shrink-0 text-[#EB622F]" />
+        <span>25th to 28th February 2027</span>
+      </span>
 
-    <span className="text-slate-300">•</span>
+      <span className="text-slate-300">•</span>
 
-    <span className="inline-flex items-center gap-2 text-slate-800">
-      <MapPin size={18} className="shrink-0 text-red-600" />
-      <span>Janata Maidan, Bhubaneswar, Odisha</span>
-    </span>
+      <span className="inline-flex items-center gap-2 text-[#1F3864]">
+        <MapPin size={18} className="shrink-0 text-[#EB622F]" />
+        <span>Janata Maidan, Bhubaneswar, Odisha</span>
+      </span>
 
-    <span className="text-slate-300">•</span>
+      <span className="text-slate-300">•</span>
 
-    <span className="inline-flex items-center gap-2 rounded-full bg-red-600/10 px-3 py-1 font-bold text-red-700">
-      <Sparkles size={15} />
-      <span>Eastern India’s B2B Platform for Manufacturing & Processing Industries</span>
-    </span>
+      <span className="inline-flex items-center gap-2 rounded-full bg-[#EB622F]/10 px-3 py-1 font-bold text-[#EB622F]">
+        <Sparkles size={15} />
+        <span>Eastern India’s Largest MSME Exhibition</span>
+      </span>
 
-    <span className="text-slate-300">•</span>
+      <span className="text-slate-300">•</span>
 
-    {/* Primary Helpline */}
-    <a
-      href="tel:+917751809433"
-      className="inline-flex items-center gap-2 text-slate-800 transition-colors hover:text-red-600"
-    >
-      <Phone size={16} className="shrink-0 text-red-600" />
-      <span>Helpline: +91 77518 09433</span>
-    </a>
+      {/* Primary Helpline */}
+      <a
+        href="tel:+917751809433"
+        className="inline-flex items-center gap-2 text-[#1F3864] transition-colors hover:text-[#EB622F]"
+      >
+        <Phone size={16} className="shrink-0 text-[#EB622F]" />
+        <span>Helpline: +91 77518 09433</span>
+      </a>
 
-    <span className="text-slate-300">•</span>
+      <span className="text-slate-300">•</span>
 
-    {/* Secondary Helpline */}
-    <a
-      href="tel:+917008341944"
-      className="inline-flex items-center gap-2 text-slate-800 transition-colors hover:text-red-600"
-    >
-      <Phone size={16} className="shrink-0 text-red-600" />
-      <span>+91 70083 41944</span>
-    </a>
+      {/* Secondary Number */}
+      <a
+        href="tel:+917008341944"
+        className="inline-flex items-center gap-2 text-[#1F3864] transition-colors hover:text-[#EB622F]"
+      >
+        <Phone size={16} className="shrink-0 text-[#EB622F]" />
+        <span>+91-70083 41944</span>
+      </a>
 
-    <span className="text-slate-300">•</span>
+      <span className="text-slate-300">•</span>
 
-    <span className="font-medium text-slate-600">
-      Organized by Odisha Assembly of Small and Medium Enterprises (OASME)
-    </span>
+      <span className="font-medium text-slate-600">
+        Organised By: Odisha Assembly of Small and Medium Enterprises (OASME)
+      </span>
 
-    <span className="text-slate-300">•</span>
-  </div>
-);
+      <span className="text-slate-300">•</span>
+    </div>
+  );
 
   return (
     <>
@@ -353,7 +342,9 @@ export function Header() {
           >
             {navGroups.map((group) => {
               const isDropdownOpen = activeDropdown === group.label;
-              const hasActiveChild = group.items.some((item) => path === item.href);
+              const hasActiveChild = group.items.some(
+                (item) => path === item.href,
+              );
 
               return (
                 <div
@@ -366,8 +357,8 @@ export function Header() {
                     type="button"
                     className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[14px] font-bold tracking-tight transition-colors ${
                       hasActiveChild
-                        ? "text-[var(--primary)]"
-                        : "text-slate-800 hover:text-[var(--primary)]"
+                        ? "text-[#EB622F]"
+                        : "text-[#1F3864] hover:text-[#EB622F]"
                     }`}
                     aria-expanded={isDropdownOpen}
                   >
@@ -375,7 +366,9 @@ export function Header() {
                     <ChevronDown
                       size={14}
                       className={`transition-transform duration-200 ${
-                        isDropdownOpen ? "rotate-180 text-[var(--primary)]" : "text-slate-400"
+                        isDropdownOpen
+                          ? "rotate-180 text-[#EB622F]"
+                          : "text-slate-400"
                       }`}
                     />
                   </button>
@@ -401,15 +394,15 @@ export function Header() {
                                 onClick={() => setActiveDropdown(null)}
                                 className={`group flex items-start gap-3 rounded-xl p-2.5 transition-colors ${
                                   isCurrent
-                                    ? "bg-[var(--primary)]/5 text-[var(--primary)]"
+                                    ? "bg-[#15A7AE]/10 text-[#15A7AE]"
                                     : "hover:bg-[#f7f8f7]"
                                 }`}
                               >
                                 <span
                                   className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-colors ${
                                     isCurrent
-                                      ? "border-[var(--primary)] bg-white text-[var(--primary)]"
-                                      : "border-slate-200 bg-white text-slate-500 group-hover:border-[var(--primary)] group-hover:text-[var(--primary)]"
+                                      ? "border-[#15A7AE] bg-white text-[#15A7AE]"
+                                      : "border-slate-200 bg-white text-slate-500 group-hover:border-[#EB622F] group-hover:text-[#EB622F]"
                                   }`}
                                 >
                                   <Icon size={16} />
@@ -418,8 +411,8 @@ export function Header() {
                                   <div
                                     className={`text-[13px] font-bold leading-snug transition-colors ${
                                       isCurrent
-                                        ? "text-[var(--primary)]"
-                                        : "text-slate-900 group-hover:text-[var(--primary)]"
+                                        ? "text-[#15A7AE]"
+                                        : "text-[#1F3864] group-hover:text-[#EB622F]"
                                     }`}
                                   >
                                     {item.title}
@@ -444,8 +437,8 @@ export function Header() {
               href="/contact-us"
               className={`inline-flex items-center rounded-lg px-3 py-2 text-[14px] font-bold tracking-tight transition-colors ${
                 path === "/contact-us"
-                  ? "text-[var(--primary)]"
-                  : "text-slate-800 hover:text-[var(--primary)]"
+                  ? "text-[#EB622F]"
+                  : "text-[#1F3864] hover:text-[#EB622F]"
               }`}
             >
               Contact
@@ -456,7 +449,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="/exhibitor-registration"
-              className="hidden sm:inline-flex items-center gap-2 rounded-xl bg-red-600 px-5 py-2.5 text-[13px] font-bold !text-white shadow-sm transition-all duration-200 hover:bg-red-700 hover:shadow-md active:scale-95"
+              className="hidden sm:inline-flex items-center gap-2 rounded-xl bg-[#EB622F] px-5 py-2.5 text-[13px] font-bold !text-white shadow-sm transition-all duration-200 hover:bg-[#d55526] hover:shadow-md active:scale-95"
             >
               <span className="!text-white font-bold">Exhibit with us</span>
               <ArrowUpRight size={16} className="!text-white" />
@@ -465,7 +458,7 @@ export function Header() {
             <button
               ref={button}
               type="button"
-              className="xl:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-800 shadow-2xs hover:bg-slate-50 active:scale-95"
+              className="xl:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#1F3864] shadow-2xs hover:bg-slate-50 active:scale-95"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -499,15 +492,17 @@ export function Header() {
                       <button
                         type="button"
                         onClick={() =>
-                          setMobileExpandedGroup(isExpanded ? null : group.label)
+                          setMobileExpandedGroup(
+                            isExpanded ? null : group.label,
+                          )
                         }
-                        className="flex w-full items-center justify-between p-2 text-left text-sm font-bold text-slate-900"
+                        className="flex w-full items-center justify-between p-2 text-left text-sm font-bold text-[#1F3864]"
                       >
                         <span>{group.label}</span>
                         <ChevronDown
                           size={16}
                           className={`text-slate-400 transition-transform duration-200 ${
-                            isExpanded ? "rotate-180 text-[var(--primary)]" : ""
+                            isExpanded ? "rotate-180 text-[#EB622F]" : ""
                           }`}
                         />
                       </button>
@@ -521,13 +516,16 @@ export function Header() {
                                 key={item.href}
                                 href={item.href}
                                 onClick={() => setOpen(false)}
-                                className="flex items-center justify-between rounded-lg p-2 text-xs font-semibold text-slate-700 hover:bg-white hover:text-[var(--primary)]"
+                                className="flex items-center justify-between rounded-lg p-2 text-xs font-semibold text-slate-700 hover:bg-white hover:text-[#EB622F]"
                               >
                                 <span className="flex items-center gap-2">
                                   <Icon size={14} className="text-slate-400" />
                                   <span>{item.title}</span>
                                 </span>
-                                <ArrowUpRight size={14} className="text-slate-400" />
+                                <ArrowUpRight
+                                  size={14}
+                                  className="text-slate-400"
+                                />
                               </Link>
                             );
                           })}
@@ -542,7 +540,7 @@ export function Header() {
                   <Link
                     href="/contact-us"
                     onClick={() => setOpen(false)}
-                    className="flex w-full items-center justify-between p-2 text-left text-sm font-bold text-slate-900"
+                    className="flex w-full items-center justify-between p-2 text-left text-sm font-bold text-[#1F3864]"
                   >
                     <span>Contact Us</span>
                     <ArrowUpRight size={16} className="text-slate-400" />
@@ -555,7 +553,7 @@ export function Header() {
                 <Link
                   href="/exhibitor-registration"
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 py-3 text-xs font-bold !text-white shadow-sm"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#EB622F] py-3 text-xs font-bold !text-white shadow-sm"
                 >
                   <span className="!text-white">Book a Stall (Exhibit)</span>
                   <ArrowUpRight size={15} className="!text-white" />
@@ -564,7 +562,7 @@ export function Header() {
                 <Link
                   href="/visitor-registration"
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-3 text-xs font-semibold text-slate-900 shadow-2xs"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-3 text-xs font-semibold text-[#1F3864] shadow-2xs"
                 >
                   <span>Register as Delegate / Visitor</span>
                   <ArrowUpRight size={15} className="text-slate-400" />
