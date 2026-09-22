@@ -14,29 +14,29 @@ export const seoUrl = (
 ).replace(/\/$/, "");
 export const sectors = [
   {
-    name: "Plastic & polymers",
+    name: "Plastic Industry",
     detail:
       "Raw materials, processing machinery, moulding and polymer solutions.",
     image: "plastics.webp",
   },
   {
-    name: "Printing & converting",
+    name: "Printing Industry",
     detail: "Printing presses, inks, labels, coding and marking technologies.",
     image: "printing.webp",
   },
   {
-    name: "Packaging",
+    name: "Packaging Industry",
     detail:
       "Packaging machinery, materials and complete end-of-line solutions.",
     image: "packaging.webp",
   },
   {
-    name: "Food processing",
+    name: "Processing Industry",
     detail: "Processing equipment, food safety, refrigeration and storage.",
     image: "food.webp",
   },
   {
-    name: "Engineering",
+    name: "Green Energy",
     detail: "Automation, material handling and manufacturing equipment.",
     image: "engineering.webp",
   },

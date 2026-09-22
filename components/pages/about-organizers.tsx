@@ -2,19 +2,16 @@
 
 import Link from "next/link";
 import {
-  Building2,
   Phone,
   Mail,
   ExternalLink,
-  ShieldCheck,
-  Award,
   CheckCircle2,
   Users2,
   Briefcase,
   Layers,
 } from "lucide-react";
 import { Button, Eyebrow } from "@/components/shared/ui";
-import { RevealSection, RevealDiv } from "@/components/shared/motion";
+import { RevealSection } from "@/components/shared/motion";
 
 export function OrganizersContent() {
   const representations = [
@@ -52,22 +49,13 @@ export function OrganizersContent() {
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-[var(--muted-foreground,#4b5563)]">
               <p>
-                The{" "}
-                <strong>
-                  Odisha Assembly of Small and Medium Enterprises (OASME)
-                </strong>{" "}
-                is an apex association of industries recognized by the
-                Government of Odisha. Founded on 12th August 1985, OASME has
-                served for over four decades as a common forum for the cottage,
-                handicraft, micro, small and medium enterprises of Odisha.
+                Founded on 12th August 1985, OASME has served for over four decades as a common forum for the cottage, handicraft, micro, small and medium enterprises of Odisha. The Assembly guides entrepreneurs, offers free consultancy, assists in the establishment of new industrial units and publishes profiles, journals and souvenirs that carry industry knowledge to the last mile.
               </p>
               <p>
-                Operating from its headquarters, OASME guides entrepreneurs,
-                offers free consultancy, assists in the establishment of new
-                industrial units, and publishes profiles, journals, and
-                souvenirs that carry industry knowledge to the last mile. Today
-                OASME works as a bridge between Odisha's MSME community and the
-                State and Union Governments.
+                Today OASME works as a bridge between Odisha&apos;s MSME community and the State and Union Governments — taking industry concerns into policy forums and carrying the benefits of schemes such as PMEGP, PM Vishwakarma, CM-SRIM, the Odisha MSME Development Policy and the Odisha Exports Policy back to enterprises on the ground. PROPACK Odisha is OASME&apos;s flagship platform for the packaging, printing, plastics and processing value chain.
+              </p>
+              <p>
+                PROPACK Odisha 2027 is organised and delivered by OASME. Three earlier editions have established it as the State&apos;s principal meeting ground for the packaging, printing, plastics, converting and processing value chain, drawing exhibitors and buyers from across India.
               </p>
             </div>
 

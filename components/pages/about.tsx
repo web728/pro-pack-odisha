@@ -1,39 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { motion, type Variants } from "framer-motion";
 import {
   ArrowUpRight,
   CheckCircle2,
-  Sparkles,
   Workflow,
   Users2,
 } from "lucide-react";
 import { Button, TextLink, Eyebrow } from "@/components/shared/ui";
 import { RevealSection } from "@/components/shared/motion";
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
-  },
-};
-
-const staggerCards: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.08 },
-  },
-};
-
 export function AboutContent() {
   const highlights = [
-    "5 Core connected industrial sectors",
-    "B2B direct supplier-to-buyer networking",
-    "Live machinery & production line demonstrations",
+    "Founded on 12th August 1985 — over four decades of service to MSMEs",
+    "Flagship platform for packaging, printing, plastics, and processing",
+    "Bridging Odisha's MSME community with State & Union Government schemes",
   ];
 
   return (
@@ -42,35 +23,24 @@ export function AboutContent() {
       <RevealSection className="border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
         <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
           {/* Left: Content */}
-          <motion.div
-            className="flex flex-col justify-center lg:col-span-7"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
+          <div className="flex flex-col justify-center lg:col-span-7">
             <div className="flex items-center gap-2">
-              <Eyebrow>New opportunities. Growing MSME sector.</Eyebrow>
+              <Eyebrow>About OASME & PROPACK Odisha</Eyebrow>
             </div>
 
             <h1 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl lg:leading-[1.15]">
-              One Expo. Endless Solutions. <br />
+              Four Decades of Empowering <br />
               <span className="text-[#EB622F]">
-                Powering multiple industries.
+                Odisha&apos;s MSME Ecosystem.
               </span>
             </h1>
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
               <p>
-                PROPACK Odisha 2027 is organised and delivered by OASME (Odisha
-                Assembly of Small and Medium Enterprises). It serves as Eastern
-                India&apos;s largest MSME exhibition for the packaging,
-                printing, plastics, and processing value chain.
+                Founded on 12th August 1985, OASME has served for over four decades as a common forum for the cottage, handicraft, micro, small and medium enterprises of Odisha. The Assembly guides entrepreneurs, offers free consultancy, assists in the establishment of new industrial units and publishes profiles, journals and souvenirs that carry industry knowledge to the last mile.
               </p>
               <p>
-                Meet at Janata Maidan, Bhubaneswar to discover machinery
-                innovations, access policy and finance under one roof, and forge
-                high-value partnerships across the entire industrial ecosystem.
+                Today OASME works as a bridge between Odisha&apos;s MSME community and the State and Union Governments — taking industry concerns into policy forums and carrying the benefits of schemes such as PMEGP, PM Vishwakarma, CM-SRIM, the Odisha MSME Development Policy and the Odisha Exports Policy back to enterprises on the ground.
               </p>
             </div>
 
@@ -95,16 +65,10 @@ export function AboutContent() {
                 Register as visitor
               </Button>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right: Artwork Showcase Collage */}
-          <motion.div
-            className="relative flex items-center justify-center lg:col-span-5"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
+          <div className="relative flex items-center justify-center lg:col-span-5">
             <div className="relative aspect-square w-full max-w-[500px] overflow-hidden rounded-2xl border border-[var(--border)] bg-white p-6 shadow-md lg:p-8">
               <Image
                 src="/assets/collage.webp"
@@ -119,7 +83,7 @@ export function AboutContent() {
               <div className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-[#EB622F]/10 blur-3xl" />
               <div className="pointer-events-none absolute -bottom-12 -left-12 h-44 w-44 rounded-full bg-[#15A7AE]/10 blur-3xl" />
             </div>
-          </motion.div>
+          </div>
         </div>
       </RevealSection>
 
@@ -127,29 +91,18 @@ export function AboutContent() {
       <RevealSection className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-2xl">
-            <Eyebrow>The exhibition at a glance</Eyebrow>
+            <Eyebrow>PROPACK Odisha 2027 Flagship Platform</Eyebrow>
             <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[#1F3864] sm:text-4xl">
-              From raw material to finished product.
+              The State&apos;s principal meeting ground.
             </h2>
             <p className="mt-3 text-base text-[var(--muted-foreground,#4b5563)]">
-              Bridging the gap between machinery manufacturers, raw material
-              innovators, and high-volume commercial buyers across Eastern
-              India.
+              Three earlier editions have established PROPACK as the State&apos;s principal meeting ground for the packaging, printing, plastics, converting and processing value chain, drawing exhibitors and buyers from across India.
             </p>
           </div>
 
-          <motion.div
-            className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8"
-            variants={staggerCards}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
             {/* Card 1: Value Chain */}
-            <motion.article
-              variants={fadeUp}
-              className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[#f7f8f7] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-[#EB622F] hover:bg-white hover:shadow-xl sm:p-10"
-            >
+            <article className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[#f7f8f7] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-[#EB622F] hover:bg-white hover:shadow-xl sm:p-10">
               <div>
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-[var(--border)] text-[#15A7AE] shadow-xs transition-colors group-hover:bg-[#EB622F] group-hover:text-white">
                   <Workflow size={24} />
@@ -160,9 +113,7 @@ export function AboutContent() {
                 </h3>
 
                 <p className="mt-3 text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-base">
-                  State-of-the-art packaging machines, printing presses,
-                  plastics processing units, food processing equipment, and
-                  sustainable converting technologies.
+                  Packaging machinery, printing presses, plastics processing units, food processing equipment, polymers, and sustainable converting technologies under one roof at Janata Maidan, Bhubaneswar.
                 </p>
               </div>
 
@@ -175,13 +126,10 @@ export function AboutContent() {
                   className="text-[var(--muted,#6b7280)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#EB622F]"
                 />
               </div>
-            </motion.article>
+            </article>
 
             {/* Card 2: Business Opportunities */}
-            <motion.article
-              variants={fadeUp}
-              className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[#f7f8f7] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-[#EB622F] hover:bg-white hover:shadow-xl sm:p-10"
-            >
+            <article className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[#f7f8f7] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-[#EB622F] hover:bg-white hover:shadow-xl sm:p-10">
               <div>
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white border border-[var(--border)] text-[#15A7AE] shadow-xs transition-colors group-hover:bg-[#EB622F] group-hover:text-white">
                   <Users2 size={24} />
@@ -192,9 +140,7 @@ export function AboutContent() {
                 </h3>
 
                 <p className="mt-3 text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-base">
-                  Engage directly with commercial printers, flexible converters,
-                  packaging engineers, industrial procurement heads, and
-                  visionary enterprise founders.
+                  Engage with over 10,000+ trade visitors, procurement heads, and decision-makers from Odisha, Eastern India, and beyond backed by OASME&apos;s membership network.
                 </p>
               </div>
 
@@ -207,8 +153,8 @@ export function AboutContent() {
                   className="text-[var(--muted,#6b7280)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#EB622F]"
                 />
               </div>
-            </motion.article>
-          </motion.div>
+            </article>
+          </div>
         </div>
       </RevealSection>
     </>

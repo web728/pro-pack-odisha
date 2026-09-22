@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
 import {
   ArrowUpRight,
   Layers3,
@@ -11,28 +10,10 @@ import {
   Settings2,
   Factory,
   MapPin,
-  ShieldCheck,
 } from "lucide-react";
-import { sectors, event } from "@/lib/site";
+import { sectors } from "@/lib/site";
 import { Button, Eyebrow, TextLink } from "@/components/shared/ui";
 import { OrganizerStrip } from "../shared/organizer-strip";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
-  },
-};
 
 const icons = [Layers3, Printer, Box, Settings2, Factory];
 
@@ -58,36 +39,20 @@ export function SupportedByStrip() {
   return (
     <section className="relative border-b border-[var(--border)] bg-gradient-to-b from-[#f8faf9] to-white py-10 sm:py-14">
       <div className="container mx-auto px-4 sm:px-6">
-        {/* Minimal Centered Anchor with Horizontal Accents */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          className="flex items-center justify-center gap-4 text-center"
-        >
+        <div className="flex items-center justify-center gap-4 text-center">
           <span className="h-px w-12 bg-slate-200 sm:w-20" aria-hidden="true" />
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 sm:text-xs">
             Supported by
           </p>
           <span className="h-px w-12 bg-slate-200 sm:w-20" aria-hidden="true" />
-        </motion.div>
+        </div>
 
-        {/* Clean Balanced Logo Display */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-8 sm:gap-16 lg:gap-24"
-        >
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-8 sm:gap-16 lg:gap-24">
           {supporters.map((item) => (
-            <motion.div
+            <div
               key={item.name}
-              variants={fadeUp}
               className="group flex flex-col items-center max-w-[260px] sm:max-w-[280px]"
             >
-              {/* Uniform Logo Container */}
               <div className="relative flex h-20 w-[220px] items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.03] sm:h-24 sm:w-[260px]">
                 <Image
                   src={item.logo}
@@ -99,68 +64,49 @@ export function SupportedByStrip() {
                 />
               </div>
 
-              {/* Clean Caption */}
               <span className="mt-3 text-center text-xs font-semibold tracking-tight text-slate-700 transition-colors group-hover:text-slate-950 sm:text-[13px]">
                 {item.name}
               </span>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
 /* =========================================================================
-   1. EVENT SNAPSHOT (Stats & Summary)
+   1. EVENT SNAPSHOT (Stats & Summary - OASME & PROPACK 2027 At A Glance)
    ========================================================================= */
 export function EventSnapshot() {
   return (
     <section className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
       <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
-        {/* Left Copy */}
-        <motion.div
-          className="lg:col-span-7"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-        >
-          <Eyebrow>The exhibition at a glance</Eyebrow>
+        <div className="lg:col-span-7">
+          <Eyebrow>PROPACK Odisha 2027 At A Glance</Eyebrow>
           <h2 className="my-4 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl">
-            One Expo. Endless Solutions.
+            Founded on 12th August 1985.
             <br />
             <span className="text-[#EB622F]">
-              Powering multiple industries. Driving the future.
+              Four decades as a common forum for MSMEs.
             </span>
           </h2>
           <p className="max-w-[56ch] text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
-            Eastern India's largest MSME exhibition brings technology providers,
-            manufacturers, and business buyers together at Janata Maidan,
-            Bhubaneswar. Explore machinery, sustainable materials, and
-            industrial solutions.
+            Founded on 12th August 1985, OASME has served for over four decades as a common forum for the cottage, handicraft, micro, small and medium enterprises of Odisha. PROPACK Odisha is OASME&apos;s flagship platform for the packaging, printing, plastics and processing value chain.
           </p>
-          <div className="mt-6">
-            <TextLink href="/about">About the expo</TextLink>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <TextLink href="/about">About OASME & Expo</TextLink>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Right Stats Grid */}
-        <motion.dl
-          className="grid grid-cols-3 gap-4 border-t border-[var(--border)] pt-8 sm:gap-6 lg:col-span-5 lg:border-t-0 lg:pt-0"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-        >
+        <dl className="grid grid-cols-3 gap-4 border-t border-[var(--border)] pt-8 sm:gap-6 lg:col-span-5 lg:border-t-0 lg:pt-0">
           {[
             ["150+", "Exhibiting companies"],
-            ["04", "Exhibition days"],
-            ["10k+", "Trade visitors"],
+            ["04", "Exhibition days (25-28 Feb 2027)"],
+            ["10k+", "Trade visitors & buyers"],
           ].map(([value, label]) => (
-            <motion.div
+            <div
               key={label}
-              variants={fadeUp}
               className="border-t-2 border-[#15A7AE] pt-4"
             >
               <dt className="font-[family-name:var(--font-heading)] text-3xl font-extrabold text-[#1F3864] sm:text-4xl lg:text-5xl">
@@ -169,9 +115,9 @@ export function EventSnapshot() {
               <dd className="mt-2 text-xs font-medium text-[var(--muted,#6b7280)] sm:text-sm">
                 {label}
               </dd>
-            </motion.div>
+            </div>
           ))}
-        </motion.dl>
+        </dl>
       </div>
     </section>
   );
@@ -186,7 +132,6 @@ export function SectorPreview() {
       id="industries"
       className="relative overflow-hidden border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24"
     >
-      {/* Background PNG Image on Right Top Corner */}
       <div
         className="pointer-events-none absolute right-0 top-0 z-0 overflow-hidden"
         aria-hidden="true"
@@ -200,13 +145,10 @@ export function SectorPreview() {
             priority
           />
         </div>
-
-        {/* Ambient Warm Corner Light */}
         <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[#EB622F]/[0.04] blur-3xl" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
-        {/* Header Strip */}
         <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <Eyebrow>Explore the sectors</Eyebrow>
@@ -217,18 +159,11 @@ export function SectorPreview() {
           <TextLink href="/sectors">All sector information</TextLink>
         </div>
 
-        {/* 5-Column Responsive Grid */}
-        <motion.div
-          className="grid grid-cols-1 divide-y divide-[var(--border)] overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-sm sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-5"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-        >
+        <div className="grid grid-cols-1 divide-y divide-[var(--border)] overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-sm sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-5">
           {sectors.map((sector, i) => {
             const Icon = icons[i] || Layers3;
             return (
-              <motion.div key={sector.name} variants={fadeUp}>
+              <div key={sector.name}>
                 <Link
                   href={`/sectors#sector-${i}`}
                   className="group relative flex h-full flex-col justify-between p-6 transition-all duration-300 hover:bg-[#fafaf9] lg:p-7"
@@ -260,10 +195,10 @@ export function SectorPreview() {
                     />
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -297,15 +232,10 @@ export function ParticipationPreview() {
   return (
     <section className="relative overflow-hidden border-b border-[var(--border)] bg-white py-12 lg:py-16">
       <div className="container relative z-10 mx-auto grid grid-cols-1 gap-6 px-4 sm:px-6 md:grid-cols-2 lg:gap-8">
-        {cards.map((card, index) => (
-          <motion.article
+        {cards.map((card) => (
+          <article
             key={card.label}
             className={`flex flex-col justify-between rounded-2xl border p-8 transition-shadow duration-300 hover:shadow-lg sm:p-10 ${card.bgClass}`}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: index * 0.1 }}
           >
             <div>
               <span
@@ -323,7 +253,7 @@ export function ParticipationPreview() {
             <div className="mt-8">
               <TextLink href={card.href}>{card.cta}</TextLink>
             </div>
-          </motion.article>
+          </article>
         ))}
       </div>
     </section>
@@ -331,21 +261,14 @@ export function ParticipationPreview() {
 }
 
 /* =========================================================================
-   4. TECHNOLOGY PREVIEW (Split Feature Banner)
+   4. TECHNOLOGY PREVIEW (Split Feature Banner - Odisha Growth Engine)
    ========================================================================= */
 export function TechnologyPreview() {
   return (
     <section className="border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 items-stretch gap-10 overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm lg:grid-cols-12">
-          {/* Image Side */}
-          <motion.div
-            className="relative min-h-[300px] w-full sm:min-h-[380px] lg:col-span-5 lg:min-h-full"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <div className="relative min-h-[300px] w-full sm:min-h-[380px] lg:col-span-5 lg:min-h-full">
             <Image
               src="/assets/packaging.webp"
               alt="Paper, board and container packaging materials"
@@ -354,33 +277,23 @@ export function TechnologyPreview() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent lg:hidden" />
-          </motion.div>
+          </div>
 
-          {/* Copy Side */}
-          <motion.div
-            className="flex flex-col justify-center p-8 sm:p-10 lg:col-span-7 lg:p-14"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <Eyebrow>Technology in context</Eyebrow>
+          <div className="flex flex-col justify-center p-8 sm:p-10 lg:col-span-7 lg:p-14">
+            <Eyebrow>Odisha: The Growth Engine of Eastern India</Eyebrow>
             <h2 className="my-3 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[#1F3864] sm:text-3xl lg:text-4xl">
-              Materials. Machines.
-              <br />
-              <span className="text-[#EB622F]">Sustainable solutions.</span>
+              Packaging is no longer a downstream cost line —
+              <span className="text-[#EB622F]"> it is a growth industry.</span>
             </h2>
             <p className="mb-6 max-w-[52ch] text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-base">
-              Explore the links between packaging, printing, plastics
-              processing, and converting. Discover energy-efficient
-              technologies, mono-material formats, and EPR compliance solutions.
+              India&apos;s packaging market is estimated at over USD 100 billion and projected to grow at a double-digit compound rate through 2030, anchored by Vision 2036 and Viksit Odisha 2047.
             </p>
             <div>
               <TextLink href="/sectors">
-                Explore the technology sectors
+                Explore the technology sectors & plastics advantage
               </TextLink>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
@@ -393,13 +306,7 @@ export function TechnologyPreview() {
 export function VenuePreview() {
   return (
     <section className="border-b border-[var(--border)] bg-white py-12 lg:py-16">
-      <motion.div
-        className="container mx-auto flex flex-col items-start justify-between gap-6 px-4 sm:px-6 md:flex-row md:items-center"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
+      <div className="container mx-auto flex flex-col items-start justify-between gap-6 px-4 sm:px-6 md:flex-row md:items-center">
         <div className="flex items-start gap-4 sm:gap-5">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#15A7AE]/10 text-[#15A7AE]">
             <MapPin size={26} />
@@ -421,7 +328,7 @@ export function VenuePreview() {
             Plan your journey
           </Button>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

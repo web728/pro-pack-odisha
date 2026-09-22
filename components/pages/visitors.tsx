@@ -1,13 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
 import {
   Compass,
   MapPin,
   Calendar,
   ArrowUpRight,
-  Sparkles,
   Ticket,
   Map,
 } from "lucide-react";
@@ -16,15 +14,6 @@ import { Button, TextLink, Eyebrow } from "@/components/shared/ui";
 import { visitorProfiles } from "@/lib/content";
 import { Profiles } from "./profiles";
 import { RevealSection } from "@/components/shared/motion";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 22 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-  },
-};
 
 export function VisitorsContent() {
   const visitSteps = [
@@ -51,13 +40,7 @@ export function VisitorsContent() {
       <RevealSection className="border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
         <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
           {/* Left: Main Copy & Actions */}
-          <motion.div
-            className="flex flex-col justify-center lg:col-span-7"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
+          <div className="flex flex-col justify-center lg:col-span-7">
             <div className="flex items-center gap-2">
               <Eyebrow>Why Visit</Eyebrow>
             </div>
@@ -93,16 +76,10 @@ export function VisitorsContent() {
                 <span>View registered pass</span>
               </Link>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right: Step-by-Step Preparation Checklist Card */}
-          <motion.div
-            className="lg:col-span-5"
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
+          <div className="lg:col-span-5">
             <div className="rounded-2xl border border-[var(--border)] bg-white p-6 shadow-xs transition-all duration-300 hover:shadow-md sm:p-8">
               <div className="flex items-center gap-2">
                 <Compass size={18} className="text-[#15A7AE]" />
@@ -148,17 +125,77 @@ export function VisitorsContent() {
                 </TextLink>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </RevealSection>
 
-      {/* 2. WHO YOU'LL CONNECT WITH (Profiles directory) */}
-      <Profiles title="Visitor profile" items={visitorProfiles} />
+      {/* 2. VISITOR PROFILE SECTION (Exact Content Grid) */}
+      <RevealSection className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex flex-col justify-between gap-4 border-b border-[var(--border)] pb-8 md:flex-row md:items-end">
+            <div>
+              <div className="flex items-center gap-2">
+                <Eyebrow>Visitor Profile</Eyebrow>
+              </div>
+
+              <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[#1F3864] sm:text-4xl">
+                Indicative and not restrictive
+              </h2>
+            </div>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              "Packaging materials manufacturers",
+              "Plastic processors and moulders",
+              "Woven sack and FIBC manufacturers",
+              "Plastics recyclers and reprocessors",
+              "Corrugated box manufacturers",
+              "Printers and converters",
+              "Food processing units",
+              "Agro industries",
+              "Dairy product manufacturers",
+              "Fish, seafood and meat processors",
+              "Frozen, preserved and dehydrated food manufacturers",
+              "Snack and confectionery manufacturers",
+              "Beverage, brewing, canning and bottling units",
+              "Pharmaceutical producers",
+              "Cosmetics and personal care manufacturers",
+              "Chemical product manufacturers",
+              "FMCG and consumer goods manufacturers",
+              "Electronics manufacturers",
+              "Industrial product manufacturers",
+              "Contract packagers and retail packagers",
+              "E-commerce and quickcommerce fulfilment operators",
+              "Food exporters, retailers, distributors and wholesalers",
+              "Machinery importers, dealers and distributors",
+              "Cold chain and refrigeration operators",
+              "Water treatment and environmental engineers",
+              "Consultants, food scientists and technologists",
+              "Government departments, PSUs, academia and R&D institutions",
+            ].map((item, i) => (
+              <div
+                id={`visitor-item-${i}`}
+                key={item}
+                className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[#f7f8f7] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#EB622F] hover:bg-white hover:shadow-lg sm:p-8"
+              >
+                <div>
+              
+
+                  <h3 className="mt-5 font-[family-name:var(--font-heading)] text-lg font-bold tracking-tight text-[#1F3864] transition-colors group-hover:text-[#EB622F]">
+                    {item}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </RevealSection>
 
       {/* 3. PLAN YOUR VISIT: Venue Logistics & Maps */}
       <RevealSection
         id="plan-your-visit"
-        className="border-b border-[var(--border)] bg-white py-16 lg:py-24"
+        className="border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24"
       >
         <div className="container mx-auto grid grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-14">
           {/* Left: Venue & Dates Logistics */}
@@ -173,7 +210,7 @@ export function VisitorsContent() {
 
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {/* Location Badge */}
-              <div className="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[#f7f8f7] p-4">
+              <div className="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-white p-4">
                 <MapPin size={20} className="mt-0.5 shrink-0 text-[#15A7AE]" />
                 <div>
                   <strong className="block text-sm font-bold text-[#1F3864]">
@@ -186,7 +223,7 @@ export function VisitorsContent() {
               </div>
 
               {/* Dates Badge */}
-              <div className="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[#f7f8f7] p-4">
+              <div className="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-white p-4">
                 <Calendar
                   size={20}
                   className="mt-0.5 shrink-0 text-[#15A7AE]"
@@ -210,9 +247,9 @@ export function VisitorsContent() {
 
           {/* Right: Google Maps Navigation Action Box */}
           <div className="lg:col-span-5">
-            <div className="flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[#f7f8f7] p-6 shadow-xs transition-all hover:border-[#EB622F]/50 sm:p-8">
+            <div className="flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-white p-6 shadow-xs transition-all hover:border-[#EB622F]/50 sm:p-8">
               <div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white border border-[var(--border)] text-[#15A7AE] shadow-2xs">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#f7f8f7] border border-[var(--border)] text-[#15A7AE] shadow-2xs">
                   <Map size={22} />
                 </div>
 
