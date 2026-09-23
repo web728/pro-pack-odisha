@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,6 +19,20 @@ import { RevealSection } from "@/components/shared/motion";
 
 export function SectorsContent() {
   const [activeTab, setActiveTab] = useState(0);
+
+  // URL hash check karega aur page ko top par scroll karke sahi tab select karega
+  useEffect(() => {
+    window.scrollTo(0, 0); // Turant top par le aayega
+
+    const hash = window.location.hash;
+    if (hash && hash.startsWith("#sector-")) {
+      const index = parseInt(hash.replace("#sector-", ""), 10);
+      if (!isNaN(index) && index >= 0 && index < sectors.length) {
+        setActiveTab(index);
+      }
+    }
+  }, []);
+
   const currentSector = sectors[activeTab];
 
   return (
@@ -51,7 +65,11 @@ export function SectorsContent() {
               return (
                 <button
                   key={s.name}
-                  onClick={() => setActiveTab(i)}
+                  onClick={() => {
+                    setActiveTab(i);
+                    // URL hash bhi update kar do bina page reload ke
+                    window.history.pushState(null, "", `#sector-${i}`);
+                  }}
                   className={`group relative flex flex-1 shrink-0 items-center justify-between rounded-xl border p-3.5 text-left transition-all duration-200 sm:p-4 lg:w-full ${
                     isActive
                       ? "border-[#EB622F] bg-white shadow-sm ring-1 ring-[#EB622F]/20"

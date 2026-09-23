@@ -83,7 +83,7 @@ export function EventSnapshot() {
     <section className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
       <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
-          <Eyebrow>PROPACK Odisha 2027 At A Glance</Eyebrow>
+          <Eyebrow>About the Organizers</Eyebrow>
           <h2 className="my-4 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl">
             Founded on 12th August 1985.
             <br />
@@ -92,7 +92,7 @@ export function EventSnapshot() {
             </span>
           </h2>
           <p className="max-w-[56ch] text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
-            Founded on 12th August 1985, OASME has served for over four decades as a common forum for the cottage, handicraft, micro, small and medium enterprises of Odisha. PROPACK Odisha is OASME&apos;s flagship platform for the packaging, printing, plastics and processing value chain.
+            Founded on 12th August 1985, OASME has served for over four decades as a common forum for the cottage, handicraft, micro, small and medium enterprises of Odisha. PROPACK Odisha is OASME&apos;s flagship platform for the packaging, printing, plastics, paper, green energy and processing value chain.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
             <TextLink href="/about">About OASME & Expo</TextLink>
@@ -122,9 +122,8 @@ export function EventSnapshot() {
     </section>
   );
 }
-
 /* =========================================================================
-   2. SECTOR PREVIEW (5 Industry Blocks)
+   2. SECTOR PREVIEW (6 Industry Blocks - 3x2 Grid Layout)
    ========================================================================= */
 export function SectorPreview() {
   return (
@@ -159,13 +158,26 @@ export function SectorPreview() {
           <TextLink href="/sectors">All sector information</TextLink>
         </div>
 
-        <div className="grid grid-cols-1 divide-y divide-[var(--border)] overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-sm sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {sectors.map((sector, i) => {
             const Icon = icons[i] || Layers3;
             return (
-              <div key={sector.name}>
+              <div key={sector.name} className="overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-sm">
                 <Link
                   href={`/sectors#sector-${i}`}
+                  scroll={false} // Next.js ke auto-scroll bug ko rokne ke liye
+                  onClick={(e) => {
+                    // Agar user pehle se /sectors page par nahi hai toh router navigate karega,
+                    // agar wahan hai toh smooth scroll trigger hoga.
+                    if (window.location.pathname === "/sectors") {
+                      e.preventDefault();
+                      const element = document.getElementById(`sector-${i}`);
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth", block: "start" });
+                        window.history.pushState(null, "", `#sector-${i}`);
+                      }
+                    }
+                  }}
                   className="group relative flex h-full flex-col justify-between p-6 transition-all duration-300 hover:bg-[#fafaf9] lg:p-7"
                 >
                   <div>

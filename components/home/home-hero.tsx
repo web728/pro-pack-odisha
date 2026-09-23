@@ -67,7 +67,7 @@ export function HomeHero() {
             One Expo. Endless Solutions.
             <br />
             <span className="text-[#EB622F]">
-              Packaging • Printing • Plastics • Processing • Green Energy
+              Packaging • Printing • Plastics • Processing • Paper • Green Energy
             </span>
           </motion.h1>
 

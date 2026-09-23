@@ -12,11 +12,11 @@ export const siteUrl = process.env.SITE_URL || "https://www.propackodisha.com";
 export const seoUrl = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.propackodisha.com"
 ).replace(/\/$/, "");
+
 export const sectors = [
   {
     name: "Plastic Industry",
-    detail:
-      "Raw materials, processing machinery, moulding and polymer solutions.",
+    detail: "Raw materials, processing machinery, moulding and polymer solutions.",
     image: "plastics.webp",
   },
   {
@@ -26,9 +26,13 @@ export const sectors = [
   },
   {
     name: "Packaging Industry",
-    detail:
-      "Packaging machinery, materials and complete end-of-line solutions.",
+    detail: "Packaging machinery, materials and complete end-of-line solutions.",
     image: "packaging.webp",
+  },
+  {
+    name: "Paper Industry",
+    detail: "Pulp manufacturing, paper production, converting and finishing lines.",
+    image: "paper.webp",
   },
   {
     name: "Processing Industry",
@@ -41,6 +45,9 @@ export const sectors = [
     image: "engineering.webp",
   },
 ];
+
+
+
 export const services = [
   {
     slug: "power-requirement",
