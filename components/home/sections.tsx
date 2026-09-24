@@ -75,6 +75,22 @@ export function SupportedByStrip() {
   );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================================================================
    1. EVENT SNAPSHOT (Stats & Summary - OASME & PROPACK 2027 At A Glance)
    ========================================================================= */
@@ -82,46 +98,104 @@ export function EventSnapshot() {
   return (
     <section className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
       <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
+        
+        {/* Content */}
         <div className="lg:col-span-7">
-          <Eyebrow>About the Organizers</Eyebrow>
-          <h2 className="my-4 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl">
-            Founded on 12th August 1985.
-            <br />
-            <span className="text-[#EB622F]">
-              Four decades as a common forum for MSMEs.
-            </span>
+          <div className="mb-2">
+            <Eyebrow>About PROPACK Odisha 2027</Eyebrow>
+          </div>
+
+          <h2 className="max-w-3xl font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl lg:leading-[1.15]">
+            Where Industry, Innovation{' '}
+            <br className="hidden sm:block" />
+            <span className="text-[#EB622F]">&amp; Business Come Together.</span>
           </h2>
-          <p className="max-w-[56ch] text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
-            Founded on 12th August 1985, OASME has served for over four decades as a common forum for the cottage, handicraft, micro, small and medium enterprises of Odisha. PROPACK Odisha is OASME&apos;s flagship platform for the packaging, printing, plastics, paper, green energy and processing value chain.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-4">
-            <TextLink href="/about">About OASME & Expo</TextLink>
+
+          <div className="mt-6 max-w-[65ch] space-y-4 text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg sm:leading-8">
+            <p>
+              PROPACK Odisha 2027 is the flagship platform of the{' '}
+              <strong className="font-semibold text-[#1F3864]">
+                Odisha Assembly of Small and Medium Enterprises (OASME)
+              </strong>
+              , bringing together the packaging, printing, paper, plastics,
+              processing &amp; green energy value chain.
+            </p>
+
+            <p>
+              The 4th edition will take place from{' '}
+              <strong className="font-semibold text-[#1F3864]">
+                25–28 February 2027
+              </strong>{' '}
+              at{' '}
+              <strong className="font-semibold text-[#1F3864]">
+                Janata Maidan, Bhubaneswar
+              </strong>
+              , bringing together machinery manufacturers, technology providers,
+              material suppliers, processors, converters, buyers and decision-makers
+              from Odisha, Eastern India and beyond.
+            </p>
+
+            <p>
+              The exhibition combines a{' '}
+              <strong className="font-semibold text-[#1F3864]">
+                B2B trade exhibition, four-day conference programme
+              </strong>{' '}
+              and structured buyer–seller meets, creating opportunities for business
+              development, technology discovery and industry networking.
+            </p>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <TextLink href="/about">About OASME &amp; Expo</TextLink>
           </div>
         </div>
 
-        <dl className="grid grid-cols-3 gap-4 border-t border-[var(--border)] pt-8 sm:gap-6 lg:col-span-5 lg:border-t-0 lg:pt-0">
+        {/* Stats */}
+        <dl className="grid grid-cols-1 gap-6 border-t border-[var(--border)] pt-8 sm:grid-cols-3 lg:col-span-5 lg:border-t-0 lg:pt-0">
           {[
             ["150+", "Exhibiting companies"],
-            ["04", "Exhibition days (25-28 Feb 2027)"],
+            ["04", "Exhibition days"],
             ["10k+", "Trade visitors & buyers"],
           ].map(([value, label]) => (
             <div
               key={label}
-              className="border-t-2 border-[#15A7AE] pt-4"
+              className="border-t-2 border-[#15A7AE] pt-4 transition-all duration-300 hover:-translate-y-1"
             >
-              <dt className="font-[family-name:var(--font-heading)] text-3xl font-extrabold text-[#1F3864] sm:text-4xl lg:text-5xl">
+              <dt className="font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl">
                 {value}
               </dt>
-              <dd className="mt-2 text-xs font-medium text-[var(--muted,#6b7280)] sm:text-sm">
+
+              <dd className="mt-3 max-w-[16ch] text-sm font-medium leading-5 text-[var(--muted,#6b7280)]">
                 {label}
               </dd>
             </div>
           ))}
         </dl>
+
       </div>
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* =========================================================================
    2. SECTOR PREVIEW (6 Industry Blocks - 3x2 Grid Layout)
    ========================================================================= */
