@@ -125,7 +125,6 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col bg-[#f7f8f7] font-sans text-[#1F3864] selection:bg-[#EB622F] selection:text-white">
-      
         <Header />
         <main id="main" className="flex-1">
           {children}
