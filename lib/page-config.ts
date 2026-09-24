@@ -3,7 +3,7 @@ import { forms } from "@/lib/forms";
 export const contentPages = {
   sectors: {
     label: "Exhibition sectors",
-    title: "Five sectors. One connected industry.",
+    title: "Six sectors. One connected industry.",
     description:
       "Explore packaging, printing, plastics, food processing and engineering technologies at Propack Odisha International Expo.",
   },
@@ -27,7 +27,7 @@ export const contentPages = {
   },
   visitors: {
     label: "Visitors",
-    title: "Discover solutions. Meet your next partner.",
+    title: "Discover solutions. Meet your business partner.",
     description:
       "Explore the products, technologies and people shaping the future of packaging, printing and allied industries.",
   },

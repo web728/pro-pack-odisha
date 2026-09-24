@@ -39,7 +39,8 @@ const address = [
 const sectors = [
   "Plastic & polymers",
   "Printing & converting",
-  "Packaging",
+  "Papaer industry",
+  "Packaging industry",
   "Food processing",
   "Engineering",
   "Other",

@@ -5,7 +5,7 @@ export const questions = [
   ],
   [
     "Which industries does the exhibition cover?",
-    "Explore packaging machinery and materials, printing and converting, plastics and polymers, food processing, and engineering. Exhibitor profiles include labelling, coding, moulding, automation and material handling.",
+    "The exhibition covers packaging, printing, paper, plastics, processing, and green energy, along with related machinery, materials, technologies and enabling services.",
   ],
   [
     "Who should visit?",
@@ -17,7 +17,7 @@ export const questions = [
   ],
   [
     "Is visitor entry free?",
-    "Current admission arrangements have not yet been published. Submit your visitor registration and contact OASME to confirm entry requirements. Registration does not itself guarantee admission.",
+    "Yes. Entry is free for registered trade visitors. All seminar sessions are open to delegates at no charge.",
   ],
   [
     "Who organizes the expo?",

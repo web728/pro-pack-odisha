@@ -18,11 +18,12 @@ import {
   Users2,
   TrendingUp,
   Building2,
-  HelpCircle,
   Sparkles,
   CalendarDays,
-  DownloadCloud,
   FileCheck2,
+  Newspaper,
+  BadgeCheck,
+  Compass,
 } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
@@ -73,16 +74,16 @@ const navGroups: NavGroup[] = [
         icon: TrendingUp,
       },
       {
+        title: "Exhibitor Profile",
+        href: "/exhibitor-profile",
+        desc: "Indicative machinery & sector categories",
+        icon: BadgeCheck,
+      },
+      {
         title: "Book a Stall",
         href: "/exhibitor-registration",
         desc: "Reserve booth space & utilities",
         icon: Store,
-      },
-      {
-        title: "Event Brochure",
-        href: "/brochure",
-        desc: "Floor plans & official prospectus",
-        icon: FileText,
       },
     ],
   },
@@ -96,16 +97,16 @@ const navGroups: NavGroup[] = [
         icon: Users2,
       },
       {
+        title: "Visitor Profile",
+        href: "/visitor-profile",
+        desc: "Invited trade categories & sectors",
+        icon: Compass,
+      },
+      {
         title: "Register as Visitor",
         href: "/visitor-registration",
         desc: "Free digital delegate entry",
         icon: Ticket,
-      },
-      {
-        title: "Visitor FAQs",
-        href: "/visitors#faqs",
-        desc: "Entry, badges & visiting queries",
-        icon: HelpCircle,
       },
     ],
   },
@@ -121,25 +122,30 @@ const navGroups: NavGroup[] = [
     ],
   },
   {
+    label: "Media",
+    items: [
+      {
+        title: "News",
+        href: "/news",
+        desc: "Latest updates, announcements & event news",
+        icon: Newspaper,
+      },
+      {
+        title: "Gallery",
+        href: "/gallery",
+        desc: "Event Photos & Videos Collection",
+        icon: FileCheck2,
+      },
+    ],
+  }, 
+  {
     label: "Downloads",
     items: [
       {
-        title: "Downloads & Collaterals",
-        href: "/resources",
-        desc: "Forms, official logos & collateral kits",
-        icon: DownloadCloud,
-      },
-      {
         title: "Event Brochure",
         href: "/brochure",
-        desc: "Official floor plan PDF",
+        desc: "Floor plans & official prospectus",
         icon: FileText,
-      },
-      {
-        title: "Rules & Guidelines",
-        href: "/resources#guidelines",
-        desc: "Stall fabrication & electrical safety",
-        icon: FileCheck2,
       },
     ],
   },

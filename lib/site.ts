@@ -41,7 +41,7 @@ export const sectors = [
   },
   {
     name: "Green Energy",
-    detail: "Automation, material handling and manufacturing equipment.",
+    detail: "Energy-efficiency, solar and utility solutions.",
     image: "engineering.webp",
   },
 ];
