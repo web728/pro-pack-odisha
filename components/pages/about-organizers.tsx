@@ -195,7 +195,7 @@ export function OrganizersContent() {
                 </a>
 
                 <a
-                  href="mailto:adventures.bbsr@gmail.com"
+                  href="mailto:  oasme.odisha@gmail.com"
                   className="group flex items-center gap-3 rounded-lg border border-transparent p-2 transition-all hover:border-[var(--border)] hover:bg-[#f7f8f7]"
                 >
                   <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] group-hover:bg-[#EB622F] group-hover:text-white transition-colors">
@@ -206,7 +206,7 @@ export function OrganizersContent() {
                       Event Support
                     </span>
                     <strong className="text-sm font-semibold text-[#1F3864]">
-                      adventures.bbsr@gmail.com
+                      oasme.odisha@gmail.com
                     </strong>
                   </div>
                 </a>

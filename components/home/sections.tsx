@@ -75,22 +75,6 @@ export function SupportedByStrip() {
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =========================================================================
    1. EVENT SNAPSHOT (Stats & Summary - OASME & PROPACK 2027 At A Glance)
    ========================================================================= */
@@ -177,78 +161,73 @@ export function EventSnapshot() {
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =========================================================================
    2. SECTOR PREVIEW (6 Industry Blocks - 3x2 Grid Layout)
    ========================================================================= */
+
 export function SectorPreview() {
   return (
     <section
       id="industries"
       className="relative overflow-hidden border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24"
     >
-      <div
-        className="pointer-events-none absolute right-0 top-0 z-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        <div className="relative h-[220px] w-[220px] sm:h-[280px] sm:w-[280px] lg:h-[340px] lg:w-[340px] opacity-85">
-          <Image
-            src="/assets/svg.png"
-            alt=""
-            fill
-            className="object-contain object-top-right"
-            priority
-          />
-        </div>
-        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[#EB622F]/[0.04] blur-3xl" />
+      {/* Decorative Technology Background */}
+      <div className="pointer-events-none absolute bottom-[-50] left-0 z-0 w-[380px] opacity-[0.52] sm:w-[480px] lg:w-[560px]">
+        <Image
+          src="/sections/technology.png"
+          alt=""
+          width={800}
+          height={800}
+          aria-hidden="true"
+          className="h-auto w-full object-contain"
+        />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
+
         <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <Eyebrow>Explore the sectors</Eyebrow>
+
             <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[#1F3864] sm:text-4xl">
               From raw material to finished product.
             </h2>
           </div>
-          <TextLink href="/sectors">All sector information</TextLink>
+
+          <TextLink href="/sectors">
+            All sector information
+          </TextLink>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {sectors.map((sector, i) => {
             const Icon = icons[i] || Layers3;
+
             return (
-              <div key={sector.name} className="overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-sm">
+              <div
+                key={sector.name}
+                className="overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-sm"
+              >
                 <Link
                   href={`/sectors#sector-${i}`}
-                  scroll={false} // Next.js ke auto-scroll bug ko rokne ke liye
+                  scroll={false}
                   onClick={(e) => {
-                    // Agar user pehle se /sectors page par nahi hai toh router navigate karega,
-                    // agar wahan hai toh smooth scroll trigger hoga.
                     if (window.location.pathname === "/sectors") {
                       e.preventDefault();
+
                       const element = document.getElementById(`sector-${i}`);
+
                       if (element) {
-                        element.scrollIntoView({ behavior: "smooth", block: "start" });
-                        window.history.pushState(null, "", `#sector-${i}`);
+                        element.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        });
+
+                        window.history.pushState(
+                          null,
+                          "",
+                          `#sector-${i}`
+                        );
                       }
                     }
                   }}
@@ -259,12 +238,13 @@ export function SectorPreview() {
                       <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] transition-transform duration-300 group-hover:scale-110">
                         <Icon size={22} strokeWidth={1.75} />
                       </span>
+
                       <span className="font-mono text-xs font-semibold tracking-wider text-[var(--muted,#6b7280)]">
                         0{i + 1}
                       </span>
                     </div>
 
-                    <h3 className="mt-6 font-[family-name:var(--font-heading)] text-lg font-bold text-[#1F3864] group-hover:text-[#EB622F] transition-colors">
+                    <h3 className="mt-6 font-[family-name:var(--font-heading)] text-lg font-bold text-[#1F3864] transition-colors group-hover:text-[#EB622F]">
                       {sector.name}
                     </h3>
 
@@ -275,6 +255,7 @@ export function SectorPreview() {
 
                   <div className="mt-6 flex items-center gap-1 text-xs font-semibold text-[#EB622F]">
                     <span>Explore</span>
+
                     <ArrowUpRight
                       size={16}
                       className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -347,7 +328,81 @@ export function ParticipationPreview() {
 }
 
 /* =========================================================================
-   4. TECHNOLOGY PREVIEW (Split Feature Banner - Odisha Growth Engine)
+   4. SHE BUILDS PREVIEW (She'Builds Odisha - A Day for Women in Enterprise)
+   ========================================================================= */
+export function SheBuildsPreview() {
+  return (
+    <section className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 items-stretch gap-10 overflow-hidden rounded-2xl border border-[var(--border)] bg-[#f8faf9] shadow-sm lg:grid-cols-12">
+          
+        
+
+          {/* left Content */}
+    
+          <div className="flex flex-col justify-center p-8 sm:p-10 lg:col-span-7 lg:p-14">
+            <Eyebrow>She&apos;BUILDS Odisha</Eyebrow>
+            <h2 className="my-3 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[#1F3864] sm:text-3xl lg:text-4xl">
+              A Day for Women in Enterprise
+            </h2>
+            
+            <p className="mb-4 text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-base">
+              One full day of PROPACK Odisha 2027 is dedicated to women entrepreneurs, in alignment with the State&apos;s women-led development agenda.
+            </p>
+
+            <ul className="mb-6 space-y-3 text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-base">
+              <li className="flex items-start gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#EB622F]" />
+                <span>
+                  <strong className="font-semibold text-[#1F3864]">The Women Entrepreneurship Platform (WEP) Odisha Chapter</strong> provides mentoring, market linkage and financing support to women-led enterprises.
+                </span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#EB622F]" />
+                <span>
+                  <strong className="font-semibold text-[#1F3864]">Subhadra Yojana and the Lakhpati Didi mission</strong> have brought lakhs of rural women into enterprise and self-employment across Odisha.
+                </span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#EB622F]" />
+                <span>
+                  Women already account for <strong className="font-semibold text-[#1F3864]">over 42% of PMEGP beneficiaries</strong> in the State.
+                </span>
+              </li>
+            </ul>
+
+            <p className="mb-8 text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-base">
+              The SheBuilds Odisha day will feature women industry leaders, financing institutions, skill partners and a curated buyer–seller session for women-owned enterprises.
+            </p>
+
+            <div>
+              <Button href="/she-builds">
+                Explore She&apos;Builds Odisha
+              </Button>
+            </div>
+          </div>
+       
+
+
+            {/* right Image */}
+          <div className="relative min-h-[300px] w-full sm:min-h-[380px] lg:col-span-5 lg:min-h-full">
+            <Image
+              src="/sections/she.png"
+              alt="Women in Enterprise at She'Builds Odisha"
+              fill
+              sizes="(max-width:800px) 100vw, 42vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent lg:hidden" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =========================================================================
+   5. TECHNOLOGY PREVIEW (Split Feature Banner - Odisha Growth Engine)
    ========================================================================= */
 export function TechnologyPreview() {
   return (
@@ -387,7 +442,7 @@ export function TechnologyPreview() {
 }
 
 /* =========================================================================
-   5. VENUE PREVIEW (Janata Maidan Callout)
+   6. VENUE PREVIEW (Janata Maidan Callout)
    ========================================================================= */
 export function VenuePreview() {
   return (
@@ -420,7 +475,7 @@ export function VenuePreview() {
 }
 
 /* =========================================================================
-   6. ORGANIZER STRIP (OASME Trust Bar)
+   7. ORGANIZER STRIP (OASME Trust Bar)
    ========================================================================= */
 export function OrganizerSection() {
   return <OrganizerStrip />;

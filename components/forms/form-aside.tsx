@@ -104,13 +104,7 @@ export function FormAside({ slug }: { slug: string }) {
             <span>oasme.odisha@gmail.com</span>
           </a>
 
-          <a
-            href="mailto:adventures.bbsr@gmail.com"
-            className="flex items-center gap-2.5 text-xs font-medium text-[var(--muted-foreground,#4b5563)] hover:text-[#EB622F] transition-colors sm:text-sm"
-          >
-            <Mail size={14} className="text-[#15A7AE] shrink-0" />
-            <span>adventures.bbsr@gmail.com</span>
-          </a>
+         
         </div>
       </div>
 

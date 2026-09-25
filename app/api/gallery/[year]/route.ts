@@ -5,9 +5,9 @@ import path from 'path';
 
 export async function GET(
   request: Request,
-  { params }: { params: { year: string } }
+  { params }: { params: Promise<{ year: string }> }
 ) {
-  const year = params.year;
+  const { year } = await params;
   const dirPath = path.join(process.cwd(), 'public', 'news', year);
 
   try {

@@ -6,6 +6,7 @@ import {
   TechnologyPreview,
   VenuePreview,
   SupportedByStrip,
+  SheBuildsPreview,
 } from "@/components/home/sections";
 import { OrganizerStrip } from "@/components/shared/organizer-strip";
 import { CTA } from "@/components/shared/ui";
@@ -48,6 +49,7 @@ export default function Home() {
       <EventSnapshot />
       <SectorPreview />
       <ParticipationPreview />
+      <SheBuildsPreview/>
       <TechnologyPreview />
       <OrganizerStrip />
       <VenuePreview />
