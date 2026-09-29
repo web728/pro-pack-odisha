@@ -165,6 +165,8 @@ export function EventSnapshot() {
    2. SECTOR PREVIEW (6 Industry Blocks - 3x2 Grid Layout)
    ========================================================================= */
 
+
+   
 export function SectorPreview() {
   return (
     <section
@@ -184,7 +186,6 @@ export function SectorPreview() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6">
-
         <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <Eyebrow>Explore the sectors</Eyebrow>
@@ -194,9 +195,7 @@ export function SectorPreview() {
             </h2>
           </div>
 
-          <TextLink href="/sectors">
-            All sector information
-          </TextLink>
+          <TextLink href="/sectors">All sector information</TextLink>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -206,7 +205,7 @@ export function SectorPreview() {
             return (
               <div
                 key={sector.name}
-                className="overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-sm"
+                className="group overflow-hidden rounded-xl border border-[var(--border)] bg-white shadow-sm transition-all duration-300 hover:shadow-lg"
               >
                 <Link
                   href={`/sectors#sector-${i}`}
@@ -214,52 +213,57 @@ export function SectorPreview() {
                   onClick={(e) => {
                     if (window.location.pathname === "/sectors") {
                       e.preventDefault();
-
                       const element = document.getElementById(`sector-${i}`);
-
                       if (element) {
                         element.scrollIntoView({
                           behavior: "smooth",
                           block: "start",
                         });
-
-                        window.history.pushState(
-                          null,
-                          "",
-                          `#sector-${i}`
-                        );
+                        window.history.pushState(null, "", `#sector-${i}`);
                       }
                     }
                   }}
-                  className="group relative flex h-full flex-col justify-between p-6 transition-all duration-300 hover:bg-[#fafaf9] lg:p-7"
+                  className="flex h-full flex-col justify-between"
                 >
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] transition-transform duration-300 group-hover:scale-110">
-                        <Icon size={22} strokeWidth={1.75} />
-                      </span>
-
-                      <span className="font-mono text-xs font-semibold tracking-wider text-[var(--muted,#6b7280)]">
-                        0{i + 1}
-                      </span>
-                    </div>
-
-                    <h3 className="mt-6 font-[family-name:var(--font-heading)] text-lg font-bold text-[#1F3864] transition-colors group-hover:text-[#EB622F]">
-                      {sector.name}
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)]">
-                      {sector.detail}
-                    </p>
+                  {/* Image Header Container - 100% Clear Image with Zoom on Hover */}
+                  <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+                    <Image
+                      src={`/sections/${sector.image}`}
+                      alt={sector.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
 
-                  <div className="mt-6 flex items-center gap-1 text-xs font-semibold text-[#EB622F]">
-                    <span>Explore</span>
+                  {/* Content Area - Solid White Background for Perfect Text Readability */}
+                  <div className="flex flex-grow flex-col justify-between p-6 bg-white lg:p-7">
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] transition-transform duration-300 group-hover:scale-110">
+                          <Icon size={22} strokeWidth={1.75} />
+                        </span>
 
-                    <ArrowUpRight
-                      size={16}
-                      className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
+                        <span className="font-mono text-xs font-semibold tracking-wider text-[var(--muted,#6b7280)]">
+                          0{i + 1}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-6 font-[family-name:var(--font-heading)] text-lg font-bold text-[#1F3864] transition-colors group-hover:text-[#EB622F]">
+                        {sector.name}
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)]">
+                        {sector.detail}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 flex items-center gap-1 text-xs font-semibold text-[#EB622F]">
+                      <span>Explore</span>
+                      <ArrowUpRight
+                        size={16}
+                        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </div>
                   </div>
                 </Link>
               </div>
@@ -270,6 +274,9 @@ export function SectorPreview() {
     </section>
   );
 }
+
+
+
 
 /* =========================================================================
    3. PARTICIPATION PREVIEW (Exhibitors vs Visitors)

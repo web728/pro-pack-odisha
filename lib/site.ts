@@ -13,36 +13,37 @@ export const seoUrl = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.propackodisha.com"
 ).replace(/\/$/, "");
 
+
 export const sectors = [
   {
     name: "Plastic Industry",
     detail: "Raw materials, processing machinery, moulding and polymer solutions.",
-    image: "plastics.webp",
+    image: "plastic.png",
   },
   {
     name: "Printing Industry",
     detail: "Printing presses, inks, labels, coding and marking technologies.",
-    image: "printing.webp",
+    image: "print.png",
   },
   {
     name: "Packaging Industry",
     detail: "Packaging machinery, materials and complete end-of-line solutions.",
-    image: "packaging.webp",
+    image: "packag.png",
   },
   {
     name: "Paper Industry",
     detail: "Pulp manufacturing, paper production, converting and finishing lines.",
-    image: "paper.webp",
+    image: "paper.png",
   },
   {
     name: "Processing Industry",
     detail: "Processing equipment, food safety, refrigeration and storage.",
-    image: "food.webp",
+    image: "process.png",
   },
   {
     name: "Green Energy",
     detail: "Energy-efficiency, solar and utility solutions.",
-    image: "engineering.webp",
+    image: "green-energy.png",
   },
 ];
 
