@@ -92,16 +92,16 @@ export function FormAside({ slug }: { slug: string }) {
       <div className="border-t border-[var(--border)] pt-5">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1F3864]">
           <Building2 size={15} className="text-[#15A7AE]" />
-          <span>OASME Contact Desk</span>
+          <span>Contact the Team</span>
         </div>
 
         <div className="mt-3 space-y-2">
           <a
-            href="mailto:oasme.odisha@gmail.com"
+            href="mailto:info@propackodisha.com"
             className="flex items-center gap-2.5 text-xs font-medium text-[var(--muted-foreground,#4b5563)] hover:text-[#EB622F] transition-colors sm:text-sm"
           >
             <Mail size={14} className="text-[#15A7AE] shrink-0" />
-            <span>oasme.odisha@gmail.com</span>
+            <span>info@propackodisha.com</span>
           </a>
 
          

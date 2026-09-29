@@ -178,13 +178,13 @@ export function Footer() {
               </a>
 
               <a
-                href="mailto:oasme.odisha@gmail.com"
+                href="mailto:info@propackodisha.com"
                 className="flex items-center gap-2.5 transition-colors hover:text-white"
               >
                 <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-800 text-[#EB622F]">
                   <Mail size={13} />
                 </span>
-                <span className="break-all">oasme.odisha@gmail.com</span>
+                <span className="break-all">info@propackodisha.com</span>
               </a>
 
               <div className="pt-2">
