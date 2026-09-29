@@ -49,10 +49,9 @@ export default function Home() {
       <EventSnapshot />
       <SectorPreview />
       <ParticipationPreview />
+      <OrganizerStrip />
       <SheBuildsPreview/>
       <TechnologyPreview />
-      <OrganizerStrip />
-      <VenuePreview />
       <CTA />
       <script
         type="application/ld+json"

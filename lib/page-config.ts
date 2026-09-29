@@ -17,7 +17,7 @@ export const contentPages = {
     label: "About the expo",
     title: "A platform for industry. A place for opportunity.",
     description:
-      "Propack Odisha brings printing, packaging, plastics and allied industries together to explore technology, exchange ideas and do business.",
+      "Propack Odisha brings printing, packaging, plastics, Processing, Paper, Green Energy and allied industries together to explore technology, exchange ideas and do business.",
   },
   exhibitors: {
     label: "Exhibitors",
