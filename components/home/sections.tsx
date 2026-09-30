@@ -25,14 +25,14 @@ export function SupportedByStrip() {
     {
       name: "MSME Department, Government of Odisha",
       logo: "/logo/support-1.png",
-    },
-    {
-      name: "Ministry of MSME, Government of India",
-      logo: "/logo/support-2.png",
-    },
+    },   
     {
       name: "Industrial Promotion & Investment Corporation of Odisha",
       logo: "/logo/ipcal.png",
+    },
+     {
+      name: "Ministry of MSME, Government of India",
+      logo: "/logo/support-2.png",
     },
   ];
 
@@ -53,16 +53,22 @@ export function SupportedByStrip() {
               key={item.name}
               className="group flex flex-col items-center max-w-[260px] sm:max-w-[280px]"
             >
-              <div className="relative flex h-20 w-[220px] items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.03] sm:h-24 sm:w-[260px]">
-                <Image
-                  src={item.logo}
-                  alt={item.name}
-                  fill
-                  sizes="(max-width: 768px) 220px, 260px"
-                  className="object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.03)]"
-                  priority
-                />
-              </div>
+             <div
+  className={`relative flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-[1.03] ${
+    item.name.includes("Industrial Promotion")
+      ? "h-16 w-[190px] sm:h-20 sm:w-[220px]"
+      : "h-20 w-[220px] sm:h-24 sm:w-[260px]"
+  }`}
+>
+  <Image
+    src={item.logo}
+    alt={item.name}
+    fill
+    sizes="(max-width: 768px) 220px, 260px"
+    className="object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.03)]"
+    priority
+  />
+</div>
 
               <span className="mt-3 text-center text-xs font-semibold tracking-tight text-slate-700 transition-colors group-hover:text-slate-950 sm:text-[13px]">
                 {item.name}
