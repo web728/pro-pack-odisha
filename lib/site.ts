@@ -1,53 +1,70 @@
 export const event = {
-  name: "Propack Odisha",
-  fullName: "Propack Odisha International Expo",
+  name: "PROPACK Odisha",
+  fullName: "PROPACK Odisha International Expo",
   date: "25–28 February 2027",
+  startDate: "2027-02-25",
+  endDate: "2027-02-28",
+  openingTime: "10:00",
+  closingTime: "18:00",
   venue: "Janata Maidan, Bhubaneswar, Odisha",
   phones: ["70083 41944", "77518 09433"],
   description:
-    "Connect with the plastic, printing, packaging, food processing and engineering industries at Propack Odisha, 25–28 February 2027 in Bhubaneswar.",
+    "Connect with the plastic, printing, packaging, food processing and engineering industries at PROPACK Odisha, 25–28 February 2027 in Bhubaneswar.",
 };
-export const siteUrl = process.env.SITE_URL || "https://www.propackodisha.com";
-// Public search identity stays independent of the local form-request origin.
-export const seoUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.propackodisha.com"
-).replace(/\/$/, "");
 
+const defaultSiteUrl = "https://www.propackodisha.com";
+
+function normalizeUrl(url: string) {
+  return url.trim().replace(/\/+$/, "");
+}
+
+export const siteUrl = normalizeUrl(
+  process.env.SITE_URL || defaultSiteUrl
+);
+
+// Public SEO URL must always point to the production website.
+export const seoUrl = normalizeUrl(
+  process.env.NEXT_PUBLIC_SITE_URL || defaultSiteUrl
+);
 
 export const sectors = [
   {
     name: "Plastic Industry",
-    detail: "Raw materials, processing machinery, moulding and polymer solutions.",
+    detail:
+      "Raw materials, processing machinery, moulding and polymer solutions.",
     image: "plastic.png",
   },
   {
     name: "Printing Industry",
-    detail: "Printing presses, inks, labels, coding and marking technologies.",
+    detail:
+      "Printing presses, inks, labels, coding and marking technologies.",
     image: "print.png",
   },
   {
     name: "Packaging Industry",
-    detail: "Packaging machinery, materials and complete end-of-line solutions.",
+    detail:
+      "Packaging machinery, materials and complete end-of-line solutions.",
     image: "packag.png",
   },
   {
     name: "Paper Industry",
-    detail: "Pulp manufacturing, paper production, converting and finishing lines.",
+    detail:
+      "Pulp manufacturing, paper production, converting and finishing lines.",
     image: "paper.png",
   },
   {
     name: "Processing Industry",
-    detail: "Processing equipment, food safety, refrigeration and storage.",
+    detail:
+      "Processing equipment, food safety, refrigeration and storage.",
     image: "process.png",
   },
   {
     name: "Green Energy",
-    detail: "Energy-efficiency, solar and utility solutions.",
+    detail:
+      "Energy-efficiency, solar and utility solutions.",
     image: "green-energy.png",
   },
 ];
-
-
 
 export const services = [
   {
@@ -65,12 +82,14 @@ export const services = [
   {
     slug: "exhibitor-badges",
     title: "Exhibitor badges",
-    description: "Register up to six members of your exhibition team.",
+    description:
+      "Register up to six members of your exhibition team.",
   },
   {
     slug: "profile-for-exhibitor-directory",
     title: "Directory profile",
-    description: "Share your company profile, logo, products and new launches.",
+    description:
+      "Share your company profile, logo, products and new launches.",
   },
   {
     slug: "stall-design",
@@ -79,21 +98,32 @@ export const services = [
       "Send your vendor details and stall design for organizer review.",
   },
 ];
+
 export const publicRoutes = [
   "",
   "about",
+  "about-organizers",
   "sectors",
   "resources",
   "exhibitors",
-  "visitors",
-  "about-organizers",
-  "market-overview",
+  "exhibitor-profile",
   "exhibitor-details",
-  "contact-us",
+  "visitors",
+  "visitor-profile",
+  "market-overview",
+  "gallery",
+  "news",
+  "she-builds",
+  "venue",
+  "privacy-policy",
+
+  // Dynamic public form pages
   "exhibitor-registration",
   "visitor-registration",
-  "brochure",
-  "privacy-policy",
-  ...services.map((s) => s.slug),
-  "view-pass",
+
+  ...services.map((service) => service.slug),
+
+  // Keep if this route actually exists publicly
+  "contact-us",
+
 ];

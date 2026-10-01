@@ -4,6 +4,8 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
 
+const siteUrl = "https://www.propackodisha.com";
+
 const bodyFont = DM_Sans({
   subsets: ["latin"],
   variable: "--font-body",
@@ -24,53 +26,87 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://odishapropack.com"),
+  metadataBase: new URL(siteUrl),
+
   title: {
-    default: "PROPACK Odisha 2027 | Eastern India's Largest MSME Exhibition",
+    default:
+      "PROPACK Odisha 2027 | Packaging, Printing & Plastics Expo Bhubaneswar",
     template: "%s | PROPACK Odisha 2027",
   },
+
   description:
-    "Join PROPACK Odisha 2027 - Eastern India's largest international exhibition on packaging, processing, printing, and plastics machinery at Janata Maidan, Bhubaneswar, Odisha.",
+    "PROPACK Odisha 2027 is a B2B exhibition for packaging, printing, plastics, processing and allied technologies, taking place from 25–28 February 2027 at Janata Maidan, Bhubaneswar, Odisha.",
+
+  applicationName: "PROPACK Odisha 2027",
+
+  authors: [
+    {
+      name: "PROPACK Odisha",
+      url: siteUrl,
+    },
+  ],
+
+  creator: "PROPACK Odisha",
+  publisher: "PROPACK Odisha",
+
   keywords: [
     "PROPACK Odisha 2027",
-    "Packaging Expo Bhubaneswar",
-    "Food Processing Machinery Exhibition",
-    "Plastics Expo Odisha",
+    "Packaging Expo Odisha",
+    "Packaging Exhibition Bhubaneswar",
+    "Packaging Machinery Exhibition Odisha",
+    "Printing Exhibition Odisha",
+    "Printing Expo Bhubaneswar",
+    "Plastics Exhibition Odisha",
+    "Processing Machinery Exhibition",
+    "Food Processing Exhibition Odisha",
+    "Packaging Printing Plastics Expo",
+    "Industrial Exhibition Bhubaneswar",
+    "Trade Fair Odisha 2027",
+    "B2B Exhibition Odisha",
+    "MSME Exhibition Odisha",
     "OASME Exhibition",
   ],
-  authors: [{ name: "OASME" }],
-  creator: "Odisha Assembly of Small and Medium Enterprises (OASME)",
-  publisher: "PROPACK Odisha",
+
   alternates: {
-    canonical: "https://odishapropack.com",
+    canonical: "/",
   },
+
+  verification: {
+    google: "ZGOLeZNrqEwGJ66Y2ekZXJNSdLnFkl9HquA6-rbTWDo",
+  },
+
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://odishapropack.com",
-    title: "PROPACK Odisha 2027 | One Expo. Endless Solutions.",
+    url: siteUrl,
+    siteName: "PROPACK Odisha",
+    title:
+      "PROPACK Odisha 2027 | Packaging, Printing & Plastics Expo Bhubaneswar",
     description:
-      "Eastern India's flagship B2B exhibition bringing packaging, printing, plastics, and processing value chain together.",
-    siteName: "PROPACK Odisha International Expo",
+      "Explore packaging, printing, plastics, processing and allied technologies at PROPACK Odisha 2027, 25–28 February at Janata Maidan, Bhubaneswar.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "PROPACK Odisha 2027 International Expo Banner",
+        alt: "PROPACK Odisha 2027 International Exhibition",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "PROPACK Odisha 2027 | Bhubaneswar",
+    title:
+      "PROPACK Odisha 2027 | Packaging, Printing & Plastics Expo",
     description:
-      "Eastern India's flagship B2B packaging & processing trade show.",
+      "25–28 February 2027 at Janata Maidan, Bhubaneswar, Odisha.",
     images: ["/og-image.jpg"],
   },
+
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -79,33 +115,27 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
+  category: "Trade Exhibition",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
-  const eventSchema = {
+}>) {
+  const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "Event",
-    name: "PROPACK Odisha 2027",
-    description:
-      "Eastern India's Largest MSME Exhibition on Packaging, Printing, Plastics & Processing Machinery.",
-    startDate: "2027-02-25T09:00:00+05:30",
-    endDate: "2027-02-28T18:00:00+05:30",
-    eventStatus: "https://schema.org/EventScheduled",
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    location: {
-      "@type": "Place",
-      name: "Janata Maidan",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Bhubaneswar",
-        addressRegion: "Odisha",
-        addressCountry: "IN",
-      },
+    "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
+    name: "PROPACK Odisha",
+    url: siteUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/logo.png`,
     },
+    description:
+      "PROPACK Odisha is a B2B exhibition focused on packaging, printing, plastics, processing and allied technologies.",
     organizer: {
       "@type": "Organization",
       name: "Odisha Assembly of Small and Medium Enterprises (OASME)",
@@ -113,23 +143,49 @@ export default function RootLayout({
     },
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    url: siteUrl,
+    name: "PROPACK Odisha",
+    alternateName: "PROPACK Odisha International Expo",
+    publisher: {
+      "@id": `${siteUrl}/#organization`,
+    },
+    inLanguage: "en-IN",
+  };
+
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={`${bodyFont.variable} ${headingFont.variable} scroll-smooth antialiased`}
     >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
-        />
-      </head>
       <body className="flex min-h-screen flex-col bg-[#f7f8f7] font-sans text-[#1F3864] selection:bg-[#EB622F] selection:text-white">
         <Header />
+
         <main id="main" className="flex-1">
           {children}
         </main>
+
         <Footer />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema).replace(
+              /</g,
+              "\\u003c"
+            ),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema).replace(/</g, "\\u003c"),
+          }}
+        />
       </body>
     </html>
   );
