@@ -1,19 +1,17 @@
 import type { MetadataRoute } from "next";
-import { publicRoutes, seoUrl } from "@/lib/site";
-
-const excludedRoutes = new Set([
-  "view-pass",
-  "privacy-policy",
-]);
+import { indexableRoutes, seoUrl } from "@/lib/site";
 
 const highPriorityRoutes = new Set([
   "about",
+  "about-organizers",
   "sectors",
   "exhibitors",
+  "exhibitor-profile",
   "visitors",
+  "visitor-profile",
+  "venue",
   "exhibitor-registration",
   "visitor-registration",
-  "about-organizers",
   "contact-us",
 ]);
 
@@ -21,11 +19,15 @@ const mediumPriorityRoutes = new Set([
   "resources",
   "market-overview",
   "exhibitor-details",
-  "brochure",
+  "gallery",
+  "news",
+  "she-builds",
 ]);
 
 function getPriority(slug: string): number {
-  if (!slug) return 1;
+  if (!slug) {
+    return 1;
+  }
 
   if (highPriorityRoutes.has(slug)) {
     return 0.9;
@@ -41,32 +43,23 @@ function getPriority(slug: string): number {
 function getChangeFrequency(
   slug: string
 ): MetadataRoute.Sitemap[number]["changeFrequency"] {
-  if (!slug) {
+  if (!slug || slug === "news") {
     return "weekly";
   }
 
-  if (
-    highPriorityRoutes.has(slug) ||
-    mediumPriorityRoutes.has(slug)
-  ) {
-    return "monthly";
-  }
-
-  return "yearly";
+  return "monthly";
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return publicRoutes
-    .filter((slug) => !excludedRoutes.has(slug))
-    .map((slug) => {
-      const url = slug
-        ? `${seoUrl}/${slug}`
-        : `${seoUrl}/`;
+  return indexableRoutes.map((slug) => {
+    const url = slug
+      ? `${seoUrl}/${slug}`
+      : `${seoUrl}/`;
 
-      return {
-        url,
-        changeFrequency: getChangeFrequency(slug),
-        priority: getPriority(slug),
-      };
-    });
+    return {
+      url,
+      changeFrequency: getChangeFrequency(slug),
+      priority: getPriority(slug),
+    };
+  });
 }

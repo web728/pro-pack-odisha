@@ -17,6 +17,7 @@ export default function robots(): MetadataRoute.Robots {
     ],
 
     sitemap: `${seoUrl}/sitemap.xml`,
-    host: seoUrl,
+
+    host: "www.propackodisha.com",
   };
 }

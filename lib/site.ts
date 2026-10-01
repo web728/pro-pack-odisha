@@ -15,15 +15,50 @@ export const event = {
 const defaultSiteUrl = "https://www.propackodisha.com";
 
 function normalizeUrl(url: string) {
-  return url.trim().replace(/\/+$/, "");
+  let normalized = url.trim();
+
+  // Add protocol if missing
+  if (!/^https?:\/\//i.test(normalized)) {
+    normalized = `https://${normalized}`;
+  }
+
+  // Remove trailing slashes
+  normalized = normalized.replace(/\/+$/, "");
+
+  return normalized;
+}
+
+function normalizeSeoUrl(url: string) {
+  const normalized = normalizeUrl(url);
+
+  try {
+    const parsed = new URL(normalized);
+
+    // Keep one canonical production host
+    if (
+      parsed.hostname === "propackodisha.com" ||
+      parsed.hostname === "www.propackodisha.com"
+    ) {
+      parsed.protocol = "https:";
+      parsed.hostname = "www.propackodisha.com";
+      parsed.port = "";
+      parsed.pathname = "";
+
+      return parsed.toString().replace(/\/+$/, "");
+    }
+
+    return normalized;
+  } catch {
+    return defaultSiteUrl;
+  }
 }
 
 export const siteUrl = normalizeUrl(
   process.env.SITE_URL || defaultSiteUrl
 );
 
-// Public SEO URL must always point to the production website.
-export const seoUrl = normalizeUrl(
+// Canonical SEO identity of the public website
+export const seoUrl = normalizeSeoUrl(
   process.env.NEXT_PUBLIC_SITE_URL || defaultSiteUrl
 );
 
@@ -99,6 +134,12 @@ export const services = [
   },
 ];
 
+/**
+ * All publicly accessible routes.
+ *
+ * Operational service forms can be publicly accessible
+ * while still being excluded from Google indexing.
+ */
 export const publicRoutes = [
   "",
   "about",
@@ -117,13 +158,35 @@ export const publicRoutes = [
   "venue",
   "privacy-policy",
 
-  // Dynamic public form pages
   "exhibitor-registration",
   "visitor-registration",
-
-  ...services.map((service) => service.slug),
-
-  // Keep if this route actually exists publicly
   "contact-us",
 
+  ...services.map((service) => service.slug),
+];
+
+/**
+ * Routes we intentionally want Google to discover/index.
+ *
+ * Internal exhibitor-service forms are NOT included here.
+ */
+export const indexableRoutes = [
+  "",
+  "about",
+  "about-organizers",
+  "sectors",
+  "resources",
+  "exhibitors",
+  "exhibitor-profile",
+  "exhibitor-details",
+  "visitors",
+  "visitor-profile",
+  "market-overview",
+  "gallery",
+  "news",
+  "she-builds",
+  "venue",
+  "exhibitor-registration",
+  "visitor-registration",
+  "contact-us",
 ];
