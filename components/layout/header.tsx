@@ -24,6 +24,7 @@ import {
   Newspaper,
   BadgeCheck,
   Compass,
+  Briefcase,
 } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
@@ -78,6 +79,12 @@ const navGroups: NavGroup[] = [
         href: "/exhibitor-profile",
         desc: "Indicative machinery & sector categories",
         icon: BadgeCheck,
+      },
+            {
+        title: "Previous Participants",
+        href: "/participants",
+        desc: "Companies that exhibited in past editions",
+        icon: Briefcase,
       },
       {
         title: "Book a Stall",

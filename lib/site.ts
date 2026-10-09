@@ -148,6 +148,7 @@ export const publicRoutes = [
   "resources",
   "exhibitors",
   "exhibitor-profile",
+   "participants",
   "exhibitor-details",
   "visitors",
   "visitor-profile",

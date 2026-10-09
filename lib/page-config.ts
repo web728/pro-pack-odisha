@@ -63,7 +63,12 @@ export const contentPages = {
   description:
     "Indicative and not restrictive categories for PROPACK Odisha 2027 exhibitors.",
 },
-
+  participants: {
+    label: "Participants",
+    title: "Companies that have been part of Propack Odisha.",
+    description:
+      "Explore previous participants of Propack Odisha across packaging, printing, paper, plastics, engineering and food processing industries.",
+  },
   "privacy-policy": {
     label: "Privacy policy",
     title: "Your information, handled with care.",

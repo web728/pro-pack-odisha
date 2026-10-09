@@ -19,6 +19,7 @@ const mediumPriorityRoutes = new Set([
   "resources",
   "market-overview",
   "exhibitor-details",
+   "participants",
   "gallery",
   "news",
   "she-builds",

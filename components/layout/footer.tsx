@@ -103,6 +103,14 @@ export function Footer() {
                   Resources & Brochure
                 </Link>
               </li>
+               <li>
+                <Link
+                  href="/participants"
+                  className="transition-colors hover:text-white"
+                >
+                  Participants
+                </Link>
+              </li>
             </ul>
           </div>
 
