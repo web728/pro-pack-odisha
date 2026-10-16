@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Manrope } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
@@ -186,6 +187,8 @@ export default function RootLayout({
             __html: JSON.stringify(websiteSchema).replace(/</g, "\\u003c"),
           }}
         />
+
+        <GoogleAnalytics gaId="G-ZY3WJHWQBC" />
       </body>
     </html>
   );
