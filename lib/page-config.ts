@@ -5,7 +5,7 @@ export const contentPages = {
     label: "Exhibition sectors",
     title: "Six sectors. One connected industry.",
     description:
-      "Explore packaging, printing, plastics, food processing and engineering technologies at Propack Odisha International Expo.",
+      "Explore packaging, printing, plastics, food processing and green energy at Propack Odisha International Expo.",
   },
 
   resources: {

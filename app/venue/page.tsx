@@ -20,9 +20,9 @@ import { PageHero, CTA, Eyebrow } from "@/components/shared/ui";
 import { RevealSection } from "@/components/shared/motion";
 
 export const metadata: Metadata = {
-  title: "Venue & Location | Janata Maidan, Bhubaneswar | PROPACK Odisha 2027",
+  title: "Venue & Location | Bhubaneswar | PROPACK Odisha 2027",
   description:
-    "Official venue location, route directions, transport connectivity, and facilities for PROPACK Odisha 2027 at Janata Maidan, Bhubaneswar.",
+    "Official venue location, route directions, transport connectivity, and facilities for PROPACK Odisha 2027 at Bhubaneswar.",
 };
 
 const transitHighlights = [
@@ -82,7 +82,7 @@ export default function VenuePage() {
 
       <PageHero
         eyebrow="Venue & Location"
-        title="Janata Maidan, Bhubaneswar"
+        title="Bhubaneswar"
         description="The premier exhibition ground of Eastern India. Centrally situated in Odisha's capital with seamless air, rail, and freight road connectivity."
       />
 
@@ -96,7 +96,7 @@ export default function VenuePage() {
                 Official Venue
               </span>
               <strong className="text-xs font-bold text-[#1F3864] sm:text-sm">
-                Janata Maidan, Bhubaneswar
+                Bhubaneswar
               </strong>
             </div>
           </div>

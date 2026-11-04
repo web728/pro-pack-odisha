@@ -1,7 +1,7 @@
 export const questions = [
   [
     "When and where is Propack Odisha International Expo?",
-    "The expo takes place from 25 to 28 February 2027 at Janata Maidan, Bhubaneswar, Odisha. Contact the organizing team for daily opening hours before planning your travel.",
+    "The expo takes place from 25 to 28 February 2027 at Bhubaneswar, Odisha. Contact the organizing team for daily opening hours before planning your travel.",
   ],
   [
     "Which industries does the exhibition cover?",

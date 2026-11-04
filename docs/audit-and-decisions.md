@@ -4,7 +4,7 @@
 
 Audited `odishapropack_old_pages_content.md` (23 extracted pages), the supplied redesign brief, and the upload directory's official logos, photography, brochure, industry graphics and legacy plugin files. The source was sanitized as requested to remove the former co-organizer and its contacts. The extraction parser now retains complete multiline page content, restoring exhibitor and visitor profiles. `lib/source-content.json` is a structured extraction. `page-inventory.md` classifies every page.
 
-The user's updates override older material: 25–28 February 2027, Janata Maidan, Bhubaneswar, Odisha; 70083 41944 / 77518 09433. Only OASME organizer emails are retained. Old 2024/2025 dates, mixed third/fourth edition labels and the previous second phone number are not presented as current. The edition number needs organizer confirmation. Zero animation counters, 10,000 visitor marketing claims and prior sponsors are not treated as confirmed 2027 statistics or partnerships.
+The user's updates override older material: 25–28 February 2027, Bhubaneswar, Odisha; 70083 41944 / 77518 09433. Only OASME organizer emails are retained. Old 2024/2025 dates, mixed third/fourth edition labels and the previous second phone number are not presented as current. The edition number needs organizer confirmation. Zero animation counters, 10,000 visitor marketing claims and prior sponsors are not treated as confirmed 2027 statistics or partnerships.
 
 ## Information architecture
 

@@ -54,7 +54,7 @@ export function AboutContent() {
                 </strong>{" "}
                 at{" "}
                 <strong className="font-semibold text-[#1F3864]">
-                  Janata Maidan, Bhubaneswar
+                  Bhubaneswar
                 </strong>
                 , bringing together machinery manufacturers, technology providers,
                 material suppliers, processors, converters, buyers and decision-makers
@@ -136,7 +136,7 @@ export function AboutContent() {
               </div>
               <div>
                 <p className="text-xs font-medium text-[var(--muted,#6b7280)]">Venue</p>
-                <p className="text-sm font-bold text-[#1F3864]">Janata Maidan, Bhubaneswar</p>
+                <p className="text-sm font-bold text-[#1F3864]">Bhubaneswar</p>
               </div>
             </div>
           </div>

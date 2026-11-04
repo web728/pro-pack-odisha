@@ -60,7 +60,7 @@ const navGroups: NavGroup[] = [
       {
         title: "Venue & Location",
         href: "/venue",
-        desc: "Janata Maidan, Bhubaneswar route",
+        desc: "Bhubaneswar route",
         icon: Map,
       },
     ],
@@ -273,7 +273,7 @@ export function Header() {
 
       <span className="inline-flex items-center gap-2 text-[#1F3864]">
         <MapPin size={18} className="shrink-0 text-[#EB622F]" />
-        <span>Janata Maidan, Bhubaneswar, Odisha</span>
+        <span>Bhubaneswar, Odisha</span>
       </span>
 
       <span className="text-slate-300">•</span>

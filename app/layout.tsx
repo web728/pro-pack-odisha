@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "PROPACK Odisha 2027 is a B2B exhibition for packaging, printing, plastics, processing and allied technologies, taking place from 25–28 February 2027 at Janata Maidan, Bhubaneswar, Odisha.",
+    "PROPACK Odisha 2027 is a B2B exhibition for packaging, printing, plastics, processing and allied technologies, taking place from 25–28 February 2027 at Bhubaneswar, Odisha.",
 
   applicationName: "PROPACK Odisha 2027",
 
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     title:
       "PROPACK Odisha 2027 | Packaging, Printing & Plastics Expo Bhubaneswar",
     description:
-      "Explore packaging, printing, plastics, processing and allied technologies at PROPACK Odisha 2027, 25–28 February at Janata Maidan, Bhubaneswar.",
+      "Explore packaging, printing, plastics, processing and allied technologies at PROPACK Odisha 2027, 25–28 February at Bhubaneswar.",
     images: [
       {
         url: "/og-image.jpg",
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
     title:
       "PROPACK Odisha 2027 | Packaging, Printing & Plastics Expo",
     description:
-      "25–28 February 2027 at Janata Maidan, Bhubaneswar, Odisha.",
+      "25–28 February 2027 at Bhubaneswar, Odisha.",
     images: ["/og-image.jpg"],
   },
 

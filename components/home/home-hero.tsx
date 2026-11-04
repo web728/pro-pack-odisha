@@ -75,7 +75,7 @@ export function HomeHero() {
             variants={itemVariants}
             className="mb-4 max-w-[48ch] text-base leading-[1.6] text-[var(--muted-foreground,#4b5563)] sm:text-[17px]"
           >
-            Eastern India's Largest MSME Exhibition powering multiple industries
+          A leading MSME exhibition in Eastern India powering multiple industries
             and driving the future through machinery, technology, materials, and
             sustainable solutions.
           </motion.p>
@@ -104,7 +104,7 @@ export function HomeHero() {
               <MapPin className="mt-0.5 shrink-0 text-[#15A7AE]" size={19} />
               <span className="leading-tight">
                 <strong className="block text-[14px] font-semibold text-[#1F3864]">
-                  Janata Maidan, Bhubaneswar
+                  Bhubaneswar
                 </strong>
                 <small className="mt-1 block text-[12px] text-[var(--muted,#6b7280)]">
                   Odisha, India

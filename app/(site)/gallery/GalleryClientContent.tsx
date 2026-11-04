@@ -46,7 +46,7 @@ export default function GalleryClientContent({ images, videos }: GalleryClientPr
             </h1>
 
             <p className="mt-6 text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
-              Explore live event snapshots and highlights from Janata Maidan, Bhubaneswar.
+              Explore live event snapshots and highlights from Bhubaneswar.
             </p>
           </div>
         </div>

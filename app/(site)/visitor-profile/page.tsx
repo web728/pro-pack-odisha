@@ -12,7 +12,7 @@ const slug = "visitor-profile";
 export const metadata = pageMetadata(
   slug,
   "Visitor Profile",
-  "Indicative and not restrictive visitor categories for PROPACK Odisha 2027 at Janata Maidan, Bhubaneswar."
+  "Indicative and not restrictive visitor categories for PROPACK Odisha 2027 at Bhubaneswar."
 );
 
 export default function VisitorProfilePage() {
@@ -56,7 +56,7 @@ export default function VisitorProfilePage() {
     name: "Visitor Profile | PROPACK Odisha 2027",
 
     description:
-      "Explore the trade visitor categories and industries attending PROPACK Odisha 2027 at Janata Maidan, Bhubaneswar.",
+      "Explore the trade visitor categories and industries attending PROPACK Odisha 2027 at Bhubaneswar.",
 
     isPartOf: {
       "@id": `${seoUrl}/#website`,

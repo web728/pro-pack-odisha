@@ -118,7 +118,7 @@ export function EventSnapshot() {
               </strong>{' '}
               at{' '}
               <strong className="font-semibold text-[#1F3864]">
-                Janata Maidan, Bhubaneswar
+                Bhubaneswar
               </strong>
               , bringing together machinery manufacturers, technology providers,
               material suppliers, processors, converters, buyers and decision-makers

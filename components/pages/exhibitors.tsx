@@ -85,9 +85,7 @@ export function ExhibitorsContent() {
       </h1>
 
       <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[var(--muted-foreground,#4b5563)] sm:text-base">
-        Connect with buyers, build partnerships, showcase innovation and
-        create meaningful business opportunities across the packaging value
-        chain.
+      Discover new opportunities, connect with industry leaders, build meaningful partnerships, and explore innovative solutions across the Plastic, Printing, Packaging, Paper, Processing and Green Energy sectors.
       </p>
     </div>
 

@@ -116,7 +116,7 @@ export function VisitorsContent() {
               <p>
                 Connect with suppliers, enterprise buyers, and trade partners
                 across packaging, printing, polymers, and food processing at
-                Janata Maidan, Bhubaneswar.
+                Bhubaneswar.
               </p>
             </div>
 
@@ -289,7 +289,7 @@ export function VisitorsContent() {
                 </h3>
 
                 <p className="mt-2 text-xs leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-sm">
-                  Conveniently situated at Janata Maidan, Bhubaneswar, the same
+                  Conveniently situated at Bhubaneswar, the same
                   ground that hosted Utkarsh Odisha: Make in Odisha Conclave
                   2025.
                 </p>

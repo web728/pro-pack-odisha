@@ -82,7 +82,7 @@ export default function Home() {
     name: "PROPACK Odisha International Expo 2027 | Bhubaneswar",
 
     description:
-      "Explore packaging, printing, plastics, food processing and engineering at PROPACK Odisha International Expo, 25–28 February 2027, Janata Maidan, Bhubaneswar.",
+      "Explore packaging, printing, plastics, food processing and engineering at PROPACK Odisha International Expo, 25–28 February 2027, Bhubaneswar.",
 
     isPartOf: {
       "@id": `${seoUrl}/#website`,

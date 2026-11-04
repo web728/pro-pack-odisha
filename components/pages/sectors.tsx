@@ -77,15 +77,7 @@ export function SectorsContent() {
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg font-mono text-xs font-bold transition-colors ${
-                        isActive
-                          ? "bg-[#EB622F] text-white"
-                          : "bg-[#f7f8f7] text-[var(--muted,#6b7280)] group-hover:text-[#1F3864]"
-                      }`}
-                    >
-                      0{i + 1}
-                    </span>
+                 
 
                     <div>
                       <strong
@@ -132,33 +124,18 @@ export function SectorsContent() {
                   <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-12">
                     
                     {/* Visual Image / Animation Container */}
-                    <div className="relative h-44 w-full overflow-hidden rounded-xl border border-[var(--border)] bg-[#f7f8f7] sm:col-span-5 sm:h-48">
-                      {activeTab === 3 ? (
-                        <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-[#15A7AE]/10 to-transparent p-4 text-center">
-                          <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#15A7AE] shadow-xs">
-                            <Settings2 size={26} className="animate-[spin_12s_linear_infinite]" />
-                          </span>
-                          <strong className="mt-3 text-xs font-bold tracking-wider text-[#1F3864]">
-                            PROCESS · PRODUCE · PACK
-                          </strong>
-                          <span className="text-[11px] text-[var(--muted,#6b7280)]">
-                            Food & Beverage Processing
-                          </span>
-                        </div>
-                      ) : (
-                        <Image
-                          src={`/assets/${currentSector.image}`}
-                          alt={`${currentSector.name} machinery preview`}
-                          fill
-                          sizes="(max-width: 640px) 100vw, 320px"
-                          className="object-cover"
-                        />
-                      )}
-                      
-                      <span className="absolute top-2.5 left-2.5 rounded-md bg-white/95 px-2 py-0.5 font-mono text-[10px] font-bold text-[#1F3864] shadow-2xs backdrop-blur-xs">
-                        SECTOR 0{activeTab + 1}
-                      </span>
-                    </div>
+                  <div className="relative h-44 w-full overflow-hidden rounded-xl border border-[var(--border)] bg-[#f7f8f7] sm:col-span-5 sm:h-48">
+  <Image
+    key={currentSector.image}
+    src={`/sections/${currentSector.image}`}
+    alt={`${currentSector.name} machinery preview`}
+    fill
+    sizes="(max-width: 640px) 100vw, 320px"
+    className="object-cover"
+  />
+
+  
+</div>
 
                     {/* Sector Title & Detail */}
                     <div className="sm:col-span-7">

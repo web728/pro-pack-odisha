@@ -6,7 +6,7 @@ export const event = {
   endDate: "2027-02-28",
   openingTime: "10:00",
   closingTime: "18:00",
-  venue: "Janata Maidan, Bhubaneswar, Odisha",
+  venue: "  Bhubaneswar, Odisha",
   phones: ["70083 41944", "77518 09433"],
   description:
     "Connect with the plastic, printing, packaging, food processing and engineering industries at PROPACK Odisha, 25–28 February 2027 in Bhubaneswar.",

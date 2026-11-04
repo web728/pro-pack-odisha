@@ -181,7 +181,7 @@ export async function sendNotification(
         <tr>
           <td style="background-color: #f8fafc; padding: 16px 30px; text-align: center; border-top: 1px solid #e2e8f0;">
             <p style="margin: 0; color: #94a3b8; font-size: 11px; line-height: 1.5;">
-              Janata Maidan, Bhubaneswar, Odisha | 25–28 February 2027<br />
+              Bhubaneswar, Odisha | 25–28 February 2027<br />
               This is an automated notification from Propack Odisha Lead Management System.
             </p>
           </td>

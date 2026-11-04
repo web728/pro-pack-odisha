@@ -54,7 +54,7 @@ export function CTA() {
               <span className="text-slate-500">•</span>
               <span className="inline-flex items-center gap-1.5">
                 <MapPin size={15} className="text-[#15A7AE]" />
-                Janata Maidan, Bhubaneswar, Odisha
+                Bhubaneswar, Odisha
               </span>
             </p>
           </div>

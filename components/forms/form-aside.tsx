@@ -34,7 +34,7 @@ export function FormAside({ slug }: { slug: string }) {
           <div className="flex items-start gap-2.5 text-[var(--muted-foreground,#4b5563)]">
             <MapPin size={16} className="mt-0.5 shrink-0 text-[#15A7AE]" />
             <span className="leading-snug">
-              Janata Maidan, Bhubaneswar, Odisha
+              Bhubaneswar, Odisha
             </span>
           </div>
         </div>

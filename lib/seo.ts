@@ -10,7 +10,7 @@ export const searchPages: Record<string, SearchPage> = {
   "": {
     title: "PROPACK Odisha International Expo 2027 | Bhubaneswar",
     description:
-      "Explore packaging, printing, plastics, food processing and engineering at PROPACK Odisha International Expo, 25–28 February 2027, Janata Maidan, Bhubaneswar.",
+      "Explore packaging, printing, plastics, food processing and engineering at PROPACK Odisha International Expo, 25–28 February 2027, Bhubaneswar.",
   },
 
   about: {
@@ -53,7 +53,7 @@ exhibitors: {
   "exhibitor-registration": {
     title: "Exhibitor Registration & Stall Enquiry",
     description:
-      "Enquire about exhibiting at PROPACK Odisha International Expo, 25–28 February 2027 at Janata Maidan, Bhubaneswar. Share your company and stall requirements.",
+      "Enquire about exhibiting at PROPACK Odisha International Expo, 25–28 February 2027 at Bhubaneswar. Share your company and stall requirements.",
   },
 
   "visitor-registration": {
@@ -84,7 +84,7 @@ exhibitors: {
   "contact-us": {
     title: "Contact OASME | Expo Enquiries & Venue",
     description:
-      "Contact the PROPACK Odisha team on 70083 41944 or 77518 09433. Expo: 25–28 February 2027, Janata Maidan, Bhubaneswar, Odisha.",
+      "Contact the PROPACK Odisha team on 70083 41944 or 77518 09433. Expo: 25–28 February 2027, Bhubaneswar, Odisha.",
   },
 
   brochure: {
