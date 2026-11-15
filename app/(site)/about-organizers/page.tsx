@@ -1,54 +1,40 @@
+
+import type { Metadata } from "next";
+
 import { OrganizersContent } from "@/components/pages/about-organizers";
 import { ContentPage } from "@/components/shared/page-shell";
 
 import { contentPages } from "@/lib/page-config";
 import { pageMetadata } from "@/lib/seo";
-import { seoUrl } from "@/lib/site";
+import { event, seoUrl } from "@/lib/site";
+
+import {
+  pageSchema,
+  schemaIds,
+  serializeJsonLd,
+} from "@/lib/schema";
 
 const page = contentPages["about-organizers"];
 
-export const metadata = pageMetadata(
+export const metadata: Metadata = pageMetadata(
   "about-organizers",
   page.label,
   page.description
 );
 
-export default function Page() {
-  const organizersPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "@id": `${seoUrl}/about-organizers#webpage`,
+export default function AboutOrganizersPage() {
+  const baseSchema = pageSchema("about-organizers");
 
-    url: `${seoUrl}/about-organizers`,
-
-    name: "About OASME | PROPACK Odisha 2027 Organizer",
-
-    description:
-      "Learn about the Odisha Assembly of Small and Medium Enterprises (OASME), organizer of PROPACK Odisha 2027 and an industrial body supporting MSMEs across Odisha.",
-
-    isPartOf: {
-      "@id": `${seoUrl}/#website`,
-    },
-
-    about: {
-      "@id": `${seoUrl}/about-organizers#organization`,
-    },
-
-    inLanguage: "en-IN",
-  };
-
-  const organizationSchema = {
-    "@context": "https://schema.org",
+  const organizerSchema = {
     "@type": "Organization",
-    "@id": `${seoUrl}/about-organizers#organization`,
+    "@id": schemaIds.organizer,
 
-    name: "Odisha Assembly of Small and Medium Enterprises",
-    alternateName: "OASME",
-
-    url: "https://www.oasme.org.in/",
+    name: event.organizer.name,
+    alternateName: event.organizer.shortName,
+    url: event.organizer.url,
 
     description:
-      "Odisha Assembly of Small and Medium Enterprises (OASME) is an industrial organization supporting cottage, handicraft, micro, small and medium enterprises in Odisha and the organizer of PROPACK Odisha 2027.",
+      "Odisha Assembly of Small and Medium Enterprises (OASME) is an industrial organization supporting cottage, handicraft, micro, small and medium enterprises in Odisha and the organizer of PROPACK Odisha International Expo.",
 
     address: {
       "@type": "PostalAddress",
@@ -58,19 +44,7 @@ export default function Page() {
       addressCountry: "IN",
     },
 
-    telephone: [
-      "+91 70083 41944",
-      "+91 77518 09433",
-    ],
-
-    email: [
-      "oasme.odisha@gmail.com",
-      "info@propackodisha.com",
-    ],
-
-    organizer: {
-      "@id": `${seoUrl}/#event`,
-    },
+    email: "oasme.odisha@gmail.com",
 
     areaServed: {
       "@type": "AdministrativeArea",
@@ -78,31 +52,44 @@ export default function Page() {
     },
   };
 
+  const structuredData = baseSchema
+    ? {
+        "@context": "https://schema.org",
+        "@graph": [
+          ...baseSchema["@graph"].map((node) => {
+            if (node["@type"] === "AboutPage") {
+              return {
+                ...node,
+                about: {
+                  "@id": schemaIds.organizer,
+                },
+                mainEntity: {
+                  "@id": schemaIds.organizer,
+                },
+              };
+            }
+
+            return node;
+          }),
+          organizerSchema,
+        ],
+      }
+    : null;
+
   return (
     <>
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(structuredData),
+          }}
+        />
+      )}
+
       <ContentPage slug="about-organizers">
         <OrganizersContent />
       </ContentPage>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizersPageSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
     </>
   );
 }

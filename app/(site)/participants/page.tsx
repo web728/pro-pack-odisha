@@ -1,51 +1,88 @@
+
+import type { Metadata } from "next";
+
 import { ParticipantsContent } from "@/components/pages/participants";
 import { ContentPage } from "@/components/shared/page-shell";
 
 import { contentPages } from "@/lib/page-config";
-import { pageMetadata } from "@/lib/seo";
-import { seoUrl } from "@/lib/site";
+import { participants } from "@/lib/participants-data";
+import { buildPageUrl, pageMetadata } from "@/lib/seo";
+import { pageSchema, serializeJsonLd } from "@/lib/schema";
 
-const page = contentPages["participants"];
+const slug = "participants";
+const page = contentPages[slug];
 
-export const metadata = pageMetadata(
-  "participants",
+const pageUrl = buildPageUrl(slug);
+const participantListId = `${pageUrl}#participant-list`;
+
+export const metadata: Metadata = pageMetadata(
+  slug,
   page.label,
   page.description
 );
 
-export default function Page() {
-  const participantsPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "@id": `${seoUrl}/participants#webpage`,
-    url: `${seoUrl}/participants`,
-    name: "Previous Participants | PROPACK Odisha 2027",
+export default function ParticipantsPage() {
+  const baseSchema = pageSchema(slug);
+
+  const participantListSchema = {
+    "@type": "ItemList",
+    "@id": participantListId,
+    name: "Previous Participants at PROPACK Odisha",
     description:
-      "Explore companies that have participated in PROPACK Odisha across packaging, printing, paper, plastics, engineering and food processing.",
-    isPartOf: {
-      "@id": `${seoUrl}/#website`,
-    },
-    about: {
-      "@id": `${seoUrl}/#event`,
-    },
-    inLanguage: "en-IN",
+      "Companies featured in the previous participants directory of PROPACK Odisha.",
+    numberOfItems: participants.length,
+    itemListElement: participants.map((participant, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: participant.name,
+    })),
   };
+
+  const structuredData = baseSchema
+    ? {
+        "@context": "https://schema.org",
+        "@graph": [
+          ...baseSchema["@graph"].map((node) => {
+            if (
+              node["@type"] === "WebPage" ||
+              node["@type"] === "CollectionPage"
+            ) {
+              return {
+                ...node,
+                "@type": "CollectionPage",
+                mainEntity: {
+                  "@id": participantListId,
+                },
+                about: {
+                  "@id": `${pageUrl.replace(
+                    /\/participants$/,
+                    ""
+                  )}/#event`,
+                },
+              };
+            }
+
+            return node;
+          }),
+          participantListSchema,
+        ],
+      }
+    : null;
 
   return (
     <>
-      <ContentPage slug="participants">
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(structuredData),
+          }}
+        />
+      )}
+
+      <ContentPage slug={slug}>
         <ParticipantsContent />
       </ContentPage>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(participantsPageSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
     </>
   );
 }

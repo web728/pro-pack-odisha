@@ -2,52 +2,78 @@
 
 import Link from "next/link";
 import {
-  Phone,
-  Mail,
-  ExternalLink,
+  ArrowUpRight,
+  BriefcaseBusiness,
   CheckCircle2,
-  Users2,
-  Briefcase,
-  Layers,
+  ExternalLink,
+  Layers3,
+  Mail,
+  MapPin,
+  Phone,
 } from "lucide-react";
 import { Button, Eyebrow } from "@/components/shared/ui";
 import { RevealSection } from "@/components/shared/motion";
 
+const representations = [
+  "Board of Directors, IDCO & OSIC",
+  "Micro & Small Enterprises Facilitation Council (MSEFC)",
+  "Empowered Committee on MSME Finance, RBI",
+  "Govt. of India MSME-DI Advisory Committee",
+  "State Level Inter Institutional Committee (SLIIC)",
+  "PLACs of NALCO, MCL, RSP, HAL, NTPC & IOCL",
+];
+
+const keyCommittees = [
+  "Packaging Industries",
+  "Plastic & Polymer Industries",
+  "Food Processing Industries",
+  "Foundry & Engineering",
+  "Electrical & Electronics",
+  "International Trade Promotion Council",
+];
+
+const contactDetails = [
+  {
+    label: "Mr. Ratiranjan Samal",
+    text: "+91 70083 41944",
+    href: "tel:+917008341944",
+    icon: Phone,
+  },
+  {
+    label: "Ms. Mamta",
+    text: "+91 77518 09433",
+    href: "tel:+917751809433",
+    icon: Phone,
+  },
+  {
+    label: "Official Email",
+    text: "oasme.odisha@gmail.com",
+    href: "mailto:oasme.odisha@gmail.com",
+    icon: Mail,
+  },
+  {
+    label: "Event Support",
+    text: "info@propackodisha.com",
+    href: "mailto:info@propackodisha.com",
+    icon: Mail,
+  },
+];
+
 export function OrganizersContent() {
-  const representations = [
-    "Board of Directors, IDCO & OSIC",
-    "Micro & Small Enterprises Facilitation Council (MSEFC)",
-    "Empowered Committee on MSME Finance, RBI",
-    "Govt. of India MSME-DI Advisory Committee",
-    "State Level Inter Institutional Committee (SLIIC)",
-    "PLACs of NALCO, MCL, RSP, HAL, NTPC & IOCL",
-  ];
-
-  const keyCommittees = [
-    "Packaging Industries",
-    "Plastic & Polymer Industries",
-    "Food Processing Industries",
-    "Foundry & Engineering",
-    "Electrical & Electronics",
-    "International Trade Promotion Council",
-  ];
-
   return (
     <RevealSection className="border-b border-[var(--border)] bg-[#f7f8f7] py-14 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6">
-        {/* Main Split Grid */}
-        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Left Column: Organization Profile & Authority */}
-          <div className="flex flex-col lg:col-span-7">
-            <div className="flex items-center gap-2">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="min-w-0 lg:col-span-7">
+            <header className="max-w-3xl">
               <Eyebrow>Apex Industrial Body</Eyebrow>
-            </div>
+              <h1 className="mt-4 max-w-[19ch] font-[family-name:var(--font-heading)] text-3xl font-extrabold leading-[1.12] tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl">
+                Odisha Assembly of Small and Medium Enterprises
+              </h1>
+              <div className="mt-5 h-1 w-14 rounded-full bg-[#EB622F]" aria-hidden="true" />
+            </header>
 
-            <h1 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl">
-              Odisha Assembly of Small and Medium Enterprises
-            </h1>
-
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-[var(--muted-foreground,#4b5563)]">
+            <div className="mt-8 max-w-[76ch] space-y-5 text-base leading-8 text-[var(--muted-foreground,#4b5563)]">
               <p>
                 Founded on 12th August 1985, OASME has served for over four decades as a common forum for the cottage, handicraft, micro, small and medium enterprises of Odisha. The Assembly guides entrepreneurs, offers free consultancy, assists in the establishment of new industrial units and publishes profiles, journals and souvenirs that carry industry knowledge to the last mile.
               </p>
@@ -59,163 +85,101 @@ export function OrganizersContent() {
               </p>
             </div>
 
-            {/* Representation & Board Roles */}
-            <div className="mt-8 rounded-xl border border-[var(--border)] bg-white p-6 shadow-xs">
-              <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[#1F3864]">
-                <Briefcase size={16} className="text-[#EB622F]" />
-                <span>OASME Represents On Key State & National Bodies</span>
+            <section aria-labelledby="representation-heading" className="mt-10 overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-sm">
+              <div className="flex items-center gap-3 border-b border-[var(--border)] px-5 py-5 sm:px-7">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#EB622F]/10 text-[#EB622F]" aria-hidden="true">
+                  <BriefcaseBusiness size={20} />
+                </span>
+                <h2 id="representation-heading" className="font-[family-name:var(--font-heading)] text-base font-bold leading-snug text-[#1F3864] sm:text-lg">
+                  OASME Represents On Key State &amp; National Bodies
+                </h2>
               </div>
-
-              <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              <ul className="grid grid-cols-1 gap-x-7 gap-y-4 p-5 sm:grid-cols-2 sm:p-7">
                 {representations.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-2 text-xs sm:text-sm text-[var(--muted-foreground,#4b5563)]"
-                  >
-                    <CheckCircle2
-                      size={15}
-                      className="mt-0.5 shrink-0 text-[#15A7AE]"
-                    />
+                  <li key={item} className="flex items-start gap-3 text-sm leading-6 text-[var(--muted-foreground,#4b5563)]">
+                    <CheckCircle2 size={17} className="mt-1 shrink-0 text-[#15A7AE]" aria-hidden="true" />
                     <span>{item}</span>
-                  </div>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </section>
 
-            {/* Specialized Councils Pill Cloud */}
-            <div className="mt-6">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[var(--muted,#6b7280)]">
-                Key Sector Focus:
-              </span>
-              <div className="mt-2.5 flex flex-wrap gap-2">
-                {keyCommittees.map((c) => (
-                  <span
-                    key={c}
-                    className="inline-flex items-center gap-1.5 rounded-md border border-[var(--border)] bg-white px-2.5 py-1 text-xs font-medium text-[#1F3864]"
-                  >
-                    <Layers size={12} className="text-[#15A7AE]" />
-                    {c}
-                  </span>
+            <section aria-labelledby="sector-focus-heading" className="mt-9">
+              <div className="mb-4 flex items-center gap-2">
+                <Layers3 size={19} className="text-[#15A7AE]" aria-hidden="true" />
+                <h2 id="sector-focus-heading" className="font-[family-name:var(--font-heading)] text-lg font-bold text-[#1F3864]">
+                  Key Sector Focus
+                </h2>
+              </div>
+              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {keyCommittees.map((item) => (
+                  <li key={item} className="flex min-h-12 items-center rounded-xl border border-[var(--border)] bg-white px-4 py-3 text-sm font-medium leading-5 text-[#1F3864]">
+                    <span className="mr-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#EB622F]" aria-hidden="true" />
+                    {item}
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </section>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-9 flex flex-wrap items-center gap-5">
               <Button href="/contact-us">Contact exhibition team</Button>
               <Link
                 href="https://www.oasme.org.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[#EB622F] transition-colors hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#EB622F] underline-offset-4 transition-colors hover:underline focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EB622F]"
               >
-                <span>Visit OASME official portal</span>
-                <ExternalLink size={14} />
+                Visit OASME official portal
+                <ExternalLink size={15} aria-hidden="true" />
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Contact Card */}
-          <aside className="lg:col-span-5">
-            <div className="sticky top-28 rounded-2xl border border-[var(--border)] bg-white p-6 shadow-sm sm:p-8">
-              <div className="flex items-center gap-2">
+          <aside className="min-w-0 lg:col-span-5" aria-labelledby="contact-heading">
+            <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-white shadow-[0_16px_50px_-35px_rgba(31,56,100,0.45)] lg:sticky lg:top-28">
+              <div className="border-b border-[var(--border)] px-6 py-7 sm:px-8">
                 <Eyebrow>OASME</Eyebrow>
+                <h2 id="contact-heading" className="mt-3 font-[family-name:var(--font-heading)] text-2xl font-bold leading-tight tracking-tight text-[#1F3864]">
+                  Direct Contact &amp; Support
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-[var(--muted-foreground,#4b5563)]">
+                  For stall booking &amp; sponsorship, please contact the organizing team directly.
+                </p>
               </div>
 
-              <h3 className="mt-3 font-[family-name:var(--font-heading)] text-2xl font-bold tracking-tight text-[#1F3864]">
-                Direct Contact & Support
-              </h3>
-
-              <p className="mt-2 text-sm text-[var(--muted-foreground,#4b5563)]">
-                For stall booking & sponsorship, please contact the organizing
-                team directly.
-              </p>
-
-              {/* Head Office Address */}
-              <div className="mt-6 rounded-xl bg-[#f7f8f7] p-4 text-xs leading-relaxed text-[#1F3864] border border-[var(--border)]">
-                <strong className="block text-xs font-bold uppercase tracking-wider text-[#EB622F]">
-                  Organised By:
-                </strong>
-                <span className="mt-1 block font-medium">
-                  Odisha Assembly of Small and Medium Enterprises (OASME), Satya
-                  Bhawan, Cuttack
-                </span>
-              </div>
-
-              {/* Quick Contact Links */}
-              <div className="mt-6 space-y-3 border-t border-[var(--border)] pt-6">
-                <a
-                  href="tel:+917008341944"
-                  className="group flex items-center gap-3 rounded-lg border border-transparent p-2 transition-all hover:border-[var(--border)] hover:bg-[#f7f8f7]"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] group-hover:bg-[#EB622F] group-hover:text-white transition-colors">
-                    <Phone size={16} />
-                  </span>
+              <div className="px-6 py-6 sm:px-8">
+                <div className="flex items-start gap-3 rounded-xl border border-[var(--border)] bg-[#f7f8f7] p-4">
+                  <MapPin size={19} className="mt-0.5 shrink-0 text-[#15A7AE]" aria-hidden="true" />
                   <div>
-                    <span className="block text-[11px] text-[var(--muted,#6b7280)]">
-                      Mr. Ratiranjan Samal
-                    </span>
-                    <strong className="text-sm font-semibold text-[#1F3864]">
-                      +91 70083 41944
-                    </strong>
+                    <p className="text-xs font-bold uppercase tracking-wide text-[#EB622F]">Organised By</p>
+                    <address className="mt-1 text-sm font-medium not-italic leading-6 text-[#1F3864]">
+                      Odisha Assembly of Small and Medium Enterprises (OASME), Satya Bhawan, Cuttack
+                    </address>
                   </div>
-                </a>
+                </div>
 
-                <a
-                  href="tel:+917751809433"
-                  className="group flex items-center gap-3 rounded-lg border border-transparent p-2 transition-all hover:border-[var(--border)] hover:bg-[#f7f8f7]"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] group-hover:bg-[#EB622F] group-hover:text-white transition-colors">
-                    <Phone size={16} />
-                  </span>
-                  <div>
-                    <span className="block text-[11px] text-[var(--muted,#6b7280)]">
-                      Ms. Mamta
-                    </span>
-                    <strong className="text-sm font-semibold text-[#1F3864]">
-                      +91 77518 09433
-                    </strong>
-                  </div>
-                </a>
-
-                <a
-                  href="mailto:oasme.odisha@gmail.com"
-                  className="group flex items-center gap-3 rounded-lg border border-transparent p-2 transition-all hover:border-[var(--border)] hover:bg-[#f7f8f7]"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] group-hover:bg-[#EB622F] group-hover:text-white transition-colors">
-                    <Mail size={16} />
-                  </span>
-                  <div>
-                    <span className="block text-[11px] text-[var(--muted,#6b7280)]">
-                      Official Email
-                    </span>
-                    <strong className="text-sm font-semibold text-[#1F3864]">
-                      oasme.odisha@gmail.com
-                    </strong>
-                  </div>
-                </a>
-
-                <a
-                  href="mailto:  info@propackodisha.com"
-                  className="group flex items-center gap-3 rounded-lg border border-transparent p-2 transition-all hover:border-[var(--border)] hover:bg-[#f7f8f7]"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] group-hover:bg-[#EB622F] group-hover:text-white transition-colors">
-                    <Mail size={16} />
-                  </span>
-                  <div>
-                    <span className="block text-[11px] text-[var(--muted,#6b7280)]">
-                      Event Support
-                    </span>
-                    <strong className="text-sm font-semibold text-[#1F3864]">
-                info@propackodisha.com
-                    </strong>
-                  </div>
-                </a>
-              </div>
-
-              {/* Verified Trust Footer in Card */}
-              <div className="mt-6 flex items-center justify-center gap-2 border-t border-[var(--border)] pt-4 text-center text-xs text-[var(--muted,#6b7280)]">
-                <Users2 size={14} className="text-[#15A7AE]" />
-                <span>Serving 30+ District Industrial Chapters</span>
+                <ul className="mt-5 divide-y divide-[var(--border)]">
+                  {contactDetails.map(({ label, text, href, icon: Icon }) => (
+                    <li key={href}>
+                      <a
+                        href={href}
+                        className="group flex min-w-0 items-center gap-3 rounded-lg py-4 transition-colors hover:bg-[#f7f8f7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EB622F]"
+                      >
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#15A7AE]/10 text-[#15A7AE] transition-colors group-hover:bg-[#EB622F] group-hover:text-white" aria-hidden="true">
+                          <Icon size={17} />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block text-xs text-[var(--muted,#6b7280)]">{label}</span>
+                          <span className="mt-0.5 block break-words text-sm font-semibold text-[#1F3864]">{text}</span>
+                        </span>
+                        <ArrowUpRight size={15} className="ml-auto shrink-0 text-[#1F3864]/40 transition-colors group-hover:text-[#EB622F]" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 border-t border-[var(--border)] pt-5 text-center text-xs text-[var(--muted,#6b7280)]">
+                  Serving 30+ District Industrial Chapters
+                </p>
               </div>
             </div>
           </aside>

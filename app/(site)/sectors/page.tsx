@@ -1,55 +1,50 @@
+
+import type { Metadata } from "next";
+
 import { SectorsContent } from "@/components/pages/sectors";
 import { ContentPage } from "@/components/shared/page-shell";
 
 import { contentPages } from "@/lib/page-config";
-import { pageMetadata } from "@/lib/seo";
-import { sectors, seoUrl } from "@/lib/site";
+import { sectors } from "@/lib/site";
 
-const page = contentPages["sectors"];
+import {
+  buildPageUrl,
+  pageMetadata,
+} from "@/lib/seo";
 
-export const metadata = pageMetadata(
-  "sectors",
+import {
+  pageSchema,
+  serializeJsonLd,
+} from "@/lib/schema";
+
+const slug = "sectors";
+const page = contentPages[slug];
+
+const pageUrl = buildPageUrl(slug);
+const sectorListId = `${pageUrl}#sector-list`;
+
+export const metadata: Metadata = pageMetadata(
+  slug,
   page.label,
   page.description
 );
 
-export default function Page() {
-  const sectorsPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "@id": `${seoUrl}/sectors#webpage`,
-
-    url: `${seoUrl}/sectors`,
-
-    name:
-      "Packaging, Printing, Plastics & Processing Sectors | PROPACK Odisha 2027",
-
-    description:
-      "Explore the industry sectors represented at PROPACK Odisha 2027, including packaging, printing, plastics, paper, processing and green energy technologies.",
-
-    isPartOf: {
-      "@id": `${seoUrl}/#website`,
-    },
-
-    about: {
-      "@id": `${seoUrl}/#event`,
-    },
-
-    mainEntity: {
-      "@id": `${seoUrl}/sectors#sector-list`,
-    },
-
-    inLanguage: "en-IN",
-  };
+export default function SectorsPage() {
+  const baseSchema = pageSchema(slug);
 
   const sectorListSchema = {
-    "@context": "https://schema.org",
     "@type": "ItemList",
-    "@id": `${seoUrl}/sectors#sector-list`,
+    "@id": sectorListId,
 
     name: "PROPACK Odisha 2027 Exhibition Sectors",
 
+    description:
+      "Industry sectors at PROPACK Odisha International Expo 2027, covering packaging, printing, plastics, processing, paper and green energy.",
+
     numberOfItems: sectors.length,
+
+    itemListOrder:
+      "https://schema.org/ItemListOrderAscending",
 
     itemListElement: sectors.map((sector, index) => ({
       "@type": "ListItem",
@@ -57,38 +52,62 @@ export default function Page() {
 
       item: {
         "@type": "Thing",
+        "@id": `${pageUrl}#sector-${index}`,
         name: sector.name,
         description: sector.detail,
-        url: `${seoUrl}/sectors#sector-${index}`,
+        url: `${pageUrl}#sector-${index}`,
       },
     })),
   };
 
+  const structuredData = baseSchema
+    ? {
+        "@context": "https://schema.org",
+
+        "@graph": [
+          ...baseSchema["@graph"].map((node) => {
+            if (
+              node["@type"] === "WebPage" ||
+              node["@type"] === "CollectionPage"
+            ) {
+              return {
+                ...node,
+                "@type": "CollectionPage",
+
+                mainEntity: {
+                  "@id": sectorListId,
+                },
+
+                relatedLink: [
+                  buildPageUrl("exhibitors"),
+                  buildPageUrl("exhibitor-profile"),
+                  buildPageUrl("visitors"),
+                ],
+              };
+            }
+
+            return node;
+          }),
+
+          sectorListSchema,
+        ],
+      }
+    : null;
+
   return (
     <>
-      <ContentPage slug="sectors">
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(structuredData),
+          }}
+        />
+      )}
+
+      <ContentPage slug={slug}>
         <SectorsContent />
       </ContentPage>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(sectorsPageSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(sectorListSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
     </>
   );
 }

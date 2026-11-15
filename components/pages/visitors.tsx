@@ -1,8 +1,4 @@
-/* =========================================================================
-   VISITORS CONTENT COMPONENT (components/pages/visitors/VisitorsContent.tsx)
-   ========================================================================= */
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -17,26 +13,21 @@ import {
 import { VisitorQuestions } from "@/components/pages/visitor-questions";
 import { Button, Eyebrow } from "@/components/shared/ui";
 import { RevealSection } from "@/components/shared/motion";
-
 export function VisitorsContent() {
   const visitSteps = [
     {
-      num: "01",
       title: "Target Solutions",
       desc: "Identify the machinery, automation systems, and packaging technologies you want to evaluate.",
     },
     {
-      num: "02",
       title: "Get Visitor Badge",
       desc: "Register your business details online to instantly generate and save your digital entry pass.",
     },
     {
-      num: "03",
       title: "Meet & Procure",
-      desc: "Connect directly with exhibitors and compare commercial rates at Janata Maidan, 25th to 28th February 2027.",
+      desc: "Connect directly with exhibitors and compare commercial rates in Bhubaneswar, 25th to 28th February 2027.",
     },
   ];
-
   const visitorProfiles = [
     "Packaging materials manufacturers",
     "Plastic processors and moulders",
@@ -66,30 +57,26 @@ export function VisitorsContent() {
     "Consultants, food scientists and technologists",
     "Government departments, PSUs, academia and R&D institutions",
   ];
-
   return (
     <div className="relative overflow-hidden">
-      
       {/* Top Right Decorative Image Accent */}
       <div className="pointer-events-none absolute top-10 right-0 h-72 w-72 opacity-15 -z-0">
         <Image
           src="/sections/visit.png"
-          alt="Decorative Top Right"
+          alt="" aria-hidden="true" sizes="288px"
           fill
           className="object-contain"
         />
       </div>
-
       {/* Bottom Left Decorative Image Accent */}
       <div className="pointer-events-none absolute bottom-1/3 left-0 h-72 w-72 opacity-15 -z-0">
         <Image
           src="/sections/bottom-left-decor.png"
-          alt="Decorative Bottom Left"
+          alt="" aria-hidden="true" sizes="288px"
           fill
           className="object-contain"
         />
       </div>
-
       {/* 1. WHY VISIT: Value Proposition Split */}
       <RevealSection className="relative z-10 border-b border-[var(--border)] bg-[#f8fafc] py-20 lg:py-28">
         <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
@@ -98,17 +85,15 @@ export function VisitorsContent() {
             <div className="flex items-center gap-2">
               <Eyebrow>Why Visit</Eyebrow>
             </div>
-
             <h1 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl lg:leading-[1.12]">
               One Expo. Endless Solutions. <br />
               <span className="text-[#EB622F]">
                 Powering multiple industries. Driving the future.
               </span>
             </h1>
-
             <div className="mt-6 space-y-4 text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
               <p>
-                Reach a market that is being built right now. Odisha&apos;s
+                Reach a market that is being built right now. Odisha's
                 packaging demand is being created by new food processing,
                 pharmaceutical, petrochemical, and e-commerce capacity—not
                 competed for in a saturated market.
@@ -119,19 +104,17 @@ export function VisitorsContent() {
                 Bhubaneswar.
               </p>
             </div>
-
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Button href="/visitor-registration">Register your visit</Button>
               <Link
                 href="/visitor-profile"
-                className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-white px-5 py-3 text-xs font-semibold text-[#1F3864] shadow-xs transition-all hover:border-[#EB622F] hover:bg-[#EB622F]/5 hover:text-[#EB622F]"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-white px-5 py-3 text-center text-sm font-semibold text-[#1F3864] shadow-xs transition-all hover:border-[#EB622F] hover:bg-[#EB622F]/5 hover:text-[#EB622F]"
               >
                 <Ticket size={16} />
                 <span>View Visitor Profile</span>
               </Link>
             </div>
           </div>
-
           {/* Right: Step-by-Step Preparation Checklist Card */}
           <div className="lg:col-span-5">
             <div className="rounded-3xl border border-[var(--border)] bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-8">
@@ -141,26 +124,22 @@ export function VisitorsContent() {
                   Visitor Roadmap
                 </span>
               </div>
-
-              <h3 className="mt-2 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[#1F3864] sm:text-2xl">
+              <h2 className="mt-2 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[#1F3864] sm:text-2xl">
                 Make the most of your visit
-              </h3>
-
+              </h2>
               <p className="mt-1 text-xs text-[var(--muted,#6b7280)]">
                 Three quick milestones to maximize your sourcing efficiency on
                 the exhibition floor:
               </p>
-
               <div className="mt-6 space-y-4 border-t border-[var(--border)] pt-5">
                 {visitSteps.map((step) => (
                   <div
-                    key={step.num}
+                    key={step.title}
                     className="group flex items-start gap-3.5 rounded-2xl border border-transparent p-3 transition-colors hover:border-[var(--border)] hover:bg-[#f8faf9]"
                   >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#15A7AE]/10 font-mono text-xs font-bold text-[#15A7AE] transition-colors group-hover:bg-[#EB622F] group-hover:text-white">
-                      {step.num}
+                    <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#15A7AE]/10 text-[#15A7AE] transition-colors group-hover:bg-[#EB622F] group-hover:text-white">
+                      <CheckCircle2 size={17} />
                     </span>
-
                     <div>
                       <strong className="block text-xs font-bold text-[#1F3864] sm:text-sm">
                         {step.title}
@@ -176,7 +155,6 @@ export function VisitorsContent() {
           </div>
         </div>
       </RevealSection>
-
       {/* 2. VISITOR PROFILE SECTION (Grid Preview with Link) */}
       <RevealSection className="relative z-10 border-b border-[var(--border)] bg-white py-20 lg:py-28">
         <div className="container mx-auto px-4 sm:px-6">
@@ -185,7 +163,6 @@ export function VisitorsContent() {
               <div className="flex items-center gap-2">
                 <Eyebrow>Visitor Profile</Eyebrow>
               </div>
-
               <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl font-bold tracking-tight text-[#1F3864] sm:text-4xl">
                 Indicative and not restrictive
               </h2>
@@ -200,7 +177,6 @@ export function VisitorsContent() {
               </Link>
             </div>
           </div>
-
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {visitorProfiles.slice(0, 6).map((item) => (
               <div
@@ -214,19 +190,17 @@ export function VisitorsContent() {
               </div>
             ))}
           </div>
-
           <div className="mt-12 text-center">
             <Link
               href="/visitor-profile"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#1F3864] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#162747]"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#1F3864] px-7 py-3.5 text-center text-sm font-semibold !text-white shadow-sm transition-all hover:bg-[#162747]"
             >
-              <span>View all {visitorProfiles.length}+ visitor categories</span>
+              <span>View all visitor categories</span>
               <ArrowUpRight size={16} />
             </Link>
           </div>
         </div>
       </RevealSection>
-
       {/* 3. PLAN YOUR VISIT: Venue Logistics & Maps */}
       <RevealSection
         id="plan-your-visit"
@@ -237,24 +211,21 @@ export function VisitorsContent() {
             <div className="flex items-center gap-2">
               <Eyebrow>Your Destination</Eyebrow>
             </div>
-
             <h2 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl">
               Meet us in Bhubaneswar
             </h2>
-
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="flex items-start gap-3.5 rounded-2xl border border-[var(--border)] bg-white p-5 shadow-xs">
                 <MapPin size={22} className="mt-0.5 shrink-0 text-[#15A7AE]" />
                 <div>
                   <strong className="block text-sm font-bold text-[#1F3864]">
-                    Janata Maidan
+                    Bhubaneswar, Odisha
                   </strong>
                   <span className="text-xs text-[var(--muted,#6b7280)]">
-                    Bhubaneswar, Odisha, India
+                    Exact exhibition venue to be announced
                   </span>
                 </div>
               </div>
-
               <div className="flex items-start gap-3.5 rounded-2xl border border-[var(--border)] bg-white p-5 shadow-xs">
                 <Calendar
                   size={22}
@@ -270,44 +241,35 @@ export function VisitorsContent() {
                 </div>
               </div>
             </div>
-
-            <p className="mt-6 text-sm leading-relaxed text-[var(--muted-foreground,#4b5563)]">
-              Free for registered trade visitors; all seminar sessions open to
-              delegates at no charge.
-            </p>
+          
           </div>
-
           <div className="lg:col-span-5">
             <div className="flex flex-col justify-between rounded-3xl border border-[var(--border)] bg-white p-6 shadow-sm transition-all hover:border-[#EB622F]/50 sm:p-8">
               <div>
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f8faf9] border border-[var(--border)] text-[#15A7AE]">
                   <Map size={24} />
                 </div>
-
                 <h3 className="mt-4 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[#1F3864]">
                   Plan your journey route
                 </h3>
-
                 <p className="mt-2 text-xs leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-sm">
-                  Conveniently situated at Bhubaneswar, the same
-                  ground that hosted Utkarsh Odisha: Make in Odisha Conclave
-                  2025.
+                  The exhibition will take place in Bhubaneswar, Odisha.
+                  The exact venue location will be announced once confirmed.
                 </p>
               </div>
-
               <div className="mt-6 border-t border-[var(--border)] pt-5">
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Janata+Maidan+Bhubaneswar+Odisha"
+                  href="https://www.google.com/maps/search/?api=1&query=Bhubaneswar%2C+Odisha%2C+India"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex w-full items-center justify-between rounded-xl bg-[#1F3864] px-5 py-3.5 text-xs font-semibold !text-white shadow-sm transition-all duration-200 hover:bg-[#162747]"
+                  className="group inline-flex min-h-12 w-full items-center justify-between gap-3 rounded-xl bg-[#1F3864] px-5 py-3.5 text-sm font-semibold !text-white shadow-sm transition-all duration-200 hover:bg-[#162747]"
                 >
-                  <span className="!text-white font-medium">
-                    Open venue directions in Google Maps
+                  <span className="min-w-0 break-words font-medium !text-white">
+                    View Bhubaneswar in Google Maps
                   </span>
                   <ArrowUpRight
                     size={16}
-                    className="!text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    className="shrink-0 !text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
                 </a>
               </div>
@@ -315,7 +277,6 @@ export function VisitorsContent() {
           </div>
         </div>
       </RevealSection>
-
       {/* 4. FREQUENTLY ASKED QUESTIONS */}
       <VisitorQuestions />
     </div>

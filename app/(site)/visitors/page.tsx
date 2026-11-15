@@ -1,91 +1,100 @@
+
+import type { Metadata } from "next";
+
 import { VisitorsContent } from "@/components/pages/visitors";
 import { ContentPage } from "@/components/shared/page-shell";
 
 import { contentPages } from "@/lib/page-config";
-import { pageMetadata } from "@/lib/seo";
-import { seoUrl } from "@/lib/site";
+import {
+  buildPageUrl,
+  pageMetadata,
+} from "@/lib/seo";
+import {
+  pageSchema,
+  serializeJsonLd,
+} from "@/lib/schema";
 
-const page = contentPages["visitors"];
+const slug = "visitors";
+const page = contentPages[slug];
 
-export const metadata = pageMetadata(
-  "visitors",
+const pageUrl = buildPageUrl(slug);
+const audienceId = `${pageUrl}#trade-audience`;
+
+export const metadata: Metadata = pageMetadata(
+  slug,
   page.label,
   page.description
 );
 
-export default function Page() {
-  const visitorsPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": `${seoUrl}/visitors#webpage`,
+export default function VisitorsPage() {
+  const baseSchema = pageSchema(slug);
 
-    url: `${seoUrl}/visitors`,
+  const tradeAudienceSchema = {
+    "@type": "BusinessAudience",
+    "@id": audienceId,
 
-    name: "Visit the Packaging & Printing Exhibition in Odisha | PROPACK Odisha 2027",
-
-    description:
-      "Plan your visit to PROPACK Odisha 2027 in Bhubaneswar. Explore packaging, printing, plastics, processing technologies, meet suppliers and connect with industry professionals.",
-
-    isPartOf: {
-      "@id": `${seoUrl}/#website`,
-    },
-
-    about: {
-      "@id": `${seoUrl}/#event`,
-    },
-
-    mainEntity: {
-      "@id": `${seoUrl}/#event`,
-    },
-
-    significantLink: [
-      `${seoUrl}/visitor-registration`,
-      `${seoUrl}/visitor-profile`,
-      `${seoUrl}/venue`,
-    ],
-
-    inLanguage: "en-IN",
-  };
-
-  const visitorAudienceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Audience",
-    "@id": `${seoUrl}/visitors#trade-audience`,
+    name: "PROPACK Odisha Trade Visitor Audience",
 
     audienceType:
       "Trade visitors, manufacturers, processors, buyers, distributors, industry professionals and decision-makers",
 
     geographicArea: {
       "@type": "AdministrativeArea",
-      name: "Odisha, India",
+      name: "Odisha",
+      containedInPlace: {
+        "@type": "Country",
+        name: "India",
+      },
     },
   };
 
+  const structuredData = baseSchema
+    ? {
+        "@context": "https://schema.org",
+        "@graph": [
+          ...baseSchema["@graph"].map((node) => {
+            if (node["@type"] === "WebPage") {
+              return {
+                ...node,
+
+                mainEntity: {
+                  "@id": buildPageUrl("") + "#event",
+                },
+
+                audience: {
+                  "@id": audienceId,
+                },
+
+                significantLink: [
+                  buildPageUrl("visitor-registration"),
+                  buildPageUrl("visitor-profile"),
+                  buildPageUrl("venue"),
+                ],
+              };
+            }
+
+            return node;
+          }),
+
+          tradeAudienceSchema,
+        ],
+      }
+    : null;
+
   return (
     <>
-      <ContentPage slug="visitors">
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(structuredData),
+          }}
+        />
+      )}
+
+      <ContentPage slug={slug}>
         <VisitorsContent />
       </ContentPage>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(visitorsPageSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(visitorAudienceSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
     </>
   );
 }

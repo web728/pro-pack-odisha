@@ -1,103 +1,153 @@
+
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
-  Settings2,
   CheckCircle2,
   Layers,
   ArrowRight,
   ChevronRight,
   PackageCheck,
 } from "lucide-react";
+
 import { sectors } from "@/lib/site";
 import { sectorDetails } from "@/lib/sector-details";
 import { TextLink, Eyebrow } from "@/components/shared/ui";
 import { RevealSection } from "@/components/shared/motion";
 
+function getSectorFromHash(): number | null {
+  if (typeof window === "undefined") return null;
+
+  const match = window.location.hash.match(/^#sector-(\d+)$/);
+
+  if (!match) return null;
+
+  const index = Number(match[1]);
+
+  return Number.isInteger(index) &&
+    index >= 0 &&
+    index < sectors.length
+    ? index
+    : null;
+}
+
 export function SectorsContent() {
   const [activeTab, setActiveTab] = useState(0);
+  const reduceMotion = useReducedMotion();
 
-  // URL hash check karega aur page ko top par scroll karke sahi tab select karega
   useEffect(() => {
-    window.scrollTo(0, 0); // Turant top par le aayega
+    const syncSector = () => {
+      const index = getSectorFromHash();
 
-    const hash = window.location.hash;
-    if (hash && hash.startsWith("#sector-")) {
-      const index = parseInt(hash.replace("#sector-", ""), 10);
-      if (!isNaN(index) && index >= 0 && index < sectors.length) {
+      if (index !== null) {
         setActiveTab(index);
       }
-    }
+    };
+
+    syncSector();
+
+    window.addEventListener("hashchange", syncSector);
+    window.addEventListener("popstate", syncSector);
+
+    return () => {
+      window.removeEventListener("hashchange", syncSector);
+      window.removeEventListener("popstate", syncSector);
+    };
   }, []);
 
   const currentSector = sectors[activeTab];
 
+  if (!currentSector) return null;
+
+  const currentTopics = sectorDetails[activeTab] ?? [];
+
+  function selectSector(index: number) {
+    setActiveTab(index);
+
+    const hash = `#sector-${index}`;
+
+    if (window.location.hash !== hash) {
+      window.history.pushState(null, "", hash);
+    }
+  }
+
   return (
     <RevealSection className="border-b border-[var(--border)] bg-[#f7f8f7] py-10 lg:py-14">
-      <div className="container mx-auto px-4 sm:px-6">
-        
-        {/* Compact Header */}
-        <div className="mb-8 max-w-2xl">
+      <section
+        aria-labelledby="sectors-page-heading"
+        className="container mx-auto px-4 sm:px-6"
+      >
+        {/* Page introduction */}
+        <header className="mb-8 max-w-2xl">
           <div className="inline-flex items-center gap-2">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#15A7AE]/10 text-[#15A7AE]">
+            <span
+              aria-hidden="true"
+              className="flex h-5 w-5 items-center justify-center rounded-full bg-[#15A7AE]/10 text-[#15A7AE]"
+            >
               <Layers size={12} />
             </span>
+
             <Eyebrow>Exhibition Coverage</Eyebrow>
           </div>
-          <h1 className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold tracking-tight text-[#1F3864] sm:text-3xl">
-            Sectors & Technology Catalog
-          </h1>
-          <p className="mt-1 text-xs text-[var(--muted-foreground,#4b5563)] sm:text-sm">
-            Select an industry sector below to view its equipment coverage, conversion machinery, and featured segments.
-          </p>
-        </div>
 
-        {/* Master-Detail Grid - Equal Stretch Alignment */}
+          <h1
+            id="sectors-page-heading"
+            className="mt-2 font-[family-name:var(--font-heading)] text-2xl font-extrabold tracking-tight text-[#1F3864] sm:text-3xl"
+          >
+            Sectors &amp; Technology Catalog
+          </h1>
+
+          <p className="mt-1 text-xs text-[var(--muted-foreground,#4b5563)] sm:text-sm">
+            Select an industry sector below to view its equipment
+            coverage, conversion machinery, and featured segments.
+          </p>
+        </header>
+
+        {/* Sector navigation and details */}
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12 lg:gap-8">
-          
-          {/* Left Column: Equal Height Tab List */}
-          <div className="flex flex-row gap-2 overflow-x-auto pb-2 sm:pb-0 lg:col-span-4 lg:flex-col lg:justify-between lg:overflow-visible">
-            {sectors.map((s, i) => {
-              const isActive = activeTab === i;
+          {/* Sector navigation */}
+          <nav
+            aria-label="PROPACK Odisha exhibition sectors"
+            className="flex min-w-0 flex-row gap-2 overflow-x-auto pb-2 sm:pb-0 lg:col-span-4 lg:flex-col lg:justify-between lg:overflow-visible"
+          >
+            {sectors.map((sector, index) => {
+              const isActive = activeTab === index;
+
               return (
                 <button
-                  key={s.name}
-                  onClick={() => {
-                    setActiveTab(i);
-                    // URL hash bhi update kar do bina page reload ke
-                    window.history.pushState(null, "", `#sector-${i}`);
-                  }}
-                  className={`group relative flex flex-1 shrink-0 items-center justify-between rounded-xl border p-3.5 text-left transition-all duration-200 sm:p-4 lg:w-full ${
+                  key={sector.name}
+                  id={`sector-${index}`}
+                  type="button"
+                  onClick={() => selectSector(index)}
+                  aria-pressed={isActive}
+                  aria-controls="sector-detail-panel"
+                  className={`group relative flex min-w-[160px] flex-1 shrink-0 items-center justify-between rounded-xl border p-3.5 text-left transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EB622F] sm:p-4 lg:min-w-0 lg:w-full ${
                     isActive
                       ? "border-[#EB622F] bg-white shadow-sm ring-1 ring-[#EB622F]/20"
                       : "border-[var(--border)] bg-white/80 hover:border-slate-300 hover:bg-white"
                   }`}
                 >
-                  <div className="flex items-center gap-3">
-                 
-
-                    <div>
+                  <span className="flex min-w-0 items-center gap-3">
+                    <span className="min-w-0">
                       <strong
-                        className={`block text-xs font-bold leading-snug sm:text-sm ${
+                        className={`block break-words text-xs font-bold leading-snug sm:text-sm ${
                           isActive
                             ? "text-[#1F3864]"
                             : "text-[var(--muted-foreground,#4b5563)] group-hover:text-[#1F3864]"
                         }`}
                       >
-                        {s.name}
+                        {sector.name}
                       </strong>
-                      <span className="hidden text-[11px] text-[var(--muted,#6b7280)] lg:block">
-                        {sectorDetails[i]?.length || 0} Key technology areas
-                      </span>
-                    </div>
-                  </div>
+                    </span>
+                  </span>
 
                   <ChevronRight
                     size={16}
-                    className={`hidden transition-transform duration-200 lg:block ${
+                    aria-hidden="true"
+                    className={`hidden shrink-0 transition-transform duration-200 lg:block ${
                       isActive
                         ? "translate-x-0.5 text-[#EB622F]"
                         : "text-slate-300 group-hover:text-slate-500"
@@ -106,45 +156,64 @@ export function SectorsContent() {
                 </button>
               );
             })}
-          </div>
+          </nav>
 
-          {/* Right Column: Equal Height Detail Card */}
-          <div className="flex flex-col lg:col-span-8">
+          {/* Active sector information */}
+          <div
+            id="sector-detail-panel"
+            className="flex min-w-0 flex-col lg:col-span-8"
+            aria-live="polite"
+            aria-atomic="true"
+          >
             <AnimatePresence mode="wait">
-              <motion.div
+              <motion.article
                 key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
+                initial={
+                  reduceMotion
+                    ? false
+                    : { opacity: 0, y: 10 }
+                }
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border)] bg-white p-6 shadow-xs sm:p-8"
+                exit={
+                  reduceMotion
+                    ? undefined
+                    : { opacity: 0, y: -10 }
+                }
+                transition={{
+                  duration: reduceMotion ? 0 : 0.2,
+                  ease: "easeOut",
+                }}
+                aria-labelledby={`sector-title-${activeTab}`}
+                className="flex h-full min-w-0 flex-col justify-between overflow-hidden rounded-2xl border border-[var(--border)] bg-white p-6 shadow-xs sm:p-8"
               >
                 <div>
-                  {/* Visual Banner & Sector Title */}
+                  {/* Sector image and introduction */}
                   <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-12">
-                    
-                    {/* Visual Image / Animation Container */}
-                  <div className="relative h-44 w-full overflow-hidden rounded-xl border border-[var(--border)] bg-[#f7f8f7] sm:col-span-5 sm:h-48">
-  <Image
-    key={currentSector.image}
-    src={`/sections/${currentSector.image}`}
-    alt={`${currentSector.name} machinery preview`}
-    fill
-    sizes="(max-width: 640px) 100vw, 320px"
-    className="object-cover"
-  />
+                    <div className="relative h-44 w-full overflow-hidden rounded-xl border border-[var(--border)] bg-[#f7f8f7] sm:col-span-5 sm:h-48">
+                      <Image
+                        key={currentSector.image}
+                        src={`/sections/${currentSector.image}`}
+                        alt={`${currentSector.name} exhibition sector at PROPACK Odisha 2027`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 320px"
+                        className="object-cover"
+                      />
+                    </div>
 
-  
-</div>
-
-                    {/* Sector Title & Detail */}
-                    <div className="sm:col-span-7">
+                    <div className="min-w-0 sm:col-span-7">
                       <div className="flex items-center gap-1.5 text-xs font-semibold text-[#15A7AE]">
-                        <PackageCheck size={14} />
-                        <span>Verified Industry Vertical</span>
+                        <PackageCheck
+                          size={14}
+                          aria-hidden="true"
+                        />
+
+                        <span>Industry Sector</span>
                       </div>
 
-                      <h2 className="mt-1.5 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[#1F3864] sm:text-2xl">
+                      <h2
+                        id={`sector-title-${activeTab}`}
+                        className="mt-1.5 font-[family-name:var(--font-heading)] text-xl font-bold tracking-tight text-[#1F3864] sm:text-2xl"
+                      >
                         {currentSector.name}
                       </h2>
 
@@ -154,57 +223,51 @@ export function SectorsContent() {
                     </div>
                   </div>
 
-                  {/* Topics Grid */}
-                  <div className="mt-6 border-t border-[var(--border)] pt-5">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[var(--muted,#6b7280)]">
-                      Included Machinery & Products 
-                    </span>
-
-                    <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                      {sectorDetails[activeTab]?.map((topic) => (
-                        <div
-                          key={topic}
-                          className="flex items-start gap-2.5 rounded-lg border border-[var(--border)] bg-[#f7f8f7] p-2.5 text-xs leading-snug text-[#1F3864] transition-colors hover:border-[#EB622F]/50 hover:bg-white"
-                        >
-                          <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-[#15A7AE]" />
-                          <span className="font-medium">{topic}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Bar With Brand Orange Button */}
-                <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border)] pt-4">
-                  <span className="text-xs font-medium text-[var(--muted-foreground,#4b5563)]">
-                    Want to showcase machinery in {currentSector.name}?
-                  </span>
-                  
-                  <Link
-                    href="/exhibitor-registration"
-                    className="inline-flex items-center gap-2 rounded-lg bg-[#EB622F] px-4 py-2 text-xs font-bold !text-white shadow-md transition-all duration-200 hover:bg-[#d55526] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#EB622F]/40 active:scale-95"
+                  {/* Machinery and product categories */}
+                  <section
+                    aria-labelledby={`sector-products-${activeTab}`}
+                    className="mt-6 border-t border-[var(--border)] pt-5"
                   >
-                    <span className="!text-white font-bold tracking-wide">
-                      Book Stall in Sector 0{activeTab + 1}
-                    </span>
-                    <ArrowRight size={14} className="!text-white" />
-                  </Link>
-                </div>
+                    <h3
+                      id={`sector-products-${activeTab}`}
+                      className="text-xs font-bold uppercase tracking-wider text-[var(--muted,#6b7280)]"
+                    >
+                      Included Machinery &amp; Products
+                    </h3>
 
-              </motion.div>
+                    <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      {currentTopics.map((topic) => (
+                        <li
+                          key={topic}
+                          className="flex min-w-0 items-start gap-2.5 rounded-lg border border-[var(--border)] bg-[#f7f8f7] p-2.5 text-xs leading-snug text-[#1F3864] transition-colors hover:border-[#EB622F]/50 hover:bg-white"
+                        >
+                          <CheckCircle2
+                            size={14}
+                            aria-hidden="true"
+                            className="mt-0.5 shrink-0 text-[#15A7AE]"
+                          />
+
+                          <span className="min-w-0 break-words font-medium">
+                            {topic}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                </div>
+ 
+              </motion.article>
             </AnimatePresence>
           </div>
-
         </div>
 
-        {/* Footer Link */}
+        {/* Exhibitor information */}
         <div className="mt-10 flex justify-center border-t border-[var(--border)] pt-6">
           <TextLink href="/exhibitors">
             Explore complete exhibitor profiles directory
           </TextLink>
         </div>
-
-      </div>
+      </section>
     </RevealSection>
   );
 }

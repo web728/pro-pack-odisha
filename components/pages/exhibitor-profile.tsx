@@ -174,7 +174,7 @@ export function ExhibitorProfileContent() {
             </Button>
 
             <Button secondary href="/exhibitors">
-              <FileText size={16} className="mr-1.5" />
+              <FileText size={14} className="mr-1.1" />
               Back to Exhibitors
             </Button>
           </div>

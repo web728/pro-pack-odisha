@@ -1,117 +1,112 @@
+
+import type { Metadata } from "next";
+
 import { ExhibitorProfileContent } from "@/components/pages/exhibitor-profile";
 import { ContentPage } from "@/components/shared/page-shell";
 
-import { pageMetadata } from "@/lib/seo";
-import { seoUrl } from "@/lib/site";
+import {
+  buildPageUrl,
+  pageMetadata,
+} from "@/lib/seo";
+
+import {
+  pageSchema,
+  serializeJsonLd,
+} from "@/lib/schema";
 
 const slug = "exhibitor-profile";
 
-export const metadata = pageMetadata(
+const pageUrl = buildPageUrl(slug);
+const categoriesId = `${pageUrl}#categories`;
+
+export const metadata: Metadata = pageMetadata(
   slug,
   "Exhibitor Profile",
   "Indicative and not restrictive categories for PROPACK Odisha 2027 exhibitors."
 );
 
-export default function Page() {
-  const exhibitorProfileSchema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "@id": `${seoUrl}/exhibitor-profile#webpage`,
+// Keep these categories aligned with the visible page content.
+const exhibitorCategories = [
+  "Packaging Materials and Formats",
+  "Plastics Processing, Polymers and Tooling",
+  "Packaging and Processing Machinery",
+  "Printing, Converting and Finishing",
+] as const;
 
-    url: `${seoUrl}/exhibitor-profile`,
-
-    name: "Exhibitor Profile | PROPACK Odisha 2027",
-
-    description:
-      "Explore exhibitor categories, machinery, products and services represented at PROPACK Odisha 2027 in Bhubaneswar.",
-
-    isPartOf: {
-      "@id": `${seoUrl}/#website`,
-    },
-
-    about: {
-      "@id": `${seoUrl}/#event`,
-    },
-
-    mainEntity: {
-      "@id": `${seoUrl}/exhibitor-profile#categories`,
-    },
-
-    inLanguage: "en-IN",
-  };
+export default function ExhibitorProfilePage() {
+  const baseSchema = pageSchema(slug);
 
   const categoryListSchema = {
-    "@context": "https://schema.org",
     "@type": "ItemList",
-    "@id": `${seoUrl}/exhibitor-profile#categories`,
+    "@id": categoriesId,
 
     name: "PROPACK Odisha 2027 Exhibitor Categories",
 
-    itemListElement: [
-      {
+    description:
+      "Exhibitor categories covering packaging materials, plastics processing, packaging machinery, printing, converting and finishing technologies.",
+
+    numberOfItems: exhibitorCategories.length,
+
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+
+    itemListElement: exhibitorCategories.map(
+      (category, index) => ({
         "@type": "ListItem",
-        position: 1,
-        item: {
-          "@type": "Thing",
-          name: "Packaging Materials and Formats",
-          url: `${seoUrl}/exhibitor-profile`,
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@type": "Thing",
-          name: "Plastics Processing, Polymers and Tooling",
-          url: `${seoUrl}/exhibitor-profile`,
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        item: {
-          "@type": "Thing",
-          name: "Packaging and Processing Machinery",
-          url: `${seoUrl}/exhibitor-profile`,
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        item: {
-          "@type": "Thing",
-          name: "Printing, Converting and Finishing",
-          url: `${seoUrl}/exhibitor-profile`,
-        },
-      },
-    ],
+        position: index + 1,
+        name: category,
+      })
+    ),
   };
+
+  const structuredData = baseSchema
+    ? {
+        "@context": "https://schema.org",
+
+        "@graph": [
+          ...baseSchema["@graph"].map((node) => {
+            if (
+              node["@type"] === "WebPage" ||
+              node["@type"] === "CollectionPage"
+            ) {
+              return {
+                ...node,
+
+                "@type": "CollectionPage",
+
+                mainEntity: {
+                  "@id": categoriesId,
+                },
+
+                relatedLink: [
+                  buildPageUrl("exhibitors"),
+                  buildPageUrl("exhibitor-registration"),
+                  buildPageUrl("sectors"),
+                ],
+              };
+            }
+
+            return node;
+          }),
+
+          categoryListSchema,
+        ],
+      }
+    : null;
 
   return (
     <>
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(structuredData),
+          }}
+        />
+      )}
+
       <ContentPage slug={slug}>
         <ExhibitorProfileContent />
       </ContentPage>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(exhibitorProfileSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(categoryListSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
     </>
   );
 }

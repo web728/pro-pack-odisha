@@ -1,131 +1,103 @@
+
+import type { Metadata } from "next";
+
 import { ExhibitorsContent } from "@/components/pages/exhibitors";
 import { ContentPage } from "@/components/shared/page-shell";
 
 import { contentPages } from "@/lib/page-config";
 import { pageMetadata } from "@/lib/seo";
-import { seoUrl } from "@/lib/site";
+
+import {
+  pageSchema,
+  serializeJsonLd,
+} from "@/lib/schema";
 
 const page = contentPages["exhibitors"];
 
-export const metadata = pageMetadata(
+export const metadata: Metadata = pageMetadata(
   "exhibitors",
   page.label,
   page.description
 );
 
-export default function Page() {
-  const exhibitorsPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": `${seoUrl}/exhibitors#webpage`,
+const exhibitorBenefits = [
+  "Meet the right buyers",
+  "Network and collaborate",
+  "Build brand awareness",
+  "Grow your business",
+  "Launch new products",
+  "Gain market insights",
+] as const;
 
-    url: `${seoUrl}/exhibitors`,
+export default function ExhibitorsPage() {
+  const baseSchema = pageSchema("exhibitors");
 
-    name: "Exhibit Packaging, Printing & Plastics Machinery | PROPACK Odisha 2027",
+  const benefitsId =
+    "https://www.propackodisha.com/exhibitors#benefits";
 
-    description:
-      "Explore exhibiting opportunities at PROPACK Odisha 2027 and connect with buyers, showcase machinery, launch products and build business relationships in Bhubaneswar.",
-
-    isPartOf: {
-      "@id": `${seoUrl}/#website`,
-    },
-
-    about: {
-      "@id": `${seoUrl}/#event`,
-    },
-
-    relatedLink: [
-      `${seoUrl}/exhibitor-profile`,
-      `${seoUrl}/exhibitor-registration`,
-    ],
-
-    inLanguage: "en-IN",
-  };
-
-  const exhibitorBenefitsSchema = {
-    "@context": "https://schema.org",
+  const benefitsSchema = {
     "@type": "ItemList",
-    "@id": `${seoUrl}/exhibitors#benefits`,
+    "@id": benefitsId,
 
     name: "Why Exhibit at PROPACK Odisha 2027",
 
-    itemListElement: [
-      {
+    description:
+      "Explore the business and networking benefits of exhibiting at PROPACK Odisha International Expo 2027.",
+
+    numberOfItems: exhibitorBenefits.length,
+
+    itemListElement: exhibitorBenefits.map(
+      (benefit, index) => ({
         "@type": "ListItem",
-        position: 1,
-        item: {
-          "@type": "Thing",
-          name: "Meet the right buyers",
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@type": "Thing",
-          name: "Network and collaborate",
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        item: {
-          "@type": "Thing",
-          name: "Build brand awareness",
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        item: {
-          "@type": "Thing",
-          name: "Grow your business",
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 5,
-        item: {
-          "@type": "Thing",
-          name: "Launch new products",
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 6,
-        item: {
-          "@type": "Thing",
-          name: "Gain market insights",
-        },
-      },
-    ],
+        position: index + 1,
+        name: benefit,
+      })
+    ),
   };
+
+  const structuredData = baseSchema
+    ? {
+        "@context": "https://schema.org",
+
+        "@graph": [
+          ...baseSchema["@graph"].map((node) => {
+            if (node["@type"] === "WebPage") {
+              return {
+                ...node,
+
+                relatedLink: [
+                  "https://www.propackodisha.com/exhibitor-profile",
+                  "https://www.propackodisha.com/exhibitor-registration",
+                ],
+
+                hasPart: {
+                  "@id": benefitsId,
+                },
+              };
+            }
+
+            return node;
+          }),
+
+          benefitsSchema,
+        ],
+      }
+    : null;
 
   return (
     <>
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(structuredData),
+          }}
+        />
+      )}
+
       <ContentPage slug="exhibitors">
         <ExhibitorsContent />
       </ContentPage>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(exhibitorsPageSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(exhibitorBenefitsSchema).replace(
-            /</g,
-            "\\u003c"
-          ),
-        }}
-      />
     </>
   );
 }

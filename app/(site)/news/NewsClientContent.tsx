@@ -1,224 +1,256 @@
-/* =========================================================================
-   NEWS CLIENT CONTENT COMPONENT (app/news/NewsClientContent.tsx)
-   ========================================================================= */
 "use client";
 
-import { useState } from "react";
-import { 
-  CalendarDays, 
-  ArrowUpRight, 
-  Tag,
-  ExternalLink,
-  Newspaper,
-  Maximize2,
+import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import {
   Download,
+  ExternalLink,
+  Images,
+  Maximize2,
+  Newspaper,
   X,
-  Image as ImageIcon
 } from "lucide-react";
-import { Button, TextLink, Eyebrow } from "@/components/shared/ui";
-import { RevealSection } from "@/components/shared/motion";
-import { Article, MediaMention } from "@/data/newsData";
 
-interface GalleryImage {
+import { Eyebrow } from "@/components/shared/ui";
+import { RevealSection } from "@/components/shared/motion";
+import type { Article, MediaMention } from "@/data/newsData";
+
+type GalleryImage = {
   id: string;
   title: string;
   image: string;
   year: string;
-}
+};
 
-interface NewsClientProps {
+type NewsClientProps = {
   allGalleryImages: GalleryImage[];
   newsData: Record<string, Article[]>;
   pressMentions: MediaMention[];
-}
+};
 
-export default function NewsClientContent({ allGalleryImages, newsData, pressMentions }: NewsClientProps) {
-  const [selectedYear, setSelectedYear] = useState<string>("All");
-  const [activeImage, setActiveImage] = useState<{ src: string; title: string } | null>(null);
+type ArchiveTab = "photos" | "press";
 
-  // Filter gallery based on dropdown selection ("All" shows everything)
-  const currentGallery = selectedYear === "All" 
-    ? allGalleryImages 
-    : allGalleryImages.filter((img) => img.year === selectedYear);
+export default function NewsClientContent({
+  allGalleryImages,
+  pressMentions,
+}: NewsClientProps) {
+  const [activeTab, setActiveTab] = useState<ArchiveTab>("photos");
+  const [selectedYear, setSelectedYear] = useState("All");
+  const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
+
+  const years = useMemo(
+    () => [...new Set(allGalleryImages.map((image) => image.year))].sort((a, b) => b.localeCompare(a)),
+    [allGalleryImages]
+  );
+
+  const currentGallery = useMemo(
+    () =>
+      selectedYear === "All"
+        ? allGalleryImages
+        : allGalleryImages.filter((image) => image.year === selectedYear),
+    [allGalleryImages, selectedYear]
+  );
+
+  useEffect(() => {
+    if (!activeImage) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActiveImage(null);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeImage]);
 
   return (
     <main className="min-h-screen bg-white">
-      {/* 1. Hero Header Section */}
-      <RevealSection className="border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
+      <RevealSection className="border-b border-[var(--border)] bg-[#f7f8f7] pb-12 pt-16 lg:pb-16 lg:pt-24">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2">
-              <Eyebrow>Media Center & Press Updates</Eyebrow>
-            </div>
-
+          <header className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Media Center &amp; Press Updates</Eyebrow>
             <h1 className="mt-3 font-[family-name:var(--font-heading)] text-3xl font-extrabold tracking-tight text-[#1F3864] sm:text-4xl lg:text-5xl lg:leading-[1.15]">
-              Latest News, Press Releases <br />
-              <span className="text-[#EB622F]">
-                &amp; Media Archives.
-              </span>
+              Latest News, Press Releases
+              <span className="block text-[#EB622F]">&amp; Media Archives.</span>
             </h1>
-
-            <p className="mt-6 text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--muted-foreground,#4b5563)] sm:text-lg">
               Explore official announcements, event photo galleries, and extensive media coverage from leading publications.
             </p>
-          </div>
+          </header>
 
-          {/* Clean Dropdown Filter Bar */}
-          <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-[var(--border)] pt-8">
-            <label htmlFor="year-select" className="text-sm font-semibold text-[#1F3864]">
-              Filter Archive Year:
-            </label>
-            <select
-              id="year-select"
-              value={selectedYear}
-              onChange={(e) => setSelectedYear(e.target.value)}
-              className="rounded-xl border border-[var(--border)] bg-white px-4 py-2.5 text-sm font-semibold text-[#1F3864] shadow-xs outline-none transition-all focus:border-[#EB622F]"
-            >
-              <option value="All">All Years </option>
-              <option value="2027">2027</option>
-              <option value="2026">2026</option>
-              <option value="2025">2025</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
-            </select>
-          </div>
-        </div>
-      </RevealSection>
-
-      {/* 2. Automatic Image Gallery Section */}
-      <RevealSection className="border-b border-[var(--border)] bg-white py-16 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl mb-10">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#15A7AE]">
-              <ImageIcon size={14} /> Photo Gallery Archive
-            </span>
-            <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl font-bold text-[#1F3864]">
-              Event Visual Highlights {selectedYear !== "All" ? `(${selectedYear})` : ""}
-            </h2>
-            <p className="mt-2 text-base text-[var(--muted-foreground,#4b5563)]">
-              Click any image to view in full screen or download.
-            </p>
-          </div>
-
-          {currentGallery.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {currentGallery.map((item) => (
-                <div
-                  key={item.id}
-                  onClick={() => setActiveImage({ src: item.image, title: item.title })}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--border)] bg-[#f7f8f7] cursor-pointer shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#EB622F] hover:shadow-xl"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-center justify-center">
-                    <div className="rounded-full bg-white/90 p-3 shadow-lg backdrop-blur-xs text-[#1F3864] transition-transform group-hover:scale-110">
-                      <Maximize2 size={18} />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="rounded-2xl border border-[var(--border)] bg-[#f7f8f7] p-12 text-center">
-              <p className="text-base font-semibold text-[#1F3864]">No photos found for the selected year.</p>
-            </div>
-          )}
-        </div>
-      </RevealSection>
-
-      {/* 3. Press Coverage & Media Mentions Section */}
-      <RevealSection className="border-b border-[var(--border)] bg-[#f7f8f7] py-16 lg:py-24">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#15A7AE]">Press Archive</span>
-            <h2 className="mt-2 font-[family-name:var(--font-heading)] text-3xl font-bold text-[#1F3864] sm:text-4xl">
-              Media Coverage &amp; Press Mentions
-            </h2>
-            <p className="mt-3 text-base text-[var(--muted-foreground,#4b5563)]">
-              Verified news reports and external media links covering PROPACK Odisha and Odisha Plast editions.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {pressMentions.map((item) => (
-              <a
-                key={item.id}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex flex-col justify-between rounded-2xl border-2 border-[var(--border)] bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#EB622F] hover:shadow-xl"
+          {/* One central switch replaces two separate archive sections. */}
+          <nav aria-label="Media archive view" className="mt-9 flex justify-center">
+            <div className="inline-flex max-w-full items-center gap-1 rounded-full border border-[var(--border)] bg-white p-1.5 shadow-sm">
+              <button
+                type="button"
+                aria-pressed={activeTab === "photos"}
+                onClick={() => setActiveTab("photos")}
+                className={`inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors sm:px-6 ${
+                  activeTab === "photos"
+                    ? "bg-[#1F3864] text-white"
+                    : "text-[#1F3864] hover:bg-[#f7f8f7]"
+                }`}
               >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 rounded-md bg-[#1F3864]/5 px-3 py-1 text-xs font-bold text-[#1F3864] border border-[#1F3864]/10">
-                      <Newspaper size={13} className="text-[#15A7AE]" />
-                      {item.source}
-                    </span>
-                    <span className="text-xs font-medium text-[var(--muted,#6b7280)]">
-                      {item.date}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-4 font-[family-name:var(--font-heading)] text-lg font-bold text-[#1F3864] group-hover:text-[#EB622F] transition-colors line-clamp-2 leading-snug">
-                    {item.title}
-                  </h3>
-                </div>
-
-                <div className="mt-6 flex items-center justify-between border-t border-[var(--border)] pt-4 text-sm font-bold text-[#15A7AE] group-hover:text-[#EB622F]">
-                  <span className="underline underline-offset-4">Read Full Coverage</span>
-                  <ExternalLink size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </RevealSection>
-
-      {/* --- IMAGE LIGHTBOX MODAL (Enlarge & Download) --- */}
-      {activeImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setActiveImage(null)}
-        >
-          <div 
-            className="relative max-w-4xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-end px-4 py-3 border-b border-[var(--border)] bg-[#f7f8f7]">
-              <button 
-                onClick={() => setActiveImage(null)}
-                className="rounded-full p-2 text-gray-500 hover:bg-gray-200 transition-colors"
-                aria-label="Close"
+                <Images size={17} aria-hidden="true" />
+                Photo Gallery
+              </button>
+              <button
+                type="button"
+                aria-pressed={activeTab === "press"}
+                onClick={() => setActiveTab("press")}
+                className={`inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors sm:px-6 ${
+                  activeTab === "press"
+                    ? "bg-[#1F3864] text-white"
+                    : "text-[#1F3864] hover:bg-[#f7f8f7]"
+                }`}
               >
-                <X size={20} />
+                <Newspaper size={17} aria-hidden="true" />
+                Press Coverage
               </button>
             </div>
+          </nav>
+        </div>
+      </RevealSection>
 
-            <div className="relative w-full h-[70vh] bg-black/5 flex items-center justify-center p-4">
-              <img 
-                src={activeImage.src} 
-                alt={activeImage.title}
-                className="max-h-full max-w-full object-contain"
-              />
+      <div hidden={activeTab !== "photos"}>
+        <RevealSection className="border-b border-[var(--border)] bg-white py-12 lg:py-16">
+          <section aria-labelledby="photo-archive-heading" className="container mx-auto px-4 sm:px-6">
+            <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+              <div>
+                <h2 id="photo-archive-heading" className="font-[family-name:var(--font-heading)] text-2xl font-bold text-[#1F3864] sm:text-3xl">
+                  Event Photo Gallery
+                </h2>
+               
+              </div>
+ 
             </div>
 
-            <div className="flex items-center justify-end px-6 py-4 border-t border-[var(--border)] bg-white gap-3">
-              <a 
-                href={activeImage.src} 
-                download 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#EB622F] px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#d55524] transition-colors"
-              >
-                <Download size={16} />
-                Download Image
-              </a>
-              <button 
+            {currentGallery.length > 0 ? (
+              <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {currentGallery.map((item) => (
+                  <li key={item.id} className="min-w-0">
+                    <button
+                      type="button"
+                      onClick={() => setActiveImage(item)}
+                      aria-label={`View PROPACK Odisha photo from ${item.year}`}
+                      className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[#f7f8f7] text-left shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#EB622F] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EB622F]"
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <span className="rounded-full bg-white/90 p-3 text-[#1F3864] shadow-lg backdrop-blur-xs">
+                          <Maximize2 size={18} />
+                        </span>
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="rounded-2xl border border-[var(--border)] bg-[#f7f8f7] px-5 py-12 text-center">
+                <p className="text-sm font-medium text-[#1F3864]">No photos available for this selection.</p>
+              </div>
+            )}
+          </section>
+        </RevealSection>
+      </div>
+      <div hidden={activeTab !== "press"}>
+        <RevealSection className="border-b border-[var(--border)] bg-white py-12 lg:py-16">
+          <section aria-labelledby="press-archive-heading" className="container mx-auto px-4 sm:px-6">
+            <div className="mb-8 max-w-3xl">
+              <h2 id="press-archive-heading" className="font-[family-name:var(--font-heading)] text-2xl font-bold text-[#1F3864] sm:text-3xl">
+                Media Coverage &amp; Press Mentions
+              </h2>
+              <p className="mt-2 text-sm text-[var(--muted-foreground,#4b5563)]">
+                News reports and external media links covering PROPACK Odisha and previous editions.
+              </p>
+            </div>
+
+            {pressMentions.length > 0 ? (
+              <ul className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {pressMentions.map((item) => (
+                  <li key={item.id} className="min-w-0">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex h-full min-h-[190px] flex-col justify-between rounded-2xl border border-[var(--border)] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#EB622F] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EB622F]"
+                    >
+                      <div>
+                        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 text-xs">
+                          <span className="font-bold text-[#15A7AE]">{item.source}</span>
+                         
+                        </div>
+                        <h3 className="mt-4 font-[family-name:var(--font-heading)] text-lg font-bold leading-snug text-[#1F3864] transition-colors group-hover:text-[#EB622F]">
+                          {item.title}
+                        </h3>
+                      </div>
+                      <span className="mt-6 flex items-center justify-between gap-3 border-t border-[var(--border)] pt-4 text-sm font-semibold text-[#1F3864]">
+                        Read coverage
+                        <ExternalLink size={17} aria-hidden="true" className="shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="rounded-2xl border border-[var(--border)] bg-[#f7f8f7] px-5 py-12 text-center">
+                <p className="text-sm font-medium text-[#1F3864]">No media links available yet.</p>
+              </div>
+            )}
+          </section>
+        </RevealSection>
+      </div>
+
+      {activeImage && (
+        <div
+          role="presentation"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md sm:p-6"
+          onClick={() => setActiveImage(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`PROPACK Odisha archive image, ${activeImage.year}`}
+            className="relative flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex justify-end border-b border-[var(--border)] bg-[#f7f8f7] px-4 py-3">
+              <button
+                type="button"
                 onClick={() => setActiveImage(null)}
-                className="rounded-xl border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-semibold text-[#1F3864] hover:bg-gray-100 transition-colors"
+                aria-label="Close image"
+                className="rounded-full p-2 text-[#1F3864] transition-colors hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#EB622F]"
+              >
+                <X size={20} aria-hidden="true" />
+              </button>
+            </div>
+            <div className="relative h-[65vh] w-full bg-black/5 sm:h-[70vh]">
+              <Image
+                src={activeImage.image}
+                alt={activeImage.title}
+                fill
+                sizes="(max-width: 896px) 100vw, 896px"
+                className="object-contain p-4"
+              />
+            </div>
+            <div className="flex flex-wrap justify-end gap-3 border-t border-[var(--border)] bg-white px-5 py-4">
+              <a
+                href={activeImage.image}
+                download
+                className="inline-flex items-center gap-2 rounded-xl bg-[#EB622F] px-5 py-2.5 text-sm font-semibold !text-white transition-colors hover:bg-[#d55524]"
+              >
+                <Download size={16} aria-hidden="true" />
+                Download image
+              </a>
+              <button
+                type="button"
+                onClick={() => setActiveImage(null)}
+                className="rounded-xl border border-[var(--border)] bg-white px-5 py-2.5 text-sm font-semibold text-[#1F3864] transition-colors hover:bg-gray-100"
               >
                 Close
               </button>
