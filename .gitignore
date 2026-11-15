@@ -17,3 +17,6 @@ test-results/
 propack-odisha-forms*
 *-credentials.json
 credentials/
+# Large gallery videos
+public/gallery/**/*.mp4
+public/gallery/**/*.MP4

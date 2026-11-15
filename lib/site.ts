@@ -1,67 +1,164 @@
-export const event = {
-  name: "PROPACK Odisha",
-  fullName: "PROPACK Odisha International Expo",
-  date: "25–28 February 2027",
-  startDate: "2027-02-25",
-  endDate: "2027-02-28",
-  openingTime: "10:00",
-  closingTime: "18:00",
-  venue: "  Bhubaneswar, Odisha",
-  phones: ["70083 41944", "77518 09433"],
-  description:
-    "Connect with the plastic, printing, packaging, food processing and engineering industries at PROPACK Odisha, 25–28 February 2027 in Bhubaneswar.",
-};
 
-const defaultSiteUrl = "https://www.propackodisha.com";
+/**
+ * PROPACK Odisha
+ * Central website and event configuration.
+ *
+ * Used by:
+ * - Next.js metadata
+ * - SEO helpers
+ * - Sitemap
+ * - Structured data
+ * - Navigation and public pages
+ */
 
-function normalizeUrl(url: string) {
-  let normalized = url.trim();
+const PRODUCTION_URL = "https://www.propackodisha.com";
 
-  // Add protocol if missing
-  if (!/^https?:\/\//i.test(normalized)) {
-    normalized = `https://${normalized}`;
+function normalizeUrl(
+  value: string | undefined,
+  fallback = PRODUCTION_URL
+): string {
+  const input = value?.trim();
+
+  if (!input) {
+    return fallback;
   }
 
-  // Remove trailing slashes
-  normalized = normalized.replace(/\/+$/, "");
+  try {
+    const withProtocol = /^https?:\/\//i.test(input)
+      ? input
+      : `https://${input}`;
 
-  return normalized;
+    const url = new URL(withProtocol);
+
+    if (!["http:", "https:"].includes(url.protocol)) {
+      return fallback;
+    }
+
+    if (url.username || url.password) {
+      return fallback;
+    }
+
+    url.hash = "";
+    url.search = "";
+    url.pathname = "/";
+
+    return url.origin;
+  } catch {
+    return fallback;
+  }
 }
 
-function normalizeSeoUrl(url: string) {
-  const normalized = normalizeUrl(url);
+/**
+ * Normalize the canonical website identity.
+ *
+ * Always use HTTPS + WWW for the production domain.
+ */
+function normalizeSeoUrl(
+  value: string | undefined
+): string {
+  const normalized = normalizeUrl(value);
 
   try {
-    const parsed = new URL(normalized);
+    const url = new URL(normalized);
 
-    // Keep one canonical production host
+    const hostname = url.hostname.toLowerCase();
+
     if (
-      parsed.hostname === "propackodisha.com" ||
-      parsed.hostname === "www.propackodisha.com"
+      hostname === "propackodisha.com" ||
+      hostname === "www.propackodisha.com"
     ) {
-      parsed.protocol = "https:";
-      parsed.hostname = "www.propackodisha.com";
-      parsed.port = "";
-      parsed.pathname = "";
-
-      return parsed.toString().replace(/\/+$/, "");
+      return PRODUCTION_URL;
     }
 
     return normalized;
   } catch {
-    return defaultSiteUrl;
+    return PRODUCTION_URL;
   }
 }
 
+/**
+ * Runtime website URL.
+ *
+ * This may point to another environment when configured.
+ */
 export const siteUrl = normalizeUrl(
-  process.env.SITE_URL || defaultSiteUrl
+  process.env.SITE_URL,
+  PRODUCTION_URL
 );
 
-// Canonical SEO identity of the public website
+/**
+ * Public SEO URL.
+ *
+ * Configure NEXT_PUBLIC_SITE_URL with the
+ * canonical production domain.
+ */
 export const seoUrl = normalizeSeoUrl(
-  process.env.NEXT_PUBLIC_SITE_URL || defaultSiteUrl
+  process.env.NEXT_PUBLIC_SITE_URL ?? PRODUCTION_URL
 );
 
+/**
+ * Official event information.
+ */
+export const event = {
+  name: "PROPACK Odisha",
+
+  fullName: "PROPACK Odisha International Expo",
+
+  date: "25–28 February 2027",
+
+  startDate: "2027-02-25",
+  endDate: "2027-02-28",
+
+  openingTime: "10:00",
+  closingTime: "18:00",
+
+  venue: "Bhubaneswar, Odisha",
+venueName: "Bhubaneswar, Odisha",
+
+  city: "Bhubaneswar",
+  region: "Odisha",
+  country: "IN",
+
+  phones: [
+    "70083 41944",
+    "77518 09433",
+  ],
+
+  email: "info@propackodisha.com",
+
+  logo: "/logo/logo-bg.png",
+
+  ogImage: "/social-card.png",
+
+  organizer: {
+    name:
+      "Odisha Assembly of Small and Medium Enterprises (OASME)",
+
+    shortName: "OASME",
+
+    url: "https://www.oasme.org.in",
+  },
+
+  description:
+    "PROPACK Odisha International Expo 2027 brings together packaging, printing, plastics, paper, processing and green energy industries from 25–28 February 2027 at Janata Maidan, Bhubaneswar.",
+};
+
+/**
+ * Actual content modification date.
+ *
+ * Update only when substantial website content
+ * has genuinely changed.
+ *
+ * Do not automatically update on every deployment.
+ */
+export const contentUpdated = "2026-11-08";
+
+/**
+ * Exhibition industry sectors.
+ *
+ * Existing image filenames are preserved
+ * to avoid breaking current image paths.
+ */
 export const sectors = [
   {
     name: "Plastic Industry",
@@ -101,6 +198,12 @@ export const sectors = [
   },
 ];
 
+/**
+ * Exhibitor service forms.
+ *
+ * Existing slugs must remain unchanged unless
+ * corresponding routes and redirects are updated.
+ */
 export const services = [
   {
     slug: "power-requirement",
@@ -135,20 +238,21 @@ export const services = [
 ];
 
 /**
- * All publicly accessible routes.
+ * Publicly accessible website routes.
  *
- * Operational service forms can be publicly accessible
- * while still being excluded from Google indexing.
+ * Public accessibility does not automatically
+ * mean Google indexing is enabled.
  */
-export const publicRoutes = [
+export const publicRoutes: string[] = [
   "",
   "about",
   "about-organizers",
   "sectors",
   "resources",
+  "brochure",
   "exhibitors",
   "exhibitor-profile",
-   "participants",
+  "participants",
   "exhibitor-details",
   "visitors",
   "visitor-profile",
@@ -158,7 +262,6 @@ export const publicRoutes = [
   "she-builds",
   "venue",
   "privacy-policy",
-
   "exhibitor-registration",
   "visitor-registration",
   "contact-us",
@@ -167,18 +270,22 @@ export const publicRoutes = [
 ];
 
 /**
- * Routes we intentionally want Google to discover/index.
+ * Routes intentionally eligible for indexing.
  *
- * Internal exhibitor-service forms are NOT included here.
+ * This list is used by lib/seo.ts.
+ *
+ * Keep operational service forms excluded.
  */
-export const indexableRoutes = [
+export const indexableRoutes: string[] = [
   "",
   "about",
   "about-organizers",
   "sectors",
   "resources",
+  "brochure",
   "exhibitors",
   "exhibitor-profile",
+  "participants",
   "exhibitor-details",
   "visitors",
   "visitor-profile",
@@ -191,3 +298,47 @@ export const indexableRoutes = [
   "visitor-registration",
   "contact-us",
 ];
+
+/**
+ * Check whether a route is publicly accessible.
+ */
+export function isPublicRoute(
+  slug: string
+): boolean {
+  const clean = slug
+    .trim()
+    .replace(/^\/+|\/+$/g, "");
+
+  return publicRoutes.includes(clean);
+}
+
+/**
+ * Check whether a route is intended
+ * to be eligible for Google indexing.
+ */
+export function isIndexablePath(
+  slug: string
+): boolean {
+  const clean = slug
+    .trim()
+    .replace(/^\/+|\/+$/g, "");
+
+  return indexableRoutes.includes(clean);
+}
+
+/**
+ * Build an absolute URL for a website path.
+ *
+ * Example:
+ * getAbsoluteUrl("/exhibitors")
+ * -> https://www.propackodisha.com/exhibitors
+ */
+export function getAbsoluteUrl(
+  pathname = "/"
+): string {
+  const path = pathname.startsWith("/")
+    ? pathname
+    : `/${pathname}`;
+
+  return new URL(path, `${seoUrl}/`).toString();
+}

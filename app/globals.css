@@ -1,45 +1,5 @@
+/* Tailwind pehle, phir saare imports — @import hamesha top par hona chahiye */
 @import "tailwindcss";
-
-@layer base {
-  :root {
-    --font-sans: var(--font-body), system-ui, sans-serif;
-    --font-heading: var(--font-heading), system-ui, sans-serif;
-    
-    /* Brochure Color Palette */
-    --color-primary: #EB622F;     /* Orange/Vermilion Accent */
-    --color-secondary: #15A7AE;   /* Teal Accent */
-    --color-navy: #1F3864;        /* Deep Navy Blue */
-  }
-
-  body {
-    font-family: var(--font-sans);
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    background-color: #f8fafc;
-    color: var(--color-navy);
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    letter-spacing: -0.02em;
-    color: var(--color-navy);
-  }
-}
-
-/* Custom Utilities for Premium Look */
-.glass-panel {
-  background: rgba(31, 56, 100, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(21, 167, 174, 0.2);
-}
-
-.brand-gradient-text {
-  background: linear-gradient(135deg, #EB622F 0%, #15A7AE 50%, #1F3864 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Component Imports */
 @import "../styles/base.css";
 @import "../styles/components/actions.css";
 @import "../styles/components/layout.css";
@@ -48,3 +8,75 @@
 @import "../styles/pages/catalog.css";
 @import "../styles/pages/home.css";
 @import "../styles/animations.css";
+
+/* Design tokens — Tailwind utilities: bg-navy, text-primary, bg-paper, font-display */
+@theme inline {
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy: #1f3864;
+  --color-navy-deep: #14264a;
+  --color-primary: #eb622f;
+  --color-primary-ink: #c24a1c;   /* orange as TEXT on light bg (readable contrast) */
+  --color-secondary: #15a7ae;
+  --color-secondary-ink: #0d7479; /* teal as TEXT on light bg (readable contrast) */
+  --color-paper: #f7f8f7;
+  --color-line: #d9dee6;
+  --color-muted: #55627a;
+
+  --radius-card: 6px;
+}
+
+@layer base {
+  html { scroll-padding-top: 6rem; }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-paper);
+    color: var(--color-navy);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* BUG FIX: pehle `--font-heading: var(--font-heading)` circular tha, heading font apply nahi hota tha */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Purane class names chalte rahenge, par "AI look" hata di:
+   gradient text -> solid colour, blurred glass -> solid navy panel */
+.glass-panel {
+  background: var(--color-navy);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: var(--radius-card);
+}
+.brand-gradient-text { color: var(--color-primary-ink); }
+
+/* Reusable pieces */
+.rule-top  { border-top: 2px solid var(--color-navy); }
+.hairline  { border-color: var(--color-line); }
+.card-flat {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+}

@@ -80,7 +80,7 @@ const navGroups: NavGroup[] = [
         desc: "Indicative machinery & sector categories",
         icon: BadgeCheck,
       },
-            {
+      {
         title: "Previous Participants",
         href: "/participants",
         desc: "Companies that exhibited in past editions",
@@ -144,7 +144,7 @@ const navGroups: NavGroup[] = [
         icon: FileCheck2,
       },
     ],
-  }, 
+  },
   {
     label: "Downloads",
     items: [
@@ -172,7 +172,7 @@ export function Brand({ onNavigate }: { onNavigate?: () => void }) {
         width={200}
         height={80}
         priority
-        className="h-auto w-[170px] sm:w-[200px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+        className="h-auto w-[150px] sm:w-[170px] lg:w-[150px] xl:w-[200px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
       />
     </Link>
   );
@@ -350,10 +350,10 @@ export function Header() {
 
           {/* Desktop Navigation With Targeted Dropdowns + Standalone Contact */}
           <nav
-            className="hidden xl:flex items-center gap-1"
+            className="hidden lg:flex items-center xl:gap-1"
             aria-label="Main navigation"
           >
-            {navGroups.map((group) => {
+            {navGroups.map((group, index) => {
               const isDropdownOpen = activeDropdown === group.label;
               const hasActiveChild = group.items.some(
                 (item) => path === item.href,
@@ -368,7 +368,7 @@ export function Header() {
                 >
                   <button
                     type="button"
-                    className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[14px] font-bold tracking-tight transition-colors ${
+                    className={`inline-flex items-center gap-1 whitespace-nowrap rounded-lg px-2 py-2 text-[13px] font-bold tracking-tight transition-colors xl:gap-1.5 xl:px-3 xl:text-[14px] ${
                       hasActiveChild
                         ? "text-[#EB622F]"
                         : "text-[#1F3864] hover:text-[#EB622F]"
@@ -393,7 +393,11 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 6 }}
                         transition={{ duration: 0.18, ease: "easeOut" }}
-                        className="absolute left-0 top-full mt-1.5 w-72 origin-top-left rounded-2xl border border-[var(--border)] bg-white p-2 shadow-xl ring-1 ring-black/5"
+                        className={`absolute top-full mt-1.5 w-72 rounded-2xl border border-[var(--border)] bg-white p-2 shadow-xl ring-1 ring-black/5 ${
+                          index >= navGroups.length - 2
+                            ? "right-0 origin-top-right"
+                            : "left-0 origin-top-left"
+                        }`}
                       >
                         <div className="space-y-1">
                           {group.items.map((item) => {
@@ -448,7 +452,7 @@ export function Header() {
             {/* Standalone Direct Contact Link */}
             <Link
               href="/contact-us"
-              className={`inline-flex items-center rounded-lg px-3 py-2 text-[14px] font-bold tracking-tight transition-colors ${
+              className={`inline-flex items-center whitespace-nowrap rounded-lg px-2 py-2 text-[13px] font-bold tracking-tight transition-colors xl:px-3 xl:text-[14px] ${
                 path === "/contact-us"
                   ? "text-[#EB622F]"
                   : "text-[#1F3864] hover:text-[#EB622F]"
@@ -462,7 +466,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="/exhibitor-registration"
-              className="hidden sm:inline-flex items-center gap-2 rounded-xl bg-[#EB622F] px-5 py-2.5 text-[13px] font-bold !text-white shadow-sm transition-all duration-200 hover:bg-[#d55526] hover:shadow-md active:scale-95"
+              className="hidden sm:inline-flex items-center gap-2 whitespace-nowrap rounded-xl bg-[#EB622F] px-3.5 py-2.5 text-[13px] font-bold !text-white shadow-sm transition-all duration-200 hover:bg-[#d55526] hover:shadow-md active:scale-95 xl:px-5"
             >
               <span className="!text-white font-bold">Exhibit with us</span>
               <ArrowUpRight size={16} className="!text-white" />
@@ -471,7 +475,7 @@ export function Header() {
             <button
               ref={button}
               type="button"
-              className="xl:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#1F3864] shadow-2xs hover:bg-slate-50 active:scale-95"
+              className="lg:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-[#1F3864] shadow-2xs hover:bg-slate-50 active:scale-95"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -487,7 +491,7 @@ export function Header() {
           {open && (
             <motion.div
               id="mobile-nav"
-              className="xl:hidden max-h-[calc(100dvh-80px)] overflow-y-auto border-t border-[var(--border)] bg-white px-4 py-6 shadow-2xl"
+              className="lg:hidden max-h-[calc(100dvh-80px)] overflow-y-auto border-t border-[var(--border)] bg-white px-4 py-6 shadow-2xl"
               initial={reducedMotion ? false : { opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={reducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}

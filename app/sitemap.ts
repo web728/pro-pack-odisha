@@ -1,66 +1,79 @@
+
 import type { MetadataRoute } from "next";
-import { indexableRoutes, seoUrl } from "@/lib/site";
 
-const highPriorityRoutes = new Set([
-  "about",
-  "about-organizers",
-  "sectors",
-  "exhibitors",
-  "exhibitor-profile",
-  "visitors",
-  "visitor-profile",
-  "venue",
-  "exhibitor-registration",
-  "visitor-registration",
-  "contact-us",
-]);
+import { indexableRoutes } from "@/lib/site";
+import {
+  buildPageUrl,
+  getSearchPage,
+  isIndexableRoute,
+} from "@/lib/seo";
 
-const mediumPriorityRoutes = new Set([
-  "resources",
-  "market-overview",
-  "exhibitor-details",
-   "participants",
-  "gallery",
-  "news",
-  "she-builds",
-]);
+/**
+ * Verified page modification dates.
+ *
+ * Add a route here only when its actual
+ * last significant content update is known.
+ *
+ * Example:
+ * about: "2026-11-08"
+ */
+const verifiedLastModified: Record<string, string> = {};
 
-function getPriority(slug: string): number {
-  if (!slug) {
-    return 1;
-  }
-
-  if (highPriorityRoutes.has(slug)) {
-    return 0.9;
-  }
-
-  if (mediumPriorityRoutes.has(slug)) {
-    return 0.8;
-  }
-
-  return 0.6;
-}
-
-function getChangeFrequency(
+/**
+ * Return a valid modification date only when
+ * the date has been explicitly verified.
+ */
+function getLastModified(
   slug: string
-): MetadataRoute.Sitemap[number]["changeFrequency"] {
-  if (!slug || slug === "news") {
-    return "weekly";
+): Date | undefined {
+  const value = verifiedLastModified[slug];
+
+  if (!value) {
+    return undefined;
   }
 
-  return "monthly";
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return undefined;
+  }
+
+  if (date.getTime() > Date.now()) {
+    return undefined;
+  }
+
+  return date;
 }
 
+/**
+ * Generate the public XML sitemap.
+ *
+ * Only explicitly indexable, configured
+ * routes are included.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return indexableRoutes.map((slug) => {
-    const url = slug
-      ? `${seoUrl}/${slug}`
-      : `${seoUrl}/`;
+  const uniqueRoutes = Array.from(
+    new Set(
+      indexableRoutes.map((slug) =>
+        slug.trim().replace(/^\/+|\/+$/g, "")
+      )
+    )
+  );
 
-    return {
-      url,
-      changeFrequency: getChangeFrequency(slug),
-      priority: getPriority(slug),
-    };
-  });
+  return uniqueRoutes
+    .filter((slug) => {
+      return (
+        Boolean(getSearchPage(slug)) &&
+        isIndexableRoute(slug)
+      );
+    })
+    .map((slug) => {
+      const url = buildPageUrl(slug);
+      const lastModified = getLastModified(slug);
+
+      return {
+        url,
+        ...(lastModified ? { lastModified } : {}),
+      };
+    });
 }
